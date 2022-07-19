@@ -1,0 +1,17 @@
+{
+  "files.autoSave": "afterDelay",
+  "editor.fontSize": 13,
+  "editor.formatOnType": false,
+  "eslint.format.enable": true,
+  "terminal.integrated.automationProfile.linux": {},
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "vue",
+    "markdown",
+    "php"
+  ]
+}
