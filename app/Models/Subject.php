@@ -15,6 +15,16 @@ class Subject extends Model
     {
         return $this->belongsTo(Major::class);
     }
+    public function classrooms()
+    {
+        return $this->belongsToMany(Classroom::class);
+    }
+    public function lecturers()
+    {
+        return $this->belongsToMany(Lecturer::class);
+    }
+
+
     public static function boot()
     {
         parent::boot();
