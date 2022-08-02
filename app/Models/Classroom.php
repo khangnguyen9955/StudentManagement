@@ -21,6 +21,12 @@ class Classroom extends Model
         return $this->belongsTo(Major::class);
     }
 
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class);
+    }
+
+
     public static function boot()
     {
         parent::boot();
