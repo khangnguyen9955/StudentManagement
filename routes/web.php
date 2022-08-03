@@ -20,6 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/profile',[StudentController::class, 'viewProfile']);
+Route::get('/calendar',[StudentController::class, 'pages.calendar']);
 Route::get('/add-student', [StudentController::class, 'addStudent'])->name('student.add');
 Route::post('/add-student', [StudentController::class, 'saveStudent'])->name('save.student');
 Route::get('/list-student', [StudentController::class, 'studentList'])->name('student.list');
