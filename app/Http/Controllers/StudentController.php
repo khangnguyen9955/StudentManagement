@@ -6,14 +6,13 @@ use App\Models\Classroom;
 use App\Models\Major;
 use App\Models\Student;
 use Illuminate\Http\Request;
-use PhpParser\Builder\Class_;
+
 
 class StudentController extends Controller
 {
     public function addStudent()
     {
         $majors = Major::get();
-
         return view('add-student', compact('majors'));
     }
     public function saveStudent(Request $request)
@@ -30,8 +29,7 @@ class StudentController extends Controller
     public function studentList()
     {
 
-        $students = Student::with('major')->with('classroom')->get();
-
+        $students = Student::with('major', 'classroom')->get();
         return view('list-student')->with('students', $students);
     }
 
@@ -44,6 +42,7 @@ class StudentController extends Controller
 
     public function saveStudentToClassroom(Request $request)
     {
+
         $student = Student::where('id', '=', $request->student_id)->get();
         $classroom = Classroom::where('id', '=', $request->classroom_id)->get();
         if ($student[0]->major_id === $classroom[0]->major_id) {
