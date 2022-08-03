@@ -14,7 +14,6 @@
   <form method="POST" action="{{route('save.student')}}">
     @csrf
      Full Name: <br><input type="text" name="fullName" value=""><br>
-     Password:  <br><input type="text" name="password" value=""><br> 
      Email <br><input type="text" name="email" value=""><br>
      Phone <br><input type="text" name="phone" value=""><br>
      <label for="major">Choose a major:</label>
