@@ -16,6 +16,12 @@ class StudentController extends Controller
     public function viewCalendar(){
         return view('pages.calendar');
     }
+    public function viewSmallTable(){
+        return view('pages.smallTable');
+    }
+    public function viewDataTable(){
+        return view('pages.dataTable');
+    }
     public function addStudent()
     {
         $majors = Major::get();

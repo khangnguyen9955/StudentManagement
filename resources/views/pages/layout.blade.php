@@ -18,8 +18,10 @@
     <link rel="stylesheet" href="{{url ('css/feather.css')}}">
     <link rel="stylesheet" href="{{url ('css/select2.css')}}">
     <link rel="stylesheet" href="{{url('css/dropzone.css')}}">
+    <link rel="stylesheet" href="{{url('css/dataTables.bootstrap4.css')}}">
     <link rel="stylesheet" href="{{url('css/uppy.min.css')}}">
     <link rel="stylesheet" href="{{url('css/jquery.steps.css')}}">
+    <link rel="stylesheet" href="{{url('css/dataTables.bootstrap4.css')}}">
     <link rel="stylesheet" href="{{url('css/jquery.timepicker.css')}}">
     <link rel="stylesheet" href="{{url('css/quill.snow.css')}}">
     <link rel="stylesheet" href="{{url('css/app-light.css')}}" id="lightTheme">
@@ -80,13 +82,11 @@
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="tables">
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="table_basic.html"><span class="ml-1 item-text">Basic Tables</span></a>
+                  <a class="nav-link pl-3" href="{{url('/smallTable')}}"><span class="ml-1 item-text">Basic Tables</span></a>
                 </li>
+                
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="table_advanced.html"><span class="ml-1 item-text">Advanced Tables</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="table_datatables.html"><span class="ml-1 item-text">Data Tables</span></a>
+                  <a class="nav-link pl-3" href="{{url('/dataTable')}}"><span class="ml-1 item-text">Data Tables</span></a>
                 </li>
               </ul>
             </li>
@@ -137,6 +137,21 @@
       <script src="../js/config.js"></script>
       <script src='../js/fullcalendar.js'></script>
       <script src='../js/fullcalendar.custom.js'></script>
+      <script src='../js/jquery.dataTables.min.js'></script>
+      <script src='../js/dataTables.bootstrap4.min.js'></script>
+      <script src='../js/jquery.dataTables.min.js'></script>
+      <script src='../js/dataTables.bootstrap4.min.js'></script>
+
+      <script>
+      $('#dataTable-1').DataTable(
+      {
+        autoWidth: true,
+        "lengthMenu": [
+          [16, 32, 64, -1],
+          [16, 32, 64, "All"]
+        ]
+      });
+    </script>
       <script>
         /** full calendar */
         var calendarEl = document.getElementById('calendar');
