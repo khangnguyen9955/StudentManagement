@@ -17,9 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/', [HomeController::class, 'index']) ;
+
+Route::get('/profile',[StudentController::class, 'viewProfile']);
+Route::get('/calendar',[StudentController::class, 'viewCalendar']);
+
+
 Route::get('/add-student', [StudentController::class, 'addStudent'])->name('student.add');
 Route::post('/add-student', [StudentController::class, 'saveStudent'])->name('save.student');
 Route::get('/list-student', [StudentController::class, 'studentList'])->name('student.list');
@@ -44,3 +53,6 @@ Route::get('/list-lecturer', [LecturerController::class, 'lecturerList'])->name(
 Route::get('/add-student-classroom', [StudentController::class, 'addStudentToClassroom'])->name('studentClassroom.add');
 Route::post('/add-student-classroom', [StudentController::class, 'saveStudentToClassroom'])->name('save.studentClassroom');
 Route::get('/list-student-classroom', [StudentController::class, 'studentClassroomList'])->name('studentClassroom.list');
+
+
+

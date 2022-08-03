@@ -10,6 +10,14 @@ use PhpParser\Builder\Class_;
 
 class StudentController extends Controller
 {
+
+    public function viewProfile(){
+        return view('pages.profile');
+    }
+    public function viewCalendar(){
+        return view('pages.calendar');
+    }
+
     public function addStudent()
     {
         $majors = Major::get();
