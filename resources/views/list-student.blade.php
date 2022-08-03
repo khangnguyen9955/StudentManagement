@@ -11,7 +11,6 @@
     <tr>
     <th>Student Code</th> 
     <th>Full Name</th>
-    <th>Password</th>
     <th>Email</th>
     <th>Phone</th>
     <th>Major</th>
@@ -23,7 +22,6 @@
           <td>{{$student->studentCode}}
           </td>
           <td>{{$student->fullName}}</td>
-          <td>{{$student->password}}</td>
           <td>{{$student->email}}</td>
           <td>{{$student->phone}}</td>
           <td>{{$student->major->majorName}}</td>

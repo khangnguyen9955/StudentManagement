@@ -9,11 +9,13 @@ use Illuminate\Http\Request;
 
 
 class StudentController extends Controller
-{   
-    public function viewProfile(){
+{
+    public function viewProfile()
+    {
         return view('pages.profile');
     }
-    public function viewCalendar(){
+    public function viewCalendar()
+    {
         return view('pages.calendar');
     }
     public function addStudent()
@@ -25,7 +27,7 @@ class StudentController extends Controller
     {
         $student = new Student();
         $student->fullName = $request->fullName;
-        $student->password = $request->password;
+        $student->password = "123456"; // password default will be 123456
         $student->email = $request->email;
         $student->phone = $request->phone;
         $student->major_id = $request->major_id;
