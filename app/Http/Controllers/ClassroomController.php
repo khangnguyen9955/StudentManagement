@@ -39,13 +39,16 @@ class ClassroomController extends Controller
         return view('add-subject-to-classroom', compact('subjects'), compact('classrooms'));
     }
 
-    public function saveSubjectToClassroom(Request $request)
+    public function saveClassroomSubject(Request $request)
     {
-        $classroom = Classroom::where('id','=', $request->classroom_id)->get();
-        $subject = Subject::where('id','=',$request->subject_id)->get();
-        $lecturer = Lecturer::where('id','=',$request->lecturer_id)->get();
-
-
-
+        $classroom = Classroom::find($request->classroom_id);
+        $subject = Subject::find($request->subject_id);
+        if ($classroom->subjects()->contains($request->subject_id)) {
+            return back()->with('classroom_subject_add', 'This subject is already added to this classroom!');
+        } else if ($classroom->major_id !== $subject->major_id) {
+            return back()->with('classroom_subject_add', 'This subject must be the same majority with this classroom!');
+        }
+        $classroom->subjects()->syncWithoutDetaching([$request->subject_id]);
+        return back()->with('classroom_subject_add', 'This subject is added to this classroom successfully!');
     }
 }
