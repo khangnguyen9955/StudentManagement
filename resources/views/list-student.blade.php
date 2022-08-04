@@ -17,7 +17,7 @@
                     <thead>
                       <tr>
                         <th></th>
-                        <th>#</th>
+                        <th>Student Code</th>
                         <th>Full Name</th>
                         <th>Email</th>
                         <th>Phone</th>
@@ -34,7 +34,7 @@
                             <label class="custom-control-label"></label>
                           </div>
                         </td>
-                        <td>{{$student->id}}</td>
+                        <td>{{$student->studentCode}}</td>
                         <td>{{$student->fullName}}</td>
                         <td>{{$student->email}}</td>
                         <td>{{$student->phone}}</td>
@@ -44,8 +44,8 @@
                             <span class="text-muted sr-only">Action</span>
                           </button>
                           <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Edit</a>
-                            <a class="dropdown-item" href="#">Remove</a>
+                            <a class="dropdown-item" href="{{url('edit-student/'.$student->id)}}">Edit</a>
+                            <a class="dropdown-item" href="{{url('remove-student/'.$student->id)}}">Remove</a>
                             <a class="dropdown-item" href="#">Assign</a>
                           </div>
                         </td>

@@ -69,4 +69,32 @@ class StudentController extends Controller
             return back()->with('student_classroom_add', 'Student must been added to the class which has the same majority with them!');
         }
     }
+    
+    public function editStudent($id){
+        $students = Student::where('id', '=', $id)->first();
+        $majors = Major::get();
+        return view('edit-student', compact('students'),compact('majors'));
+    }
+
+    public function updateStudent(Request $request){
+        $id = $request-> id;
+        $fullName= $request->fullName;
+        $email = $request->email;
+        $phone = $request->phone;
+        $majorID= $request->major_id;
+        
+        student::where('id', '=', $id)-> update([
+            'fullName'=>$name,
+            'email'=>$email,
+            'phone'=>$phone,
+            'major_id'=>$majorID
+        ]);
+        
+        return back()->with('student_list', 'Student updated successfully!');
+    }
+    public function removeStudent($id){
+        // Student::where('id', '=', $id)->delete();
+        Student::destroy($id);
+        return redirect()->back()->with('success','student removed successfully ');
+    }
 }
