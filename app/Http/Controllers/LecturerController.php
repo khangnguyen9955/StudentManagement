@@ -47,7 +47,6 @@ class LecturerController extends Controller
         if ($lecturer->subjects->contains($request->subject_id)) {
             return back()->with('lecturer_subject_add', 'This subject is already added to lecturer!');
         } else if ($lecturer->major_id !== $subject->major_id) {
-
             return back()->with('lecturer_subject_add', 'This subject must be the same majority with the lecturer!');
         }
         $lecturer->subjects()->syncWithoutDetaching([$request->subject_id]);

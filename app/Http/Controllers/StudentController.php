@@ -62,7 +62,8 @@ class StudentController extends Controller
     {
         $students = Student::where('class_id', '=', null)->get();
         $classrooms = Classroom::get();
-        return view('add-student-classroom', compact('students'), compact('classrooms'));
+        // return view('add-student-classroom', compact('students'), compact('classrooms'));
+        return view('add-student-classroom')->with(compact('students', 'classrooms'));
     }
 
     public function saveStudentToClassroom(Request $request)
@@ -77,32 +78,40 @@ class StudentController extends Controller
             return back()->with('student_classroom_add', 'Student must been added to the class which has the same majority with them!');
         }
     }
-    
-    public function editStudent($id){
+
+    public function editStudent($id)
+    {
         $students = Student::where('id', '=', $id)->first();
         $majors = Major::get();
-        return view('edit-student', compact('students'),compact('majors'));
+        $classrooms = Classroom::get();
+
+        return view('edit-student')->with(compact('students', 'majors', 'classrooms'));
     }
 
-    public function updateStudent(Request $request){
-        $id = $request-> id;
-        $fullName= $request->fullName;
+    public function updateStudent(Request $request)
+    {
+        $id = $request->id;
+        $fullName = $request->fullName;
         $email = $request->email;
         $phone = $request->phone;
-        $majorID= $request->major_id;
+        $majorID = $request->major_id;
+        $classID = $request->classroom_id;
 
-        Student::where('id', '=', $id)-> update([
-            'fullName'=>$fullName,
-            'email'=>$email,
-            'phone'=>$phone,
-            'major_id'=>$majorID
+
+        Student::where('id', '=', $id)->update([
+            'fullName' => $fullName,
+            'email' => $email,
+            'phone' => $phone,
+            'major_id' => $majorID,
+            'class_id' => $classID
         ]);
-        return back()->with('student_update', 'Student updated successfully!');
+        return back()->with('student_edit', 'Student updated successfully!');
     }
-    public function removeStudent($id){
+    public function removeStudent($id)
+    {
         // Student::where('id', '=', $id)->delete();
         Student::destroy($id);
-        return redirect()->back()->with('student_list','
+        return redirect()->back()->with('student_list', '
         Student removed successfully ');
     }
 }
