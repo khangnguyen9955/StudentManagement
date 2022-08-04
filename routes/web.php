@@ -21,13 +21,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/list-student', [StudentController::class, 'viewDataTable']);
+Route::get('/dataTable', [StudentController::class, 'viewDataTable']);
 Route::get('/smallTable', [StudentController::class, 'viewSmallTable']);
 Route::get('/profile', [StudentController::class, 'viewProfile']);
 Route::get('/calendar', [StudentController::class, 'viewCalendar']);
+Route::get('/list-test', [StudentController::class, 'viewTest']);
+
+
 Route::get('/add-student', [StudentController::class, 'addStudent'])->name('student.add');
 Route::post('/add-student', [StudentController::class, 'saveStudent'])->name('save.student');
 Route::get('/list-student', [StudentController::class, 'studentList'])->name('student.list');
+
+
+Route::get('/edit-student/{id}', [StudentController::class, 'editStudent'])->name('student.edit');
+Route::post('/update-student', [StudentController::class, 'updateStudent'])->name('update.student');
+Route::get('/remove-student/{id}', [StudentController::class, 'removeStudent'])->name('student.remove');
+
+
 
 Route::get('/add-classroom', [ClassroomController::class, 'addClassroom'])->name('classroom.add');
 Route::post('/add-classroom', [ClassroomController::class, 'saveClassroom'])->name('save.classroom');
@@ -52,8 +62,3 @@ Route::get('/list-student-classroom', [StudentController::class, 'studentClassro
 
 Route::get('/add-lecturer-subject', [LecturerController::class, 'addLecturerSubject'])->name('lecturerSubject.add');
 Route::post('/add-lecturer-subject', [LecturerController::class, 'saveLecturerSubject'])->name('save.lecturerSubject');
-
-Route::get('/edit-student/{id}', [StudentController::class, 'editStudent'])->name('student.edit');
-Route::post('/update-student', [StudentController::class, 'updateStudent'])->name('update.student');
-
-Route::get('/remove-student/{id}', [StudentController::class, 'removeStudent'])->name('student.remove');
