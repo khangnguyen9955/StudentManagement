@@ -18,11 +18,14 @@ class StudentController extends Controller
     {
         return view('pages.calendar');
     }
-    public function viewSmallTable(){
+    public function viewSmallTable()
+    {
         return view('pages.smallTable');
     }
-    public function viewDataTable(){
-        return view('pages.dataTable');
+    public function viewDataTable()
+    {
+        $students = Student::with('major', 'classroom')->get();
+        return view('list-student')->with('students', $students);
     }
     public function addStudent()
     {

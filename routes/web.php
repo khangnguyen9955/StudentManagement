@@ -21,7 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dataTable', [StudentController::class, 'viewDataTable']);
+Route::get('/list-student', [StudentController::class, 'viewDataTable']);
 Route::get('/smallTable', [StudentController::class, 'viewSmallTable']);
 Route::get('/profile', [StudentController::class, 'viewProfile']);
 Route::get('/calendar', [StudentController::class, 'viewCalendar']);
