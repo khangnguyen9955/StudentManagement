@@ -7,8 +7,9 @@
   <title>Edit Student</title>
 </head>
 <body>
-@if(Session::has('student_edit'))
-<span>{{Session::get('student_edit')}}</span> 
+@if(Session::has('student_update'))
+<div class="alert alert-success" role="alert">{{Session::get('student_update')}} </div>
+
 @endif
 
   <form method="POST" action="{{url('update-student')}}">
@@ -19,7 +20,7 @@
      Phone <br><input type="text" name="phone" value="{{$students->phone}}"><br>
      <label for="major">Choose a major:</label>
     <select name="major_id" id="majors">
-        <!-- <option value="{{$major_id}}"> {{$major->majorName}} </option> -->
+        {{-- <!-- <option value="{{$major_id}}"> {{$major->majorName}} </option> --> --}}
         @foreach ($majors as $major)
           <option value="{{$major->id}}">{{$major->majorName}} </option>  
         @endforeach

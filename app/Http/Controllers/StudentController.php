@@ -24,9 +24,17 @@ class StudentController extends Controller
     }
     public function viewDataTable()
     {
-        $students = Student::with('major', 'classroom')->get();
-        return view('list-student')->with('students', $students);
+        return view('pages.dataTable');
     }
+
+    public function viewTest()
+    {
+        return view('list-test');
+    }
+
+
+
+
     public function addStudent()
     {
         $majors = Major::get();
@@ -82,19 +90,19 @@ class StudentController extends Controller
         $email = $request->email;
         $phone = $request->phone;
         $majorID= $request->major_id;
-        
-        student::where('id', '=', $id)-> update([
-            'fullName'=>$name,
+
+        Student::where('id', '=', $id)-> update([
+            'fullName'=>$fullName,
             'email'=>$email,
             'phone'=>$phone,
             'major_id'=>$majorID
         ]);
-        
-        return back()->with('student_list', 'Student updated successfully!');
+        return back()->with('student_update', 'Student updated successfully!');
     }
     public function removeStudent($id){
         // Student::where('id', '=', $id)->delete();
         Student::destroy($id);
-        return redirect()->back()->with('success','student removed successfully ');
+        return redirect()->back()->with('student_list','
+        Student removed successfully ');
     }
 }
