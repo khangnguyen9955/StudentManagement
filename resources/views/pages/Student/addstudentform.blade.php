@@ -41,10 +41,15 @@
                       <input type="text" id="address-wpalaceholder" class="form-control" placeholder="Enter your phone number">
                
                     </div>
-                    <button class="btn btn-primary" type="submit">Submit</button>
 
-                    <a href="{{url('/list-student')}}" class="btn btn-danger btn-lg">Back</a>
+                    <a  class="btn btn-secondary" href="{{url('/list-student')}}">
+                      Back
+                    </a>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                  
                 
+                   
+                 
                
                 
                   </form>

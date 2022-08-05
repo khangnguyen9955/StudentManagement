@@ -14,7 +14,7 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-:root {
+ :root {
   --blue: #1b68ff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -1954,28 +1954,30 @@ fieldset:disabled a.btn {
       box-shadow: 0 0 0 0.2rem rgba(207, 144, 9, 0.5); }
 
 .btn-danger {
-  color: white;
-  background-color: darkgray;
-  border-color: darkgray; }
+  color: #ffffff;
+  background-color: #dc3545;
+  border-color: #dc3545; }
   .btn-danger:hover {
     color: #ffffff;
-    background-color: darkgray;
-    border-color: darkgray; }
+    background-color: #c82333;
+    border-color: #bd2130; }
   .btn-danger:focus, .btn-danger.focus {
     color: #ffffff;
-    background-color: darkgray;
-    border-color: darkgray; }
-   
+    background-color: #c82333;
+    border-color: #bd2130;
+    box-shadow: 0 0 0 0.2rem rgba(225, 83, 97, 0.5); }
   .btn-danger.disabled, .btn-danger:disabled {
     color: #ffffff;
-    background-color: darkgray;
-    border-color: darkgray; }
+    background-color: #dc3545;
+    border-color: #dc3545; }
   .btn-danger:not(:disabled):not(.disabled):active, .btn-danger:not(:disabled):not(.disabled).active,
   .show > .btn-danger.dropdown-toggle {
     color: #ffffff;
-    background-color: darkgray;
-    border-color: darkgray; }
-   
+    background-color: #bd2130;
+    border-color: #b21f2d; }
+    .btn-danger:not(:disabled):not(.disabled):active:focus, .btn-danger:not(:disabled):not(.disabled).active:focus,
+    .show > .btn-danger.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba(225, 83, 97, 0.5); }
 
 .btn-light {
   color: #212529;
@@ -2211,7 +2213,7 @@ fieldset:disabled a.btn {
     pointer-events: none; }
 
 .btn-lg, .btn-group-lg > .btn {
-  padding: 0.2rem 1rem;
+  padding: 0.5rem 1rem;
   font-size: 1.09375rem;
   line-height: 1.5;
   border-radius: 0.3rem; }
@@ -12005,6 +12007,7 @@ a.uppy-Dashboard-poweredBy {
   text-align: center;
   color: #e9ecef; }
 
+  .override {text-decoration: none !important;}
 .uppy-ScreenCapture-icon--stream {
   position: absolute;
   right: 0;
