@@ -38,6 +38,7 @@ Route::get('/edit-student/{id}', [StudentController::class, 'editStudent'])->nam
 Route::post('/update-student', [StudentController::class, 'updateStudent'])->name('update.student');
 Route::get('/remove-student/{id}', [StudentController::class, 'removeStudent'])->name('student.remove');
 
+Route::get('/multi-form', [ClassroomController::class, 'viewMulti'])->name('viewMulti');
 
 Route::get('/multi-form', [ClassroomController::class, 'showMultiForm']);
 Route::get('/add-classroom', [ClassroomController::class, 'addClassroom'])->name('classroom.add');
@@ -65,3 +66,20 @@ Route::get('/list-student-classroom', [StudentController::class, 'studentClassro
 
 Route::get('/add-lecturer-subject', [LecturerController::class, 'addLecturerSubject'])->name('lecturerSubject.add');
 Route::post('/add-lecturer-subject', [LecturerController::class, 'saveLecturerSubject'])->name('save.lecturerSubject');
+
+
+
+
+
+
+//test 
+
+
+Route::get('add-classroom-subject/choose-subject', [ClassroomController::class, 'chooseSubjectStep'])->name('classroom.choose.subject.step');
+Route::post('add-classroom-subject/choose-subject', [ClassroomController::class, 'chooseSubjectStep'])->name('classroom.choose.subject.step.post');
+
+Route::get('add-classroom-subject/choose-lecturer', [ClassroomController::class, 'chooseLecturerStep'])->name('classroom.choose.lecturer.step');
+Route::post('add-classroom-subject/choose-lecturer', [ClassroomController::class, 'chooseLecturerStep'])->name('classroom.choose.subject.step.post');
+
+Route::get('add-classroom-subject/choose-schedule',  [ClassroomController::class, 'chooseScheduleStep'])->name('classroom.choose.subject.step.step');
+Route::post('add-classroom-subject/choose-schedule', [ClassroomController::class, 'chooseScheduleStep'])->name('classroom.choose.schedule.step.post');
