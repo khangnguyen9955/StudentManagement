@@ -1,4 +1,4 @@
-@extends('pages.studentlayout')
+t @extends('pages.studentlayout')
 
 @section('content')
 
@@ -23,7 +23,6 @@
                   <table class="table datatables" id="dataTable-1">
                     <thead>
                       <tr>
-                        <th></th>
                         <th>Student Code</th>
                         <th>Full Name</th>
                         <th>Email</th>
@@ -36,13 +35,7 @@
                     <tbody>
                       @foreach ($students as $student)
                       <tr>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input">
-                            <label class="custom-control-label"></label>
-                          </div>
-                        </td>
-                        <td>{{$student->studentCode}}</td>
+                       <td>{{$student->studentCode}}</td>
                         <td>{{$student->fullName}}</td>
                         <td>{{$student->email}}</td>
                         <td>{{$student->phone}}</td>

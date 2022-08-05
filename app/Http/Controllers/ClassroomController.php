@@ -51,6 +51,25 @@ class ClassroomController extends Controller
         $classroom->subjects()->syncWithoutDetaching([$request->subject_id]);
         return back()->with('classroom_subject_add', 'This subject is added to this classroom successfully!');
     }
+
+    public function viewMulti()
+    {
+        $subjects = Subject::get();
+        $lecturers = Lecturer::get();
+        return view('multi-form')->with(compact('subjects', 'lecturers'));
+    }
+
+    public function chooseSubjectStep(Request $request)
+    {
+    }
+
+    public function chooseLecturerStep(Request $request)
+    {
+    }
+    public function chooseScheduleStep(Request $request)
+    {
+    }
+
     public function removeClassroom($id)
     {
         // Classroom::where('id', '=', $id)->delete();
