@@ -42,7 +42,7 @@ Route::get('/remove-student/{id}', [StudentController::class, 'removeStudent'])-
 Route::get('/add-classroom', [ClassroomController::class, 'addClassroom'])->name('classroom.add');
 Route::post('/add-classroom', [ClassroomController::class, 'saveClassroom'])->name('save.classroom');
 Route::get('/list-classroom', [ClassroomController::class, 'classroomList'])->name('classroom.list');
-Route::get('/remove-classroom/{id}', [ClassroomController::class, 'removeclasrrom'])->name('classroom.remove');
+Route::get('/remove-classroom/{id}', [ClassroomController::class, 'removeClassroom'])->name('classroom.remove');
 
 
 Route::get('/add-subject', [SubjectController::class, 'addSubject'])->name('subject.add');
