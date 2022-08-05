@@ -10,9 +10,9 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    public function viewProfile()
+    public function viewStudentProfile()
     {
-        return view('pages.profile');
+        return view('pages.studentprofile');
     }
     public function viewCalendar()
     {
@@ -22,15 +22,14 @@ class StudentController extends Controller
     {
         return view('pages.smallTable');
     }
-    public function viewDataTable()
+    
+
+    public function viewAddStudentForm()
     {
-        return view('pages.dataTable');
+        return view('pages.Student.addstudentform');
     }
 
-    public function viewTest()
-    {
-        return view('list-test');
-    }
+
 
 
 
@@ -56,6 +55,13 @@ class StudentController extends Controller
 
         $students = Student::with('major', 'classroom')->get();
         return view('list-student')->with('students', $students);
+    }
+
+    public function studentList1()
+    {
+
+        $students = Student::with('major', 'classroom')->get();
+        return view('list-student1')->with('students', $students);
     }
 
     public function addStudentToClassroom()

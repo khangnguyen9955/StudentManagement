@@ -1,4 +1,4 @@
-@extends('pages.studentlayout')
+@extends('pages.adminlayout')
 
 @section('content')
 

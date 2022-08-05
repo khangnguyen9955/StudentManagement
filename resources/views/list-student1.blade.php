@@ -1,4 +1,4 @@
-@extends('pages.adminlayout')
+@extends('pages.studentlayout')
 
 @section('content')
 
@@ -28,8 +28,7 @@
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Major</th>
-                        <th>Class code</th>
-                        <th>Action</th>
+
                       </tr>
                     </thead>
                     <tbody>
@@ -40,16 +39,8 @@
                         <td>{{$student->email}}</td>
                         <td>{{$student->phone}}</td>
                         <td>{{$student->major->majorName}}</td>
-                        <td>{{$student->classroom !== null ?  $student->classroom->classCode : "Not yet"}}</td>
-                        <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="text-muted sr-only">Action</span>
-                          </button>
-                          <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="{{url('edit-student/'.$student->id)}}">Edit</a>
-                            <a class="dropdown-item" href="{{url('remove-student/'.$student->id)}}">Remove</a>
-                            <a class="dropdown-item" href="#">Assign</a>
-                          </div>
-                        </td>
+
+                      
                       </tr>
                       @endforeach
                     </tbody>

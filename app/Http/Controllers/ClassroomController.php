@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class ClassroomController extends Controller
 {
+    public function showMultiForm(){
+        return view('pages.multi-form');
+    }
+
     public function addClassroom()
     {
         $majors = Major::get();

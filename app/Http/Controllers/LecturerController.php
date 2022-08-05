@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class LecturerController extends Controller
 {
+    public function viewAddLecturerForm()
+    {
+        return view('pages.addlecturerform');
+    }
+
     public function addLecturer()
     {
         $majors = Major::get();
