@@ -21,16 +21,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dataTable', [StudentController::class, 'viewDataTable']);
+
 Route::get('/smallTable', [StudentController::class, 'viewSmallTable']);
-Route::get('/profile', [StudentController::class, 'viewProfile']);
+Route::get('/studentprofile', [StudentController::class, 'viewStudentProfile']);
 Route::get('/calendar', [StudentController::class, 'viewCalendar']);
-Route::get('/list-test', [StudentController::class, 'viewTest']);
+Route::get('/addstudentform', [StudentController::class, 'viewAddStudentForm']);
 
 
 Route::get('/add-student', [StudentController::class, 'addStudent'])->name('student.add');
 Route::post('/add-student', [StudentController::class, 'saveStudent'])->name('save.student');
 Route::get('/list-student', [StudentController::class, 'studentList'])->name('student.list');
+Route::get('/list-student1', [StudentController::class, 'studentList1'])->name('student.list');
 
 
 Route::get('/edit-student/{id}', [StudentController::class, 'editStudent'])->name('student.edit');
@@ -39,7 +40,7 @@ Route::get('/remove-student/{id}', [StudentController::class, 'removeStudent'])-
 
 Route::get('/multi-form', [ClassroomController::class, 'viewMulti'])->name('viewMulti');
 
-
+Route::get('/multi-form', [ClassroomController::class, 'showMultiForm']);
 Route::get('/add-classroom', [ClassroomController::class, 'addClassroom'])->name('classroom.add');
 Route::post('/add-classroom', [ClassroomController::class, 'saveClassroom'])->name('save.classroom');
 Route::get('/list-classroom', [ClassroomController::class, 'classroomList'])->name('classroom.list');
@@ -52,6 +53,7 @@ Route::get('/list-subject', [SubjectController::class, 'subjectList'])->name('su
 
 
 
+Route::get('/addlecturerform', [LecturerController::class, 'viewAddLecturerForm']);
 Route::get('/add-lecturer', [LecturerController::class, 'addLecturer'])->name('lecturer.add');
 Route::post('/add-lecturer', [LecturerController::class, 'saveLecturer'])->name('save.lecturer');
 Route::get('/list-lecturer', [LecturerController::class, 'lecturerList'])->name('lecturer.list');

@@ -88,11 +88,11 @@
           </li>
           
           <li class="nav-item dropdown">
-            <a href="#tables" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+            <a href="#lecturers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
               <i class="fe fe-credit-card fe-16"></i>
               <span class="ml-3 item-text">Lecturer</span>
             </a>
-            <ul class="collapse list-unstyled pl-4 w-100" id="tables">
+            <ul class="collapse list-unstyled pl-4 w-100" id="lecturers">
               <li class="nav-item">
                 <a class="nav-link pl-3" href="{{url('/addlecturerform')}}"><span class="ml-1 item-text">Add new Lecturer</span></a>
               </li>
@@ -103,15 +103,30 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a href="#forms" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+            <a href="#classes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
               <i class="fe fe-credit-card fe-16"></i>
-              <span class="ml-3 item-text">Student</span>
+              <span class="ml-3 item-text">Class</span>
             </a>
-            <ul class="collapse list-unstyled pl-4 w-100" id="forms">
+            <ul class="collapse list-unstyled pl-4 w-100" id="classes">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/addstudentform')}}"><span class="ml-1 item-text">Add Student Form</span></a>
+                <a class="nav-link pl-3" href="{{url('/add-classroom')}}"><span class="ml-1 item-text">Add New Class</span></a>
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/list-student')}}"><span class="ml-1 item-text">Student List</span></a>
+                <a class="nav-link pl-3" href="{{url('/list-classroom')}}"><span class="ml-1 item-text">Class List</span></a>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a href="#subjects" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+              <i class="fe fe-credit-card fe-16"></i>
+              <span class="ml-3 item-text">Subject</span>
+            </a>
+            <ul class="collapse list-unstyled pl-4 w-100" id="subjects">
+              <li class="nav-item">
+                <a class="nav-link pl-3" href="{{url('/addlecturerform')}}"><span class="ml-1 item-text">Add New Subject</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link pl-3" href="{{url('/list-lecturer')}}"><span class="ml-1 item-text">Subject List</span></a>
+              </li>
             </ul>
           </li>
 
@@ -227,11 +242,11 @@
       cb(start, end);
       $('.input-placeholder').mask("00/00/0000",
       {
-        placeholder: "_/__/___"
+        placeholder: "__/__/____"
       });
       $('.input-zip').mask('00000-000',
       {
-        placeholder: "___-__"
+        placeholder: "____-___"
       });
       $('.input-money').mask("#.##0,00",
       {
@@ -249,7 +264,7 @@
             optional: true
           }
         },
-        placeholder: "_.___.___.___"
+        placeholder: "___.___.___.___"
       });
       // editor
       var editor = document.getElementById('editor');
@@ -430,11 +445,11 @@
       cb(start, end);
       $('.input-placeholder').mask("00/00/0000",
       {
-        placeholder: "_/__/___"
+        placeholder: "__/__/____"
       });
       $('.input-zip').mask('00000-000',
       {
-        placeholder: "___-__"
+        placeholder: "____-___"
       });
       $('.input-money').mask("#.##0,00",
       {
@@ -452,7 +467,7 @@
             optional: true
           }
         },
-        placeholder: "_.___.___.___"
+        placeholder: "___.___.___.___"
       });
       // editor
       var editor = document.getElementById('editor');
@@ -585,3 +600,5 @@
     </script>
   </body>
 </html>
+
+    
