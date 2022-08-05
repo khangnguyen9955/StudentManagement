@@ -24,9 +24,8 @@
                         <th>Department</th>
                         <th>Company</th>
                         <th>Address</th>
-                        <th>City</th>
-                        <th>Date</th>
-                        <th>Action</th>
+                      
+                        
                       </tr>
                     </thead>
                     <tbody>
@@ -43,69 +42,9 @@
                         <td>Asset Management</td>
                         <td>Borland</td>
                         <td>9022 Suspendisse Rd.</td>
-                        <td>High Wycombe</td>
-                        <td>Jun 8, 2019</td>
-                        <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="text-muted sr-only">Action</span>
-                          </button>
-                          <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Edit</a>
-                            <a class="dropdown-item" href="#">Remove</a>
-                            <a class="dropdown-item" href="#">Assign</a>
-                          </div>
-                        </td>
+          
                       </tr>
-                      <tr>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input">
-                            <label class="custom-control-label"></label>
-                          </div>
-                        </td>
-                        <td>323</td>
-                        <td>Walter Sawyer</td>
-                        <td>(671) 969-1704</td>
-                        <td>Tech Support</td>
-                        <td>Macromedia</td>
-                        <td>Ap #708-5152 Cursus. Ave</td>
-                        <td>Bath</td>
-                        <td>May 8, 2020</td>
-                        <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="text-muted sr-only">Action</span>
-                          </button>
-                          <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Edit</a>
-                            <a class="dropdown-item" href="#">Remove</a>
-                            <a class="dropdown-item" href="#">Assign</a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input">
-                            <label class="custom-control-label"></label>
-                          </div>
-                        </td>
-                        <td>371</td>
-                        <td>Noelle Ray</td>
-                        <td>(803) 792-2559</td>
-                        <td>Human Resources</td>
-                        <td>Sibelius</td>
-                        <td>Ap #992-8933 Sagittis Street</td>
-                        <td>Ivanteyevka</td>
-                        <td>Apr 2, 2021</td>
-                        <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="text-muted sr-only">Action</span>
-                          </button>
-                          <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Edit</a>
-                            <a class="dropdown-item" href="#">Remove</a>
-                            <a class="dropdown-item" href="#">Assign</a>
-                          </div>
-                        </td>
-                      </tr>
-
+                      
                     </tbody>
                   </table>
                 </div>

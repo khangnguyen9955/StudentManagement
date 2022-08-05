@@ -14,7 +14,7 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-:root {
+ :root {
   --blue: #1b68ff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -12007,6 +12007,7 @@ a.uppy-Dashboard-poweredBy {
   text-align: center;
   color: #e9ecef; }
 
+  .override {text-decoration: none !important;}
 .uppy-ScreenCapture-icon--stream {
   position: absolute;
   right: 0;

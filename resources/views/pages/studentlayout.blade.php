@@ -82,11 +82,11 @@
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="tables">
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="{{url('/smallTable')}}"><span class="ml-1 item-text">Basic Tables</span></a>
+                  <a class="nav-link pl-3" href="{{url('/smallTable')}}"><span class="ml-1 item-text">Student Grade</span></a>
                 </li>
                 
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="{{url('/dataTable')}}"><span class="ml-1 item-text">Data Tables</span></a>
+                  <a class="nav-link pl-3" href="{{url('/list-student1')}}"><span class="ml-1 item-text">Class list</span></a>
                 </li>
               </ul>
             </li>
@@ -141,7 +141,7 @@
       <script src='../js/dataTables.bootstrap4.min.js'></script>
       <script src='../js/jquery.dataTables.min.js'></script>
       <script src='../js/dataTables.bootstrap4.min.js'></script>
-
+      
       <script>
       $('#dataTable-1').DataTable(
       {

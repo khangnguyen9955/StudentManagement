@@ -1,98 +1,58 @@
-@extends('pages.studentlayout')
+@extends('pages.adminlayout')
 
 @section('content')
 <main role="main" class="main-content">
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">
-          <h2 class="h3 mb-4 page-title">Profile</h2>
-          <div class="row mt-5 align-items-center">
-            <div class="col-md-3 text-center mb-5">
-           
-            </div>
-            <div class="col">
-              <div class="row align-items-center">
-                <div class="col-md-7">
-                  <h4 class="mb-1">Brown, Asher</h4>
-                  <p class="small mb-3"><span class="badge badge-dark">New York, USA</span></p>
+          <h2 class="page-title" style=" text-align: center; ">Add student</h2>
+          <div class="row" style="justify-content: center; ">          
+            <div class="col-md-6">
+              <div class="card shadow mb-4">
+                <div class="card-header">
+                  <strong class="card-title">Advanced Validation</strong>
                 </div>
-              </div>
-              <div class="row mb-4">
-                <div class="col-md-7">
-                  <p class="text-muted"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl ullamcorper, rutrum metus in, congue lectus. In hac habitasse platea dictumst. Cras urna quam, malesuada vitae risus at, pretium blandit sapien. </p>
-                </div>
-                <div class="col">
-                  <p class="small mb-0 text-muted">Nec Urna Suscipit Ltd</p>
-                  <p class="small mb-0 text-muted">P.O. Box 464, 5975 Eget Avenue</p>
-                  <p class="small mb-0 text-muted">(537) 315-1481</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row my-4">
-            <div class="col-md-4">
-              <div class="card mb-4 shadow">
-                <div class="card-body my-n3">
-                  <div class="row align-items-center">
-                    <div class="col-3 text-center">
-                      <span class="circle circle-lg bg-light">
-                        <i class="fe fe-user fe-24 text-primary"></i>
-                      </span>
-                    </div> <!-- .col -->
-                    <div class="col">
-                      <a href="#">
-                        <h3 class="h5 mt-4 mb-1">Personal</h3>
-                      </a>
-                      <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl ullamcorper, rutrum metus in, congue lectus.</p>
-                    </div> <!-- .col -->
-                  </div> <!-- .row -->
-                </div> <!-- .card-body -->
-            
-              </div> <!-- .card -->
-            </div> <!-- .col-md-->
-            <div class="col-md-4">
-              <div class="card mb-4 shadow">
-                <div class="card-body my-n3">
-                  <div class="row align-items-center">
-                    <div class="col-3 text-center">
-                      <span class="circle circle-lg bg-light">
-                        <i class="fe fe-shield fe-24 text-primary"></i>
-                      </span>
-                    </div> <!-- .col -->
-                    <div class="col">
-                      <a href="#">
-                        <h3 class="h5 mt-4 mb-1">Security</h3>
-                      </a>
-                      <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl ullamcorper, rutrum metus in, congue lectus.</p>
-                    </div> <!-- .col -->
-                  </div> <!-- .row -->
-                </div> <!-- .card-body -->
-                
-              </div> <!-- .card -->
-            </div> <!-- .col-md-->
-            <div class="col-md-4">
-              <div class="card mb-4 shadow">
-                <div class="card-body my-n3">
-                  <div class="row align-items-center">
-                    <div class="col-3 text-center">
-                      <span class="circle circle-lg bg-light">
-                        <i class="fe fe-bell fe-24 text-primary"></i>
-                      </span>
-                    </div> <!-- .col -->
-                    <div class="col">
-                      <a href="#">
-                        <h3 class="h5 mt-4 mb-1">Notifications</h3>
-                      </a>
-                      <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl ullamcorper, rutrum metus in, congue lectus.</p>
-                    </div> <!-- .col -->
-                  </div> <!-- .row -->
-                </div> <!-- .card-body -->
+                <div class="card-body">
+                  <form class="needs-validation" novalidate>
+                    <div class="form-row">
+                      <div class="col-md-6 mb-3">
+                        <label for="validationCustom3">Full Name</label>
+                        <input type="text" class="form-control" id="validationCustom3" value="" placeholder="Enter your full name" required>
+                        <div class="valid-feedback"> Looks good! </div>
+                      </div>
+                     
+                      <div class="col-md-6 mb-3">
+                        
+                        <div class="valid-feedback"> Looks good! </div>
+                      </div>
+                    </div> <!-- /.form-row -->
+                    <div class="form-row">
+                      
+                      <div class="col-md-8 mb-3">
+                        <label for="exampleInputEmail2">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter your email">
+                        <div class="invalid-feedback"> Please use a valid email </div>
+                        <small id="emailHelp1" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                      </div>
+                      
+                    </div> <!-- /.form-row -->
+                    <div class="form-group mb-3">
+                      <label for="address-wpalaceholder">Phone Number</label>
+                      <input type="text" id="address-wpalaceholder" class="form-control" placeholder="Enter your phone number">
                
-              </div> <!-- .card -->
-            </div> <!-- .col-md-->
-          </div> <!-- .row-->
-         
-        </div> <!-- /.col-12 -->
+                    </div>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+
+                    <a href="{{url('/list-lecturer')}}" class="btn btn-danger btn-lg">Back</a>
+                
+               
+                
+                  </form>
+                </div> <!-- /.card-body -->
+              </div> <!-- /.card -->
+            </div> <!-- /.col -->
+          </div> <!-- end section -->
+        </div> <!-- /.col-12 col-lg-10 col-xl-10 -->
       </div> <!-- .row -->
     </div> <!-- .container-fluid -->
     <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
@@ -186,7 +146,9 @@
                 <p>Activity</p>
               </div>
             </div>
-            <div class="row align-items-center">
+
+            
+            <div class="row align-items-center" >
               <div class="col-6 text-center">
                 <div class="squircle bg-primary justify-content-center">
                   <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
