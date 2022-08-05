@@ -43,7 +43,7 @@
                           </button>
                           <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="#">Edit</a>
-                            <a class="dropdown-item" href="#">Remove</a>
+                            <a class="dropdown-item" href="{{url('remove-classroom/'.$classroom->id)}}">Remove</a>
                             <a class="dropdown-item" href="#">Assign</a>
                           </div>
                         </td>
