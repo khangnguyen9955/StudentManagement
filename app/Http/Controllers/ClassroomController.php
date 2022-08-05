@@ -51,4 +51,11 @@ class ClassroomController extends Controller
         $classroom->subjects()->syncWithoutDetaching([$request->subject_id]);
         return back()->with('classroom_subject_add', 'This subject is added to this classroom successfully!');
     }
+    public function removeClassroom($id)
+    {
+        // Classroom::where('id', '=', $id)->delete();
+        Classroom::destroy($id);
+        return redirect()->back()->with('classroom_list', '
+        Classroom removed successfully ');
+    }
 }
