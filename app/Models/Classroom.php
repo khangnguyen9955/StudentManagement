@@ -11,6 +11,15 @@ class Classroom extends Model
     protected $fillable = ['major_id'];
     protected $table = "classrooms";
 
+    public function schedule()
+    {
+        return $this->belongsTo(Schedule::class);
+    }
+
+    public function lecturers()
+    {
+        return $this->belongsToMany(Lecturer::class);
+    }
 
     public function students()
     {

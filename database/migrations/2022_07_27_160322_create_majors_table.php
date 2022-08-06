@@ -27,14 +27,6 @@ return new class extends Migration
                 'majorTerm' => 'SE',
                 'majorName' => 'Computing'
             ),
-            array(
-                'majorTerm' => 'BA-BM',
-                'majorName' => 'Business Management'
-            ),
-            array(
-                'majorTerm' => 'GD',
-                'majorName' => 'Graphic and Digital Design'
-            )
         );
         DB::table('majors')->insert(
             array(
