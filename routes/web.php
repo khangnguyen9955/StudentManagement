@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\FullCalendarController;
 use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
@@ -38,9 +39,7 @@ Route::get('/edit-student/{id}', [StudentController::class, 'editStudent'])->nam
 Route::post('/update-student', [StudentController::class, 'updateStudent'])->name('update.student');
 Route::get('/remove-student/{id}', [StudentController::class, 'removeStudent'])->name('student.remove');
 
-Route::get('/multi-form', [ClassroomController::class, 'viewMulti'])->name('viewMulti');
 
-Route::get('/multi-form', [ClassroomController::class, 'showMultiForm']);
 Route::get('/add-classroom', [ClassroomController::class, 'addClassroom'])->name('classroom.add');
 Route::post('/add-classroom', [ClassroomController::class, 'saveClassroom'])->name('save.classroom');
 Route::get('/list-classroom', [ClassroomController::class, 'classroomList'])->name('classroom.list');
@@ -72,14 +71,17 @@ Route::post('/add-lecturer-subject', [LecturerController::class, 'saveLecturerSu
 
 
 
-//test 
 
 
-Route::get('add-classroom-subject/choose-subject', [ClassroomController::class, 'chooseSubjectStep'])->name('classroom.choose.subject.step');
-Route::post('add-classroom-subject/choose-subject', [ClassroomController::class, 'chooseSubjectStep'])->name('classroom.choose.subject.step.post');
 
-Route::get('add-classroom-subject/choose-lecturer', [ClassroomController::class, 'chooseLecturerStep'])->name('classroom.choose.lecturer.step');
-Route::post('add-classroom-subject/choose-lecturer', [ClassroomController::class, 'chooseLecturerStep'])->name('classroom.choose.subject.step.post');
+Route::get('add-classroom-subject/choose-classroom', [ClassroomController::class, 'chooseClassroomToAddSubject'])->name('classroom.add.subject.choose.classroom');
+Route::post('add-classroom-subject/choose-classroom', [ClassroomController::class, 'saveClassroomToAddSubject'])->name('classroom.add.subject.choose.classroom.save');
 
-Route::get('add-classroom-subject/choose-schedule',  [ClassroomController::class, 'chooseScheduleStep'])->name('classroom.choose.subject.step.step');
-Route::post('add-classroom-subject/choose-schedule', [ClassroomController::class, 'chooseScheduleStep'])->name('classroom.choose.schedule.step.post');
+Route::get('add-classroom-subject/choose-subject', [ClassroomController::class, 'chooseSubject'])->name('classroom.add.subject.choose.subject');
+Route::post('add-classroom-subject/choose-subject', [ClassroomController::class, 'saveSubject'])->name('classroom.add.subject.choose.subject.save');
+
+Route::get('add-classroom-subject/choose-lecturer', [ClassroomController::class, 'chooseLecturerStep'])->name('classroom.add.subject.choose.lecturer');
+Route::post('add-classroom-subject/choose-lecturer', [ClassroomController::class, 'saveLecturer'])->name('classroom.add.subject.choose.lecturer.save');
+
+Route::get('add-classroom-subject/choose-schedule',  [ClassroomController::class, 'chooseScheduleStep'])->name('classroom.add.subject.choose.schedule');
+Route::post('add-classroom-subject/choose-schedule', [ClassroomController::class, 'saveSchedule'])->name('classroom.add.subject.choose.schedule.save');

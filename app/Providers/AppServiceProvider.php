@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Schedule;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,6 +12,10 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
+    public function boot()
+    {
+    }
     public function register()
     {
         //
@@ -21,8 +26,4 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
-        //
-    }
 }

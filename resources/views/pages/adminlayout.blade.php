@@ -14,6 +14,10 @@
     <!-- Icons CSS -->
     <link rel="stylesheet" href="{{url('css/fullcalendar.css')}}">
     <!-- Date Range Picker CSS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>  
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
     <link rel="stylesheet" href="{{url ('css/daterangepicker.css')}}">
     <link rel="stylesheet" href="{{url ('css/feather.css')}}">
     <link rel="stylesheet" href="{{url ('css/select2.css')}}">
@@ -598,6 +602,44 @@
       gtag('js', new Date());
       gtag('config', 'UA-56159088-1');
     </script>
+      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+      <script>
+        $( function() {
+          var dateFormat = "mm/dd/yy",
+            from = $( "#from" )
+              .datepicker({
+                dateFormat:'yy-mm-dd',
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1
+              })
+              .on( "change", function() {
+                to.datepicker( "option", "minDate", getDate( this ) );
+              }),
+            to = $( "#to" ).datepicker({
+              dateFormat:'yy-mm-dd',
+              defaultDate: "+1w",
+              changeMonth: true,
+              numberOfMonths: 1
+            })
+            .on( "change", function() {
+              from.datepicker( "option", "maxDate", getDate( this ) );
+            });
+       
+          function getDate( element ) {
+            var date;
+            try {
+              date = $.datepicker.parseDate( dateFormat, element.value );
+            } catch( error ) {
+              date = null;
+            }
+       
+            return date;
+          }
+        } );
+        </script>
+        
   </body>
 </html>
 

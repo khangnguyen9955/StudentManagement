@@ -20,7 +20,6 @@ class SubjectController extends Controller
     public function saveSubject(Request $request)
     {
         $subject = new Subject();
-        echo $request->subjectName;
         $subject->subjectName = $request->subjectName;
         $subject->major_id = $request->major_id;
         $subject->save();

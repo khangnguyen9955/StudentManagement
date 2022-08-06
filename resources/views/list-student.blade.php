@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-t @extends('pages.studentlayout')
-=======
-@extends('pages.adminlayout')
->>>>>>> 3c2bba9197f204f720be28781f147922815150a2
+=@extends('pages.adminlayout')
 
 @section('content')
 
@@ -39,11 +35,7 @@ t @extends('pages.studentlayout')
                     <tbody>
                       @foreach ($students as $student)
                       <tr>
-<<<<<<< HEAD
                        <td>{{$student->studentCode}}</td>
-=======
-                        <td>{{$student->studentCode}}</td>
->>>>>>> 3c2bba9197f204f720be28781f147922815150a2
                         <td>{{$student->fullName}}</td>
                         <td>{{$student->email}}</td>
                         <td>{{$student->phone}}</td>

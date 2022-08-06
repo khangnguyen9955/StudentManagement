@@ -21,22 +21,14 @@
                   <table class="table datatables" id="dataTable-1">
                     <thead>
                       <tr>
-                        <th></th>
-                        <th>#</th>
                         <th>Classroom Code</th>
                         <th>Major</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach ($classrooms as $classroom)
                       <tr >
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input">
-                            <label class="custom-control-label"></label>
-                          </div>
-                        </td>
-                        <td>{{$classroom->id}}</td>
                         <td>
                           {{$classroom->classCode}}
                         </td>

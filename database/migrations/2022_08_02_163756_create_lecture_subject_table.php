@@ -22,11 +22,6 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-    // $table->increments('id');
-    // $table->integer('class_id')->unsigned();
-    // $table->integer('subject_id')->unsigned();
-    // $table->foreign('class_id')->references('id')->on('classrooms');
-    // $table->foreign('subject_id')->references('id')->on('subjects');
     /**
      * Reverse the migrations.
      *
