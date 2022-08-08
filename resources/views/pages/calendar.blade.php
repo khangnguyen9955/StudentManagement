@@ -32,7 +32,7 @@
               {
                 plugins: ['dayGrid', 'timeGrid', 'list', 'bootstrap'],
                 defaultView: 'dayGridMonth', 
-                git checkout updateLai                displayEventEnd: true,
+                displayEventEnd: true,
                 timeZone: 'UTC',
                 themeSystem: 'bootstrap',
                 header:
