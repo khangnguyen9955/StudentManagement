@@ -59,6 +59,7 @@ class LecturerController extends Controller
         $lecturer->subjects()->syncWithoutDetaching([$request->subject_id]);
         return back()->with('lecturer_subject_add', 'Added subject to lecturer successfully!');
     }
+<<<<<<< HEAD
     public function editLecturer($id)
     {
         $lecturers = Lecturer::where('id', '=', $id)->first();
@@ -93,4 +94,6 @@ class LecturerController extends Controller
         return redirect()->back()->with('lecturer_list', '
         Lecturer removed successfully ');
     }
+=======
+>>>>>>> bab5516937ad220862911f2db42ab9b5615554cb
 }
