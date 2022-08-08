@@ -9,10 +9,39 @@ use Illuminate\Http\Request;
 
 class LecturerController extends Controller
 {
+    public function viewLecturerClass()
+    {
+        return view('pages.Lecturer.list-lecturerclass');
+    }
+
+    public function viewLecturerProfile()
+    {
+        return view('pages.Lecturer.lecturer-profile');
+    }
+
+    public function viewLecturerGrade()
+    {
+        return view('pages.Lecturer.lecturer-grade');
+    }
+
+    public function viewLecturerCalendar()
+    {
+        return view('pages.Lecturer.lecturer-calendar');
+    }
+
+
+    
     public function viewAddLecturerForm()
     {
-        return view('pages.addlecturerform');
+        return view('pages.Admin.add-lecturer-form');
     }
+
+    public function viewLecturerList()
+    {
+        $lecturer = Lecturer::with('major', 'classroom')->get();
+        return view('pages.Admin.list-lecturer')->with('lecturers', $lecturers);
+    }
+
 
     public function addLecturer()
     {
@@ -20,6 +49,7 @@ class LecturerController extends Controller
 
         return view('add-lecturer', compact('majors'));
     }
+
 
     public function saveLecturer(Request $request)
     {
@@ -35,14 +65,14 @@ class LecturerController extends Controller
     public function lecturerList()
     {
         $lecturers = Lecturer::with('major')->get();
-        return view('list-lecturer')->with('lecturers', $lecturers);
+        return view('pages.Admin.list-lecturer')->with('lecturers', $lecturers);
     }
 
     public function addLecturerSubject()
     {
         $subjects = Subject::get();
         $lecturers = Lecturer::get();
-        return view('add-lecturer-subject', compact('lecturers'), compact('subjects'));
+        return view('pages.Admin.add-lecturer-subject', compact('lecturers'), compact('subjects'));
     }
 
     public function saveLecturerSubject(Request $request)

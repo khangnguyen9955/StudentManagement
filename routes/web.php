@@ -22,16 +22,18 @@ Route::get('/', function () {
 });
 
 
-Route::get('/smallTable', [StudentController::class, 'viewSmallTable']);
-Route::get('/studentprofile', [StudentController::class, 'viewStudentProfile']);
-Route::get('/calendar', [StudentController::class, 'viewCalendar']);
-Route::get('/addstudentform', [StudentController::class, 'viewAddStudentForm']);
+Route::get('/student-grade', [StudentController::class, 'viewStudentGrade']);
+Route::get('/student-profile', [StudentController::class, 'viewStudentProfile']);
+Route::get('/student-calendar', [StudentController::class, 'viewStudentCalendar']);
+Route::get('/add-student-form', [StudentController::class, 'viewAddStudentForm']);
 
 
 Route::get('/add-student', [StudentController::class, 'addStudent'])->name('student.add');
 Route::post('/add-student', [StudentController::class, 'saveStudent'])->name('save.student');
 Route::get('/list-student', [StudentController::class, 'studentList'])->name('student.list');
 Route::get('/list-student1', [StudentController::class, 'studentList1'])->name('student.list');
+Route::get('/list-student2', [StudentController::class, 'studentList2'])->name('student.list');
+
 
 
 Route::get('/edit-student/{id}', [StudentController::class, 'editStudent'])->name('student.edit');
@@ -43,6 +45,7 @@ Route::get('/multi-form', [ClassroomController::class, 'showMultiForm']);
 Route::get('/add-classroom', [ClassroomController::class, 'addClassroom'])->name('classroom.add');
 Route::post('/add-classroom', [ClassroomController::class, 'saveClassroom'])->name('save.classroom');
 Route::get('/list-classroom', [ClassroomController::class, 'classroomList'])->name('classroom.list');
+Route::get('/list-lecturerclass', [ClassroomController::class, 'viewLecturerClassList'])->name('classroom.list');
 
 
 Route::get('/add-subject', [SubjectController::class, 'addSubject'])->name('subject.add');
@@ -50,8 +53,10 @@ Route::post('/add-subject', [SubjectController::class, 'saveSubject'])->name('sa
 Route::get('/list-subject', [SubjectController::class, 'subjectList'])->name('subject.list');
 
 
-
-Route::get('/addlecturerform', [LecturerController::class, 'viewAddLecturerForm']);
+Route::get('/lecturer-profile', [LecturerController::class, 'viewLecturerProfile']);
+Route::get('/lecturer-grade', [LecturerController::class, 'viewLecturerGrade']);
+Route::get('/lecturer-calendar', [LecturerController::class, 'viewLecturerCalendar']);
+Route::get('/add-lecturer-form', [LecturerController::class, 'viewAddLecturerForm']);
 Route::get('/add-lecturer', [LecturerController::class, 'addLecturer'])->name('lecturer.add');
 Route::post('/add-lecturer', [LecturerController::class, 'saveLecturer'])->name('save.lecturer');
 Route::get('/list-lecturer', [LecturerController::class, 'lecturerList'])->name('lecturer.list');

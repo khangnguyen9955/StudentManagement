@@ -29,6 +29,6 @@ class SubjectController extends Controller
     public function subjectList()
     {
         $subjects = Subject::with('major')->get();
-        return view('list-subject')->with('subjects', $subjects);
+        return view('pages.Admin.list-subject')->with('subjects', $subjects);
     }
 }

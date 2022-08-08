@@ -11,13 +11,13 @@ use Illuminate\Http\Request;
 class ClassroomController extends Controller
 {
     public function showMultiForm(){
-        return view('pages.multi-form');
+        return view('pages.Admin.multi-form');
     }
 
     public function addClassroom()
     {
         $majors = Major::get();
-        return view('add-classroom', compact('majors'));
+        return view('pages.Admin.add-classroom', compact('majors'));
     }
 
 
@@ -33,14 +33,20 @@ class ClassroomController extends Controller
     public function classroomList()
     {
         $classrooms = Classroom::with('major')->get();
-        return view('list-classroom')->with('classrooms', $classrooms);
+        return view('pages.Admin.list-classroom')->with('classrooms', $classrooms);
+    }
+
+    public function viewLecturerClassList()
+    {
+        $classrooms = Classroom::with('major')->get();
+        return view('pages.Lecturer.list-lecturerclass')->with('classrooms', $classrooms);
     }
 
     public function addSubjectToClassroom()
     {
         $subjects = Subject::get();
         $classrooms = Classroom::get();
-        return view('add-subject-to-classroom', compact('subjects'), compact('classrooms'));
+        return view('pages.Admin.add-subject-to-classroom', compact('subjects'), compact('classrooms'));
     }
 
     public function saveClassroomSubject(Request $request)

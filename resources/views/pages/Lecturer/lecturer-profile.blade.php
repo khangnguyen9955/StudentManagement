@@ -1,76 +1,83 @@
-@extends('pages.adminlayout')
+@extends('pages.lecturerlayout')
 
 @section('content')
 <main role="main" class="main-content">
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="col-12 col-lg-10">
-          <h2 class="page-title">Form Wizard</h2>
-         
-         
-          
-          <div class="card my-4">
-            <div class="card-header">
-              <strong>Validation</strong>
+        <div class="col-12">
+          <h2 class="h3 mb-4 page-title">Lecturer Profile</h2>
+          <div class="row mt-5 align-items-center">
+            <div class="col-md-3 text-center mb-5">
+              <h4>*Full Name</h4>
             </div>
-            <div class="card-body">
-              <form id="example-form" action="#">
-                <div>
-                  <h3>Account</h3>
-                  <section>
-                    <div class="form-group">
-                      <label for="userName">User name *</label>
-                      <input id="userName" name="userName" type="text" class="form-control required">
-                    </div>
-                    <div class="form-group">
-                      <label for="password">Password *</label>
-                      <input id="password" name="password" type="text" class="form-control required">
-                    </div>
-                    <div class="form-group">
-                      <label for="confirm">Confirm Password *</label>
-                      <input id="confirm" name="confirm" type="text" class="form-control required">
-                    </div>
-                    <div class="help-text text-muted">(*) Mandatory</div>
-                  </section>
-                  <h3>Profile</h3>
-                  <section>
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="name">First name *</label>
-                        <input id="name" name="name" type="text" class="form-control required">
-                      </div>
-                      <div class="form-group col-md-6">
-                        <label for="surname">Last name *</label>
-                        <input id="surname" name="surname" type="text" class="form-control required">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="email">Email *</label>
-                      <input id="email" name="email" type="text" class="form-control required email">
-                    </div>
-                    <div class="form-group">
-                      <label for="address">Address</label>
-                      <input id="address" name="address" class="form-control" type="text">
-                    </div>
-                    <div class="help-text text-muted">(*) Mandatory</div>
-                  </section>
-                  <h3>Hints</h3>
-                  <section>
-                    <ul class="ml-5">
-                      <li>Foo</li>
-                      <li>Bar</li>
-                      <li>Foobar</li>
-                    </ul>
-                  </section>
-                  <h3>Finish</h3>
-                  <section>
-                    <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> <label for="acceptTerms">I agree with the Terms and Conditions.</label>
-                  </section>
-                </div>
-              </form>
-            </div> <!-- .card-body -->
-          </div> <!-- .card -->
-        </div> <!-- .col-12 -->
+        
+          </div>
+          <div class="row my-4">
+            <div class="col-md-4">
+              <div class="card mb-4 shadow">
+                <div class="card-body my-n3">
+                  <div class="row align-items-center">
+                    <div class="col-3 text-center">
+                      <span class="circle circle-lg bg-light">
+                        <i class="fe fe-user fe-24 text-primary"></i>
+                      </span>
+                    </div> <!-- .col -->
+                    <div class="col">
+                      <a href="#">
+                        <h3 class="h5 mt-4 mb-1">Email</h3>
+                      </a>
+                      <p class="text-muted">*email here</p>
+                    </div> <!-- .col -->
+                  </div> <!-- .row -->
+                </div> <!-- .card-body -->
+            
+              </div> <!-- .card -->
+            </div> <!-- .col-md-->
+            <div class="col-md-4">
+              <div class="card mb-4 shadow">
+                <div class="card-body my-n3">
+                  <div class="row align-items-center">
+                    <div class="col-3 text-center">
+                      <span class="circle circle-lg bg-light">
+                        <i class="fe fe-shield fe-24 text-primary"></i>
+                      </span>
+                    </div> <!-- .col -->
+                    <div class="col">
+                      <a href="#">
+                        <h3 class="h5 mt-4 mb-1">Phone Number</h3>
+                      </a>
+                      <p class="text-muted">*phone number here</p>
+                    </div> <!-- .col -->
+                  </div> <!-- .row -->
+                </div> <!-- .card-body -->
+                
+              </div> <!-- .card -->
+            </div> <!-- .col-md-->
+
+            <div class="col-md-4">
+              <div class="card mb-4 shadow">
+                <div class="card-body my-n3">
+                  <div class="row align-items-center">
+                    <div class="col-3 text-center">
+                      <span class="circle circle-lg bg-light">
+                        <i class="fe fe-shield fe-24 text-primary"></i>
+                      </span>
+                    </div> <!-- .col -->
+                    <div class="col">
+                      <a href="#">
+                        <h3 class="h5 mt-4 mb-1">Major</h3>
+                      </a>
+                      <p class="text-muted">* Major name here</p>
+                    </div> <!-- .col -->
+                  </div> <!-- .row -->
+                </div> <!-- .card-body -->
+                
+              </div> <!-- .card -->
+            </div> <!-- .col-md-->
+           
+          </div> <!-- .row-->
+         
+        </div> <!-- /.col-12 -->
       </div> <!-- .row -->
     </div> <!-- .container-fluid -->
     <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
@@ -197,4 +204,4 @@
       </div>
     </div>
   </main> <!-- main -->
-  @endsection
+@endsection

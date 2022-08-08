@@ -1,4 +1,4 @@
-@extends('pages.adminlayout')
+@extends('pages.lecturerlayout')
 
 @section('content')
 
@@ -33,20 +33,12 @@
                         </td>
                         <td>{{$classroom->id}}</td>
                         <td>
-                          <a href="">
+                          <a href="{{url('/list-student2')}}">
                           {{$classroom->classCode}}
                           </a>
                         </td>
                         <td>{{$classroom->major->majorName}}</td>
-                        <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="text-muted sr-only">Action</span>
-                          </button>
-                          <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Edit</a>
-                            <a class="dropdown-item" href="#">Remove</a>
-                            <a class="dropdown-item" href="#">Assign</a>
-                          </div>
-                        </td>
+                       
                       </tr>
                       @endforeach
                     </tbody>

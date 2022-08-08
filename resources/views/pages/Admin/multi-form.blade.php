@@ -1,63 +1,76 @@
-@extends('pages.adminlayout')
+@extends('pages.Admin.admin-layout')
 
 @section('content')
 <main role="main" class="main-content">
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="col-12">
-          <h2 class="page-title" style=" text-align: center; ">Add student</h2>
-          <div class="row" style="justify-content: center; ">          
-            <div class="col-md-6">
-              <div class="card shadow mb-4">
-                <div class="card-header">
-                  <strong class="card-title">Advanced Validation</strong>
-                </div>
-                <div class="card-body">
-                  <form class="needs-validation" novalidate>
-                    <div class="form-row">
-                      <div class="col-md-6 mb-3">
-                        <label for="validationCustom3">Full Name</label>
-                        <input type="text" class="form-control" id="validationCustom3" value="" placeholder="Enter your full name" required>
-                        <div class="valid-feedback"> Looks good! </div>
-                      </div>
-                     
-                      <div class="col-md-6 mb-3">
-                        
-                        <div class="valid-feedback"> Looks good! </div>
-                      </div>
-                    </div> <!-- /.form-row -->
-                    <div class="form-row">
-                  
-                      <div class="col-md-8 mb-3">
-                        <label for="exampleInputEmail2">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter your email">
-                        <div class="invalid-feedback"> Please use a valid email </div>
-                        <small id="emailHelp1" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                      </div>
-                      
-                    </div> <!-- /.form-row -->
-                    <div class="form-group mb-3">
-                      <label for="address-wpalaceholder">Phone Number</label>
-                      <input type="text" id="address-wpalaceholder" class="form-control" placeholder="Enter your phone number">
-               
+        <div class="col-12 col-lg-10">
+          <h2 class="page-title">Form Wizard</h2>
+         
+         
+          
+          <div class="card my-4">
+            <div class="card-header">
+              <strong>Validation</strong>
+            </div>
+            <div class="card-body">
+              <form id="example-form" action="#">
+                <div>
+                  <h3>Account</h3>
+                  <section>
+                    <div class="form-group">
+                      <label for="userName">User name *</label>
+                      <input id="userName" name="userName" type="text" class="form-control required">
                     </div>
-
-                    <a  class="btn btn-secondary" href="{{url('/list-student')}}">
-                      Back
-                    </a>
-                    <button class="btn btn-primary" type="submit">Submit</button>
-                  
-                
-                   
-                 
-               
-                
-                  </form>
-                </div> <!-- /.card-body -->
-              </div> <!-- /.card -->
-            </div> <!-- /.col -->
-          </div> <!-- end section -->
-        </div> <!-- /.col-12 col-lg-10 col-xl-10 -->
+                    <div class="form-group">
+                      <label for="password">Password *</label>
+                      <input id="password" name="password" type="text" class="form-control required">
+                    </div>
+                    <div class="form-group">
+                      <label for="confirm">Confirm Password *</label>
+                      <input id="confirm" name="confirm" type="text" class="form-control required">
+                    </div>
+                    <div class="help-text text-muted">(*) Mandatory</div>
+                  </section>
+                  <h3>Profile</h3>
+                  <section>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="name">First name *</label>
+                        <input id="name" name="name" type="text" class="form-control required">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="surname">Last name *</label>
+                        <input id="surname" name="surname" type="text" class="form-control required">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email *</label>
+                      <input id="email" name="email" type="text" class="form-control required email">
+                    </div>
+                    <div class="form-group">
+                      <label for="address">Address</label>
+                      <input id="address" name="address" class="form-control" type="text">
+                    </div>
+                    <div class="help-text text-muted">(*) Mandatory</div>
+                  </section>
+                  <h3>Hints</h3>
+                  <section>
+                    <ul class="ml-5">
+                      <li>Foo</li>
+                      <li>Bar</li>
+                      <li>Foobar</li>
+                    </ul>
+                  </section>
+                  <h3>Finish</h3>
+                  <section>
+                    <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> <label for="acceptTerms">I agree with the Terms and Conditions.</label>
+                  </section>
+                </div>
+              </form>
+            </div> <!-- .card-body -->
+          </div> <!-- .card -->
+        </div> <!-- .col-12 -->
       </div> <!-- .row -->
     </div> <!-- .container-fluid -->
     <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
@@ -151,9 +164,7 @@
                 <p>Activity</p>
               </div>
             </div>
-
-            
-            <div class="row align-items-center" >
+            <div class="row align-items-center">
               <div class="col-6 text-center">
                 <div class="squircle bg-primary justify-content-center">
                   <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
@@ -186,4 +197,4 @@
       </div>
     </div>
   </main> <!-- main -->
-@endsection
+  @endsection

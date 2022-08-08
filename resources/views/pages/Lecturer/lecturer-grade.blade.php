@@ -1,4 +1,4 @@
-@extends('pages.studentlayout')
+@extends('pages.lecturerlayout')
 
 @section('content')
 <main role="main" class="main-content">
@@ -6,7 +6,7 @@
       <div class="row justify-content-center">
         <div class="col-12">
 
-          <div class="row">
+          <div class="row" style ="justify-content:center;">
             <!-- Small table -->
             <div class="col-md-6 my-4">
               <div class="card shadow">

@@ -81,7 +81,7 @@
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="students">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/addstudentform')}}"><span class="ml-1 item-text">Add Student Form</span></a>
+                <a class="nav-link pl-3" href="{{url('/add-student-form')}}"><span class="ml-1 item-text">Add Student Form</span></a>
               <li class="nav-item">
                 <a class="nav-link pl-3" href="{{url('/list-student')}}"><span class="ml-1 item-text">Student List</span></a>
             </ul>
@@ -94,7 +94,7 @@
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="lecturers">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/addlecturerform')}}"><span class="ml-1 item-text">Add new Lecturer</span></a>
+                <a class="nav-link pl-3" href="{{url('/add-lecturer-form')}}"><span class="ml-1 item-text">Add new Lecturer</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link pl-3" href="{{url('/list-lecturer')}}"><span class="ml-1 item-text">Lecturer List</span></a>
@@ -122,13 +122,26 @@
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="subjects">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/addlecturerform')}}"><span class="ml-1 item-text">Add New Subject</span></a>
+                <a class="nav-link pl-3" href="{{url('/add-lecturer-form')}}"><span class="ml-1 item-text">Add New Subject</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link pl-3" href="{{url('/list-lecturer')}}"><span class="ml-1 item-text">Subject List</span></a>
               </li>
             </ul>
           </li>
+
+          <li class="nav-item dropdown">
+            <a href="#multiform" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+              <i class="fe fe-credit-card fe-16"></i>
+              <span class="ml-3 item-text">Multi Form</span>
+            </a>
+            <ul class="collapse list-unstyled pl-4 w-100" id="multiform">
+              <li class="nav-item">
+                <a class="nav-link pl-3" href="{{url('/multi-form')}}"><span class="ml-1 item-text">Multi-form</span></a>
+              </li>
+            </ul>
+          </li>
+
 
 
           
