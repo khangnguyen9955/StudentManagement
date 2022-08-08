@@ -59,4 +59,38 @@ class LecturerController extends Controller
         $lecturer->subjects()->syncWithoutDetaching([$request->subject_id]);
         return back()->with('lecturer_subject_add', 'Added subject to lecturer successfully!');
     }
+    public function editLecturer($id)
+    {
+        $lecturers = Lecturer::where('id', '=', $id)->first();
+        $majors = Major::get();
+        $classrooms = Classroom::get();
+
+        return view('edit-lecturer')->with(compact('lecturers', 'majors', 'classrooms'));
+    }
+    public function updateLecturer(Request $request)
+    {
+        $id = $request->id;
+        $fullName = $request->fullName;
+        $email = $request->email;
+        $phone = $request->phone;
+        $majorID = $request->major_id;
+        $classID = $request->classroom_id;
+
+
+        Lecturer::where('id', '=', $id)->update([
+            'fullName' => $fullName,
+            'email' => $email,
+            'phone' => $phone,
+            'major_id' => $majorID,
+            'class_id' => $classID
+        ]);
+        return back()->with('lecturer_edit', 'Lecturer updated successfully!');
+    }
+    public function removeLecturer($id)
+    {
+        // Lecturer::where('id', '=', $id)->delete();
+        Lecturer::destroy($id);
+        return redirect()->back()->with('lecturer_list', '
+        Lecturer removed successfully ');
+    }
 }
