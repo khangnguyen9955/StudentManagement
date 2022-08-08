@@ -18,6 +18,9 @@ class StudentController extends Controller
     {
         return view('pages.calendar');
     }
+
+
+
     public function viewSmallTable()
     {
         return view('pages.smallTable');

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\FullCalendarController;
 use App\Http\Controllers\LecturerController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +26,6 @@ Route::get('/', function () {
 
 Route::get('/smallTable', [StudentController::class, 'viewSmallTable']);
 Route::get('/studentprofile', [StudentController::class, 'viewStudentProfile']);
-Route::get('/calendar', [StudentController::class, 'viewCalendar']);
 Route::get('/addstudentform', [StudentController::class, 'viewAddStudentForm']);
 
 
@@ -85,3 +85,6 @@ Route::post('add-classroom-subject/choose-lecturer', [ClassroomController::class
 
 Route::get('add-classroom-subject/choose-schedule',  [ClassroomController::class, 'chooseScheduleStep'])->name('classroom.add.subject.choose.schedule');
 Route::post('add-classroom-subject/choose-schedule', [ClassroomController::class, 'saveSchedule'])->name('classroom.add.subject.choose.schedule.save');
+
+
+Route::get('/calendar', [ScheduleController::class, 'getSchedule'])->name('getSchedule');

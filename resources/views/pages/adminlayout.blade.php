@@ -17,7 +17,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>  
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+  {{-- <link rel="stylesheet" href="/resources/demos/style.css"> --}}
     <link rel="stylesheet" href="{{url ('css/daterangepicker.css')}}">
     <link rel="stylesheet" href="{{url ('css/feather.css')}}">
     <link rel="stylesheet" href="{{url ('css/select2.css')}}">
@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="{{url('css/jquery.timepicker.css')}}">
     <link rel="stylesheet" href="{{url('css/quill.snow.css')}}">
     <link rel="stylesheet" href="{{url('css/app-light.css')}}" id="lightTheme">
+
+    
 </head>
 <body class="vertical  light  ">
   <div class="wrapper">
@@ -639,7 +641,7 @@
           }
         } );
         </script>
-        
+
   </body>
 </html>
 

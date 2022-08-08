@@ -42,8 +42,7 @@
                
                     </div>
                     <button class="btn btn-primary" type="submit">Submit</button>
-
-                    <a href="{{url('/list-lecturer')}}" class="btn btn-danger btn-lg">Back</a>
+                    <button onclick="window.location='{{ URL::route('lecturer.list'); }}'" class="btn btn-danger">Back</button>
                 
                
                 
