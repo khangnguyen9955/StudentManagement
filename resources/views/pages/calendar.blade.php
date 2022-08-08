@@ -31,8 +31,8 @@
               var calendar = new FullCalendar.Calendar(calendarEl,
               {
                 plugins: ['dayGrid', 'timeGrid', 'list', 'bootstrap'],
-       
-                displayEventEnd: true,
+                defaultView: 'dayGridMonth', 
+                git checkout updateLai                displayEventEnd: true,
                 timeZone: 'UTC',
                 themeSystem: 'bootstrap',
                 header:
