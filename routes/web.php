@@ -58,6 +58,10 @@ Route::get('/add-lecturer', [LecturerController::class, 'addLecturer'])->name('l
 Route::post('/add-lecturer', [LecturerController::class, 'saveLecturer'])->name('save.lecturer');
 Route::get('/list-lecturer', [LecturerController::class, 'lecturerList'])->name('lecturer.list');
 
+Route::get('/edit-lecturer/{id}', [LecturerController::class, 'editLecturer'])->name('lecturer.edit');
+Route::post('/update-lecturer', [LecturerController::class, 'updateLecturer'])->name('update.lecturer');
+Route::get('/remove-lecturer/{id}', [LecturerController::class, 'removeLecturer'])->name('lecturer.remove');
+
 
 
 Route::get('/add-student-classroom', [StudentController::class, 'addStudentToClassroom'])->name('studentClassroom.add');
