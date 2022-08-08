@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\FullCalendarController;
 use App\Http\Controllers\LecturerController;
@@ -90,5 +91,5 @@ Route::post('add-classroom-subject/choose-schedule', [ClassroomController::class
 Route::get('/calendar', [ScheduleController::class, 'getSchedule'])->name('getSchedule');
 
 
-Route::get('/takeAttendance/{id}', [LecturerController::class, 'getAttendanceReport'])->name('getAttendanceReport');
-Route::post('/takeAttendance/{id}', [LecturerController::class, 'takeAttendanceReport'])->name('takeAttendanceReport');
+Route::get('/take-attendance/{subject_id}/{classroom_id}', [AttendanceController::class, 'getAttendanceReport'])->name('getAttendanceReport');
+Route::post('/save-attendance/{subject_id}/{student_id}', [AttendanceController::class, 'saveAttendanceReport'])->name('saveAttendanceReport.post');

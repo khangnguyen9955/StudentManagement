@@ -32,7 +32,6 @@
               {
                 plugins: ['dayGrid', 'timeGrid', 'list', 'bootstrap'],
        
-                defaultView: 'dayGridMonth',
                 displayEventEnd: true,
                 timeZone: 'UTC',
                 themeSystem: 'bootstrap',

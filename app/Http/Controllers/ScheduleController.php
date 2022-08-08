@@ -28,7 +28,7 @@ class ScheduleController extends Controller
                 'daysOfWeek' => $schedule->recurrence,
                 'startRecur' => $schedule->start_date,
                 'endRecur' => $schedule->end_date,
-                'url' => 'takeAttendance/' . $schedule->classroom_id,
+                'url' => 'take-attendance/' . $schedule->subject_id . '/' . $schedule->classroom_id,
             ];
             // else => url /$classroom_id
         });
