@@ -59,16 +59,4 @@ class LecturerController extends Controller
         $lecturer->subjects()->syncWithoutDetaching([$request->subject_id]);
         return back()->with('lecturer_subject_add', 'Added subject to lecturer successfully!');
     }
-
-    public function getAttendanceReport($id)
-    {
-        $classroom = Classroom::find($id);
-        $students = Student::where('class_id', '=', $id)->get();
-        return view('takeAttendance', compact('classroom', 'students'));
-    }
-
-
-    public function takeAttendanceReport(Request $request)
-    {
-    }
 }
