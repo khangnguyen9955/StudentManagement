@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classroom;
 use App\Models\Lecturer;
 use App\Models\Major;
+use App\Models\Student;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 
@@ -56,5 +58,17 @@ class LecturerController extends Controller
         }
         $lecturer->subjects()->syncWithoutDetaching([$request->subject_id]);
         return back()->with('lecturer_subject_add', 'Added subject to lecturer successfully!');
+    }
+
+    public function getAttendanceReport($id)
+    {
+        $classroom = Classroom::find($id);
+        $students = Student::where('class_id', '=', $id)->get();
+        return view('takeAttendance', compact('classroom', 'students'));
+    }
+
+
+    public function takeAttendanceReport(Request $request)
+    {
     }
 }

@@ -88,3 +88,7 @@ Route::post('add-classroom-subject/choose-schedule', [ClassroomController::class
 
 
 Route::get('/calendar', [ScheduleController::class, 'getSchedule'])->name('getSchedule');
+
+
+Route::get('/takeAttendance/{id}', [LecturerController::class, 'getAttendanceReport'])->name('getAttendanceReport');
+Route::post('/takeAttendance/{id}', [LecturerController::class, 'takeAttendanceReport'])->name('takeAttendanceReport');
