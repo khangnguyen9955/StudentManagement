@@ -18,6 +18,10 @@ class Student extends Model
         return $this->belongsTo(Major::class);
     }
 
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class);
+    }
 
     public function classroom()
     {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendance;
 use App\Models\Classroom;
 use App\Models\Major;
 use App\Models\Student;
@@ -25,7 +26,7 @@ class StudentController extends Controller
     {
         return view('pages.smallTable');
     }
-    
+
 
     public function viewAddStudentForm()
     {
@@ -119,8 +120,13 @@ class StudentController extends Controller
     public function removeStudent($id)
     {
         // Student::where('id', '=', $id)->delete();
-        Student::destroy($id);
-        return redirect()->back()->with('student_list', '
+        $checkStudent = Attendance::where('student_id', '=', $id);
+        if ($checkStudent !== null) {
+            return redirect()->back()->with('delete_student_failure', 'This student has been added to a classroom, you cannot delete it from the system!');
+        } else {
+            Student::destroy($id);
+            return redirect()->back()->with('delete_student_success', '
         Student removed successfully ');
+        }
     }
 }
