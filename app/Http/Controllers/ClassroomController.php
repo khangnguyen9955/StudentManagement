@@ -166,7 +166,7 @@ class ClassroomController extends Controller
                         // if recurrences are overlapped, check whether the slot is overlapped
                         if ($overlappedRecurrences[$j]->slot_id == $request->session()->get('slot_id')) {
                             $startDateRequest = date('Y-m-d', strtotime($request->session()->get('start_date')));
-                            $endDateRequest = date('Y-m-d', strtotime($recurrences->session()->get('end_date')));
+                            $endDateRequest = date('Y-m-d', strtotime($request->session()->get('end_date')));
                             $startDateSchedule = date('Y-m-d', strtotime($overlappedRecurrences[$j]->start_date));
                             $endDateSchedule = date('Y-m-d', strtotime($overlappedRecurrences[$j]->end_date));
 
