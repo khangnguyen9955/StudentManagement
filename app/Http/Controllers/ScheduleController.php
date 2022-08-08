@@ -11,12 +11,6 @@ use Illuminate\Http\Request;
 class ScheduleController extends Controller
 {
 
-    // { id:1, start:"10:00", end:"12:00", dow:[1,4],
-    //     ranges[{start:"2015/03/01", end:"2015/04/01"},
-    //            {start:"2015/05/01", end:"2015/06/01"},
-    //            {start:"2016/01/01", end:"2017/01/01"},]
-    //   }
-
     public function getSchedule()
     {
         $getSchedules = Schedule::get();
@@ -24,6 +18,7 @@ class ScheduleController extends Controller
             $start =  Slot::where('id', '=', $schedule->slot_id)->get();
             $end = Slot::where('id', '=', $schedule->slot_id)->get();
             $subject = Subject::where('id', '=', $schedule->subject_id)->get();
+            // if lecturer => this 
             return [
                 'id' => $schedule->id,
                 'title' => $subject[0]->subjectCode,
@@ -32,8 +27,10 @@ class ScheduleController extends Controller
                 'endTime' => $end[0]->end_time,
                 'daysOfWeek' => $schedule->recurrence,
                 'startRecur' => $schedule->start_date,
-                'endRecur' => $schedule->end_date
+                'endRecur' => $schedule->end_date,
+                'url' => 'takeAttendance/' . $schedule->classroom_id,
             ];
+            // else => url /$classroom_id
         });
 
 
