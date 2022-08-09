@@ -95,5 +95,5 @@ Route::post('add-classroom-subject/choose-schedule', [ClassroomController::class
 Route::get('/calendar', [ScheduleController::class, 'getSchedule'])->name('getSchedule');
 
 
-Route::get('/take-attendance/{subject_id}/{classroom_id}', [AttendanceController::class, 'getAttendanceReport'])->name('getAttendanceReport');
+Route::get('/take-attendance/{subject_id}/{classroom_id}/{date}', [AttendanceController::class, 'getAttendanceReport'])->name('getAttendanceReport');
 Route::post('/save-attendance/{subject_id}/{student_id}', [AttendanceController::class, 'saveAttendanceReport'])->name('saveAttendanceReport.post');

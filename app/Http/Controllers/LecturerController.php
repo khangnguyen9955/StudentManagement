@@ -94,4 +94,4 @@ class LecturerController extends Controller
         return redirect()->back()->with('lecturer_list', '
         Lecturer removed successfully ');
     }
-
+}
