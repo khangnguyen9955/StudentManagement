@@ -1,4 +1,4 @@
-@extends('pages.studentlayout')
+@extends('pages.Lecturer.lecturer-layout')
 
 @section('content')
 
@@ -6,8 +6,7 @@
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">
-          <h2 class="mb-2 page-title">Data table</h2>
-          <p class="card-text">DataTables is a plug-in for the jQuery Javascript library. It is a highly flexible tool, built upon the foundations of progressive enhancement, that adds all of these advanced features to any HTML table. </p>
+          <h2 class="mb-2 page-title">Classroom List</h2>
           <div class="row my-4">
             <!-- Small table -->
             <div class="col-md-12">
@@ -19,32 +18,29 @@
                       <tr>
                         <th></th>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Department</th>
-                        <th>Company</th>
-                        <th>Address</th>
-                      
-                        
+                        <th>Classroom Code</th>
+                        <th>Major</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      @foreach ($classrooms as $classroom)
+                      <tr >
                         <td>
                           <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input">
                             <label class="custom-control-label"></label>
                           </div>
                         </td>
-                        <td>368</td>
-                        <td>Imani Lara</td>
-                        <td>(478) 446-9234</td>
-                        <td>Asset Management</td>
-                        <td>Borland</td>
-                        <td>9022 Suspendisse Rd.</td>
-          
+                        <td>{{$classroom->id}}</td>
+                        <td>
+                          <a href="{{url('/list-student2')}}">
+                          {{$classroom->classCode}}
+                          </a>
+                        </td>
+                        <td>{{$classroom->major->majorName}}</td>
+                       
                       </tr>
-                      
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

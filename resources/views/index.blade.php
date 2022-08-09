@@ -3,7 +3,7 @@
     <div class="wrapper">
    @section('navbar')
     @extends('sidebar')
-  <div>CONCAC </div>
+  <div>Hi </div>
       <main role="main" class="main-content">
         <div class="container-fluid">
           <div class="row justify-content-center">
