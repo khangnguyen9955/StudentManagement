@@ -12,13 +12,16 @@ class AttendanceController extends Controller
 {
     //
 
-    public function getAttendanceReport($subjectId, $classroomId)
+    public function getAttendanceReport(Request $request)
     {
-        $classroom = Classroom::find($classroomId);
 
+        $date = $request->date;
+        $classroomId = $request->classroom_id;
+        $subjectId = $request->subject_id;
+        $classroom = Classroom::find($classroomId);
         $subject = Subject::find($subjectId);
         $students = Student::where('class_id', '=', $classroomId)->get();
-        return view('take-attendance', compact('classroom', 'students', 'subject'));
+        return view('take-attendance', compact('classroom', 'students', 'subject', 'date'));
     }
 
 
@@ -26,19 +29,26 @@ class AttendanceController extends Controller
     {
 
         $currentDate = date('Y-m-d');
-        $checkAttend = Attendance::where('student_id', '=', $request->student_id)->get();
-        $flagCanMark = false;
-        // foreach ($checkAttend as $attend) {
-        //     if ($currentDate == date('Y-m-d', strtotime($attend->created_at)) && $attend->subject_id == $request->subject_id) {
-        //         $flagCanMark = false;
-        //         return back()->with('attendance.failure', 'Attendance marked already');
-        //     }
-        // }
-        $attendance = new Attendance();
-        $attendance->student_id = $request->student_id;
-        $attendance->subject_id = $request->subject_id;
-        $attendance->status = $request->attendance;
-        $attendance->save();
-        return back()->with('attendance.success', 'Taken attendance report successfully!');
+        $checkAttend = Attendance::where('subject_id', '=', $request->subject_id)->get();
+        $flagCanMark = true;
+        foreach ($checkAttend as $attend) {
+            if ($attend->student_id == $request->student_id) {
+                if ($request->date != $currentDate) {
+                    $flagCanMark = false;
+                    return back()->with('attendance.failure', 'This attendance need to be made on the correct date!');
+                } else if (date('Y-m-d', strtotime($attend->created_at)) == $request->date) {
+                    $flagCanMark = false;
+                    return back()->with('attendance.failure', 'This attendance is already marked!');
+                }
+            }
+        }
+        if ($flagCanMark == true) {
+            $attendance = new Attendance();
+            $attendance->student_id = $request->student_id;
+            $attendance->subject_id = $request->subject_id;
+            $attendance->status = $request->attendance;
+            $attendance->save();
+            return back()->with('attendance.success', 'Taken attendance report successfully!');
+        }
     }
 }

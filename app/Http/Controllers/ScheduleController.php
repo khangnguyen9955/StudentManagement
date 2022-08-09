@@ -23,12 +23,13 @@ class ScheduleController extends Controller
                 'id' => $schedule->id,
                 'title' => $subject[0]->subjectCode,
                 'description' => $subject[0]->subjectName,
+                'subjectId' => $schedule->subject_id,
+                'classroomId' => $schedule->classroom_id,
                 'startTime' => $start[0]->start_time,
                 'endTime' => $end[0]->end_time,
                 'daysOfWeek' => $schedule->recurrence,
                 'startRecur' => $schedule->start_date,
                 'endRecur' => $schedule->end_date,
-                'url' => 'take-attendance/' . $schedule->subject_id . '/' . $schedule->classroom_id,
             ];
             // else => url /$classroom_id
         });

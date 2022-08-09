@@ -41,12 +41,16 @@
                   center: 'title',
                   right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
                 },
+            eventClick: function(info) {
+              var eventDate = info.event.start; 
+              var eventSubjectId = info.event.extendedProps.subjectId;
+              var eventClassroomId = info.event.extendedProps.classroomId;
+              let date =eventDate.toISOString().split('T')[0];
+              console.log(date);
+              window.location.href= `take-attendance/${eventSubjectId}/${eventClassroomId}/${date}`
+             }, 
             
-    
-
-
-
-                events:  {!!$schedules!!}
+             events:  {!!$schedules!!}
                });
               calendar.render();
             });
