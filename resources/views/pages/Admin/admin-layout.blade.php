@@ -49,8 +49,8 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="#">Profile</a>
-              <a class="dropdown-item" href="#">Settings</a>
-              <a class="dropdown-item" href="#">Activities</a>
+              <a class="dropdown-item" href="#">Logout</a>
+              <a class="dropdown-item" href="#"></a>
             </div>
           </li>
         </ul>
@@ -122,10 +122,10 @@
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="subjects">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/add-lecturer-form')}}"><span class="ml-1 item-text">Add New Subject</span></a>
+                <a class="nav-link pl-3" href="{{url('/add-subject')}}"><span class="ml-1 item-text">Add New Subject</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/list-lecturer')}}"><span class="ml-1 item-text">Subject List</span></a>
+                <a class="nav-link pl-3" href="{{url('/list-subject')}}"><span class="ml-1 item-text">Subject List</span></a>
               </li>
             </ul>
           </li>
@@ -175,6 +175,10 @@
     <script src="../js/datamaps-zoomto.js"></script>
     <script src="../js/datamaps.custom.js"></script>
     <script src="../js/Chart.min.js"></script>
+    <script src='../js/jquery.dataTables.min.js'></script>
+    <script src='../js/dataTables.bootstrap4.min.js'></script>
+    <script src='../js/jquery.dataTables.min.js'></script>
+    <script src='../js/dataTables.bootstrap4.min.js'></script>
     <script>
       /* defind global options */
       Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
@@ -192,6 +196,18 @@
     <script src='../js/dropzone.min.js'></script>
     <script src='../js/uppy.min.js'></script>
     <script src='../js/quill.min.js'></script>
+    
+    <script>
+      $('#dataTable-1').DataTable(
+      {
+        autoWidth: true,
+        "lengthMenu": [
+          [16, 32, 64, -1],
+          [16, 32, 64, "All"]
+        ]
+      });
+    </script>
+
     <script>
       $('.select2').select2(
       {

@@ -12,9 +12,10 @@ class SubjectController extends Controller
     {
         $majors = Major::get();
 
-        return view('add-subject', compact('majors'));
+        return view('pages.Admin.add-subject', compact('majors'));
     }
 
+    
 
 
     public function saveSubject(Request $request)

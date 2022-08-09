@@ -152,6 +152,7 @@
         ]
       });
     </script>
+    
       <script>
         /** full calendar */
         var calendarEl = document.getElementById('calendar');

@@ -1,4 +1,4 @@
-@extends('pages.studentlayout')
+@extends('pages.Student.student-layout')
 
 @section('content')
 <main role="main" class="main-content">
