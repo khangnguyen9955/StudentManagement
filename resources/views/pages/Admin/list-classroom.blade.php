@@ -1,19 +1,12 @@
-=@extends('pages.adminlayout')
+@extends('pages.Admin.admin-layout')
 
 @section('content')
 
 <main role="main" class="main-content">
-  @if(Session::has('lecturer_list'))
-
-
-<div class="alert alert-success" role="alert">{{Session::get('lecturer_list')}} </div>
-@endif
-
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">
-          <h2 class="mb-2 page-title">Lecturer List</h2>
-          
+          <h2 class="mb-2 page-title">Classroom List</h2>
           <div class="row my-4">
             <!-- Small table -->
             <div class="col-md-12">
@@ -23,30 +16,30 @@
                   <table class="table datatables" id="dataTable-1">
                     <thead>
                       <tr>
-                        <th>Lecturer Code</th>
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
+                     
+                        <th>#</th>
+                        <th>Classroom Code</th>
                         <th>Major</th>
-                        <th>Class code</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($lecturers as $lecturer)
-                      <tr>
-                       <td>{{$lecturer->lecturerCode}}</td>
-                        <td>{{$lecturer->fullName}}</td>
-                        <td>{{$lecturer->email}}</td>
-                        <td>{{$lecturer->phone}}</td>
-                        <td>{{$lecturer->major->majorName}}</td>
-                        <td>{{$lecturer->classroom !== null ?  $lecturer->classroom->classCode : "Not yet"}}</td>
+                      @foreach ($classrooms as $classroom)
+                      <tr >
+                        
+                        <td>{{$classroom->id}}</td>
+                        <td>
+                          <a href="">
+                          {{$classroom->classCode}}
+                          </a>
+                        </td>
+                        <td>{{$classroom->major->majorName}}</td>
                         <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="text-muted sr-only">Action</span>
                           </button>
                           <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="{{url('edit-lecturer/'.$lecturer->id)}}">Edit</a>
-                            <a class="dropdown-item" href="{{url('remove-lecturer/'.$lecturer->id)}}">Remove</a>
+                            <a class="dropdown-item" href="#">Edit</a>
+                            <a class="dropdown-item" href="#">Remove</a>
                             <a class="dropdown-item" href="#">Assign</a>
                           </div>
                         </td>

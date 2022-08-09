@@ -12,7 +12,7 @@ class SubjectController extends Controller
     {
         $majors = Major::get();
 
-        return view('add-subject', compact('majors'));
+        return view('pages.Admin.add-subject', compact('majors'));
     }
 
 
@@ -28,6 +28,6 @@ class SubjectController extends Controller
     public function subjectList()
     {
         $subjects = Subject::with('major')->get();
-        return view('list-subject')->with('subjects', $subjects);
+        return view('pages.Admin.list-subject')->with('subjects', $subjects);
     }
 }

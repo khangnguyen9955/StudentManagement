@@ -11,6 +11,15 @@ use Illuminate\Http\Request;
 class ScheduleController extends Controller
 {
 
+    public function viewLecturerCalendar(){
+        return view('pages.Lecturer.lecturer-calendar');
+    }
+
+    public function viewStudentCalendar()
+    {
+        return view('pages.Student.student-calendar');
+    }
+
     public function getSchedule()
     {
         $getSchedules = Schedule::get();
@@ -38,6 +47,6 @@ class ScheduleController extends Controller
         $schedules = json_encode($getSchedules);
         // return response()->json($schedules, 200);
         // return json_encode($schedules);
-        return view('pages.calendar', compact('schedules'));
+        return view('pages.Admin.admin-calendar', compact('schedules'));
     }
 }
