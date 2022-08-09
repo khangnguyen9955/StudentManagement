@@ -13,24 +13,21 @@ class StudentController extends Controller
 {
     public function viewStudentProfile()
     {
-        return view('pages.studentprofile');
+        return view('pages.Student.student-profile');
     }
-    public function viewCalendar()
+ 
+
+
+
+    public function viewStudentGrade()
     {
-        return view('pages.calendar');
-    }
-
-
-
-    public function viewSmallTable()
-    {
-        return view('pages.smallTable');
+        return view('pages.Student.student-grade');
     }
 
 
     public function viewAddStudentForm()
     {
-        return view('pages.Student.addstudentform');
+        return view('pages.Admin.add-student-form');
     }
 
 
@@ -41,7 +38,7 @@ class StudentController extends Controller
     public function addStudent()
     {
         $majors = Major::get();
-        return view('add-student', compact('majors'));
+        return view('pages.Admin.add-student', compact('majors'));
     }
     public function saveStudent(Request $request)
     {
@@ -58,22 +55,30 @@ class StudentController extends Controller
     {
 
         $students = Student::with('major', 'classroom')->get();
-        return view('list-student')->with('students', $students);
+        return view('pages.Admin.list-student')->with('students', $students);
     }
 
     public function studentList1()
     {
 
         $students = Student::with('major', 'classroom')->get();
-        return view('list-student1')->with('students', $students);
+        return view('pages.Student.list-student1')->with('students', $students);
     }
+
+    public function studentList2()
+    {
+
+        $students = Student::with('major', 'classroom')->get();
+        return view('pages.Lecturer.list-student2')->with('students', $students);
+    }
+
 
     public function addStudentToClassroom()
     {
         $students = Student::where('class_id', '=', null)->get();
         $classrooms = Classroom::get();
         // return view('add-student-classroom', compact('students'), compact('classrooms'));
-        return view('add-student-classroom')->with(compact('students', 'classrooms'));
+        return view('pages.Admin.add-student-classroom')->with(compact('students', 'classrooms'));
     }
 
     public function saveStudentToClassroom(Request $request)
@@ -95,7 +100,7 @@ class StudentController extends Controller
         $majors = Major::get();
         $classrooms = Classroom::get();
 
-        return view('edit-student')->with(compact('students', 'majors', 'classrooms'));
+        return view('pages.Admin.edit-student')->with(compact('students', 'majors', 'classrooms'));
     }
 
     public function updateStudent(Request $request)

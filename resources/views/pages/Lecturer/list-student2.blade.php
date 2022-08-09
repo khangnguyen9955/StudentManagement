@@ -1,4 +1,4 @@
-@extends('pages.studentlayout')
+@extends('pages.Lecturer.lecturer-layout')
 
 @section('content')
 
@@ -39,7 +39,7 @@
                         <td>{{$student->email}}</td>
                         <td>{{$student->phone}}</td>
                         <td>{{$student->major->majorName}}</td>
-
+                        
                       
                       </tr>
                       @endforeach

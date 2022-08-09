@@ -1,13 +1,8 @@
-@extends('pages.adminlayout')
+@extends('pages.Lecturer.lecturer-layout')
 
 @section('content')
 
 <main role="main" class="main-content">
-  
-@if(Session::has('classroom_list'))
-<div class="alert alert-success" role="alert">{{Session::get('classroom_list')}} </div>
-
-@endif
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">
@@ -21,27 +16,29 @@
                   <table class="table datatables" id="dataTable-1">
                     <thead>
                       <tr>
+                        <th></th>
+                        <th>#</th>
                         <th>Classroom Code</th>
                         <th>Major</th>
-                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach ($classrooms as $classroom)
                       <tr >
                         <td>
-                          {{$classroom->classCode}}
-                        </td>
-                        <td>{{$classroom->major->majorName}}</td>
-                        <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="text-muted sr-only">Action</span>
-                          </button>
-                          <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Edit</a>
-                            <a class="dropdown-item" href="{{url('remove-classroom/'.$classroom->id)}}">Remove</a>
-                            <a class="dropdown-item" href="">Assign</a>
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input">
+                            <label class="custom-control-label"></label>
                           </div>
                         </td>
+                        <td>{{$classroom->id}}</td>
+                        <td>
+                          <a href="{{url('/list-student2')}}">
+                          {{$classroom->classCode}}
+                          </a>
+                        </td>
+                        <td>{{$classroom->major->majorName}}</td>
+                       
                       </tr>
                       @endforeach
                     </tbody>

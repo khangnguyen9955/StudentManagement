@@ -7,8 +7,8 @@
   <title>Edit Student</title>
 </head>
 <body>
-@if(Session::has('student_edit'))
-<div class="alert alert-success" role="alert">{{Session::get('student_edit')}} </div>
+@if(Session::has('student_update'))
+<div class="alert alert-success" role="alert">{{Session::get('student_update')}} </div>
 
 @endif
 
@@ -24,13 +24,6 @@
         @foreach ($majors as $major)
           <option value="{{$major->id}}">{{$major->majorName}} </option>  
         @endforeach
-</select>
-<label for="classroom">Choose a classroom:</label>
-    <select name="classroom_id" id="classrooms">
-  {{-- <!-- <option value="{{$major_id}}"> {{$major->majorName}} </option> --> --}}
-  @foreach ($classrooms as $classroom)
-    <option value="{{$classroom->id}}">{{$classroom->classCode}} </option>  
-  @endforeach
 </select>
     <input type="submit" value="Submit">
   </form>
