@@ -52,7 +52,6 @@ Route::get('/multi-form', [ClassroomController::class, 'showMultiForm']);
 Route::get('/add-classroom', [ClassroomController::class, 'addClassroom'])->name('classroom.add');
 Route::post('/add-classroom', [ClassroomController::class, 'saveClassroom'])->name('save.classroom');
 Route::get('/list-classroom', [ClassroomController::class, 'classroomList'])->name('classroom.list');
-Route::get('/list-lecturerclass', [ClassroomController::class, 'viewLecturerClassList'])->name('classroom.list');
 Route::get('/remove-classroom/{id}', [ClassroomController::class, 'removeClassroom'])->name('classroom.remove');
 
 
@@ -67,6 +66,8 @@ Route::get('/add-lecturer-form', [LecturerController::class, 'viewAddLecturerFor
 Route::get('/add-lecturer', [LecturerController::class, 'addLecturer'])->name('lecturer.add');
 Route::post('/add-lecturer', [LecturerController::class, 'saveLecturer'])->name('save.lecturer');
 Route::get('/list-lecturer', [LecturerController::class, 'lecturerList'])->name('lecturer.list');
+Route::get('/list-classroom-lecturer', [LecturerController::class, 'viewLecturerClass'])->name('lectuer-classroom.list');
+
 
 Route::get('/edit-lecturer/{id}', [LecturerController::class, 'editLecturer'])->name('lecturer.edit');
 Route::post('/update-lecturer', [LecturerController::class, 'updateLecturer'])->name('update.lecturer');
@@ -82,17 +83,17 @@ Route::get('/add-lecturer-subject', [LecturerController::class, 'addLecturerSubj
 Route::post('/add-lecturer-subject', [LecturerController::class, 'saveLecturerSubject'])->name('save.lecturerSubject');
 
 
-Route::get('add-classroom-subject/choose-classroom', [ClassroomController::class, 'chooseClassroomToAddSubject'])->name('classroom.add.subject.choose.classroom');
+Route::get('add-classroom-subject/choose-classroom', [ClassroomController::class, 'chooseClassroomToAddSubject'])->name('classroom.add.subject.choose-classroom');
 Route::post('add-classroom-subject/choose-classroom', [ClassroomController::class, 'saveClassroomToAddSubject'])->name('classroom.add.subject.choose.classroom.save');
 
 
-Route::get('add-classroom-subject/choose-subject', [ClassroomController::class, 'chooseSubject'])->name('classroom.add.subject.choose.subject');
+Route::get('add-classroom-subject/choose-subject', [ClassroomController::class, 'chooseSubject'])->name('classroom.add.subject.choose-subject');
 Route::post('add-classroom-subject/choose-subject', [ClassroomController::class, 'saveSubject'])->name('classroom.add.subject.choose.subject.save');
 
-Route::get('add-classroom-subject/choose-lecturer', [ClassroomController::class, 'chooseLecturerStep'])->name('classroom.add.subject.choose.lecturer');
+Route::get('add-classroom-subject/choose-lecturer', [ClassroomController::class, 'chooseLecturerStep'])->name('classroom.add.subject.choose-lecturer');
 Route::post('add-classroom-subject/choose-lecturer', [ClassroomController::class, 'saveLecturer'])->name('classroom.add.subject.choose.lecturer.save');
 
-Route::get('add-classroom-subject/choose-schedule',  [ClassroomController::class, 'chooseScheduleStep'])->name('classroom.add.subject.choose.schedule');
+Route::get('add-classroom-subject/choose-schedule',  [ClassroomController::class, 'chooseScheduleStep'])->name('classroom.add.subject.choose-schedule');
 Route::post('add-classroom-subject/choose-schedule', [ClassroomController::class, 'saveSchedule'])->name('classroom.add.subject.choose.schedule.save');
 
 

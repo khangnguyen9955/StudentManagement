@@ -76,7 +76,7 @@ class ClassroomController extends Controller
     public function saveClassroomToAddSubject(Request $request)
     {
         $request->session()->put('classroom_id', $request->get('classroom_id'));
-        return redirect()->route('pages.Admin.classroom.add.subject.choose.subject');
+        return redirect()->route('classroom.add.subject.choose-subject');
     }
 
     public function chooseSubject(Request $request)
@@ -92,11 +92,11 @@ class ClassroomController extends Controller
     {
         $classroom = Classroom::find($request->session()->get('classroom_id'));
         if ($classroom->subjects->contains($request->get('subject_id'))) {
-            return back()->with('pages.Admin.classroom.add.subject.choose.subject', 'This subject is already added to this classroom!');
+            return back()->with('pages.Admin.add-classroom-subject.choose-subject', 'This subject is already added to this classroom!');
         }
         $request->session()->put('subject_id', $request->get('subject_id'));
 
-        return redirect()->route('pages.Admin.classroom.add.subject.choose.lecturer');
+        return redirect()->route('classroom.add.subject.choose-lecturer');
     }
 
 
@@ -115,7 +115,7 @@ class ClassroomController extends Controller
 
         $request->session()->put('lecturer_id', $request->get('lecturer_id'));
 
-        return redirect()->route('pages.Admin.classroom.add.subject.choose.schedule');
+        return redirect()->route('classroom.add.subject.choose-schedule');
     }
 
 
@@ -198,7 +198,7 @@ class ClassroomController extends Controller
 
 
         $schedule->save();
-        return redirect('/list-classroom')->with('classroom_add_subject_finish', 'Added the subject to the classroom successfully!');
+        return redirect()->route('classroom.list')->with('classroom_add_subject_finish', 'Added the subject to the classroom successfully!');
     }
 
 
