@@ -1,4 +1,4 @@
-@extends('pages.adminlayout')
+@extends('pages.studentlayout')
 
 @section('content')
 
@@ -28,7 +28,7 @@
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Major</th>
-
+                        <th>Grading</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -39,7 +39,16 @@
                         <td>{{$student->email}}</td>
                         <td>{{$student->phone}}</td>
                         <td>{{$student->major->majorName}}</td>
-
+                        <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="text-muted sr-only">Grading</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                          <a class="dropdown-item" >Fail</a>
+                          <a class="dropdown-item" >Pass</a>
+                          <a class="dropdown-item" >Merit</a>
+                          <a class="dropdown-item">Distinc</a>
+                        </div>
+                      </td>
                       
                       </tr>
                       @endforeach

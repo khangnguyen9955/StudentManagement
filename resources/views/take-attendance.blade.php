@@ -62,8 +62,8 @@
                 @endforeach
               </tbody>
             </table>
-           <button style="float:right; margin-right:20px;" class="btn btn-primary" onclick="window.location='{{ URL::route('getSchedule'); }}'">Finish</button>
-           <button style ="float:right; margin-right:10px" onclick="window.location='{{ URL::route('getSchedule'); }}'" class="btn btn-warning">Back</button>
+           <button style="float:right; margin-right:20px;" class="btn btn-primary" onclick="window.location='{{ URL::route('getSchedule') }}'">Finish</button>
+           <button style ="float:right; margin-right:10px" onclick="window.location='{{ URL::route('getSchedule') }}'" class="btn btn-warning">Back</button>
           </div>
         </div>
       </div> <!-- simple table -->

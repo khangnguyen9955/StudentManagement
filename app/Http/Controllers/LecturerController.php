@@ -51,6 +51,8 @@ class LecturerController extends Controller
     {
         $lecturer = Lecturer::find($request->lecturer_id);
         $subject = Subject::find($request->subject_id);
+        $classroom = Classroom::find(1);
+
         if ($lecturer->subjects->contains($request->subject_id)) {
             return back()->with('lecturer_subject_add', 'This subject is already added to lecturer!');
         } else if ($lecturer->major_id !== $subject->major_id) {
@@ -93,5 +95,26 @@ class LecturerController extends Controller
         Lecturer::destroy($id);
         return redirect()->back()->with('lecturer_list', '
         Lecturer removed successfully ');
+    }
+
+    public function getScoreReport()
+    {
+        //get all classrooms of the lecturer id (logged in)
+        // return classrooms to view, get the classcode, the subject's name
+        $classroom = Classroom::find(1);
+        $lecturer = Lecturer::find(1);
+        $subject = Subject::find(1);
+
+        // echo $lecturer->subjects()->classrooms()->get();
+        echo "subject \n \r " . $subject->classrooms()->get();
+
+        echo "subject \n \r " . $lecturer->subjects()->get();
+        echo "subject \n \r " . $subject->lecturers()->get();
+        echo "subject \n \r " . $classroom->subjects()->get();
+        return view('cc');
+    }
+
+    public function takeScoreReport(Request $request)
+    {
     }
 }

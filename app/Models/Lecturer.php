@@ -26,7 +26,8 @@ class Lecturer extends Model
         return $this->belongsToMany(Subject::class);
     }
 
-    public function classrooms(){
+    public function classrooms()
+    {
         return $this->belongsToMany(Classroom::class);
     }
 
