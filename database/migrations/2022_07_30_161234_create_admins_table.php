@@ -14,12 +14,21 @@ return new class extends Migration
     public function up()
     {
         Schema::create('admins', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('fullName');
+           
+        
             $table->string('email');
-            $table->string('phone');
+           
+            $table->integer('role');
+            $table->string('password');
             $table->timestamps();
         });
+
+        DB::table('admins')->insert(
+            array(
+                'email' => 'admin@gmail.com',
+                'password' => '12345678'
+            ),
+        );
     }
 
     /**
