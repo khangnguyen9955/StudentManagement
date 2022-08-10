@@ -14,6 +14,9 @@
     <!-- Icons CSS -->
     <link rel="stylesheet" href="{{url('css/fullcalendar.css')}}">
     <!-- Date Range Picker CSS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>  
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="{{url ('css/daterangepicker.css')}}">
     <link rel="stylesheet" href="{{url ('css/feather.css')}}">
     <link rel="stylesheet" href="{{url ('css/select2.css')}}">
@@ -151,30 +154,29 @@
     
     @yield('content')
 
-
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/moment.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/simplebar.min.js"></script>
-    <script src='../js/daterangepicker.js'></script>
-    <script src='../js/jquery.stickOnScroll.js'></script>
-    <script src="../js/tinycolor-min.js"></script>
-    <script src="../js/config.js"></script>
-    <script src='../js/jquery.mask.min.js'></script>
-    <script src='../js/select2.min.js'></script>
-    <script src='../js/jquery.steps.min.js'></script>
-    <script src='../js/jquery.validate.min.js'></script>
-    <script src='../js/jquery.timepicker.js'></script>
-    <script src='../js/dropzone.min.js'></script>
-    <script src='../js/uppy.min.js'></script>
-    <script src='../js/quill.min.js'></script>
-    <script src="../js/d3.min.js"></script>
-    <script src="../js/topojson.min.js"></script>
-    <script src="../js/datamaps.all.min.js"></script>
-    <script src="../js/datamaps-zoomto.js"></script>
-    <script src="../js/datamaps.custom.js"></script>
-    <script src="../js/Chart.min.js"></script>
+    <script src={{url('js/jquery.min.js')}}></script>
+    <script src={{url('../js/popper.min.js')}}></script>
+    <script src={{url('../js/moment.min.js')}}></script>
+    <script src={{url("../js/bootstrap.min.js")}}></script>
+    <script src={{url("../js/simplebar.min.js")}}></script>
+    <script src={{url("../js/daterangepicker.js")}}></script>
+    <script src={{url('../js/jquery.stickOnScroll.js')}}></script>
+    <script src={{url("../js/tinycolor-min.js")}}></script>
+    <script src={{url("../js/config.js")}}></script>
+    <script src={{url('../js/jquery.mask.min.js')}}></script>
+    <script src={{url('../js/select2.min.js')}}></script>
+    <script src={{url('../js/jquery.steps.min.js')}}></script>
+    <script src={{url('../js/jquery.validate.min.js')}}></script>
+    <script src={{url('../js/jquery.timepicker.js')}}></script>
+    <script src={{url('../js/dropzone.min.js')}}></script>
+    <script src={{url('../js/uppy.min.js')}}></script>
+    <script src={{url('../js/quill.min.js')}}></script>
+    <script src={{url("../js/d3.min.js")}}></script>
+    <script src={{url("../js/topojson.min.js")}}></script>
+    <script src={{url("../js/datamaps.all.min.js")}}></script>
+    <script src={{url("../js/datamaps-zoomto.js")}}></script>
+    <script src={{url("../js/datamaps.custom.js")}}></script>
+    <script src={{url("../js/Chart.min.js")}}></script>
     <script src='../js/jquery.dataTables.min.js'></script>
     <script src='../js/dataTables.bootstrap4.min.js'></script>
     <script src='../js/jquery.dataTables.min.js'></script>
@@ -184,18 +186,18 @@
       Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
       Chart.defaults.global.defaultFontColor = colors.mutedColor;
     </script>
-    <script src="../js/gauge.min.js"></script>
-    <script src="../js/jquery.sparkline.min.js"></script>
-    <script src="../js/apexcharts.min.js"></script>
-    <script src="../js/apexcharts.custom.js"></script>
-    <script src='../js/jquery.mask.min.js'></script>
-    <script src='../js/select2.min.js'></script>
-    <script src='../js/jquery.steps.min.js'></script>
-    <script src='../js/jquery.validate.min.js'></script>
-    <script src='../js/jquery.timepicker.js'></script>
-    <script src='../js/dropzone.min.js'></script>
-    <script src='../js/uppy.min.js'></script>
-    <script src='../js/quill.min.js'></script>
+   <script src={{url("../js/gauge.min.js")}}></script>
+   <script src={{url("../js/jquery.sparkline.min.js")}}></script>
+   <script src={{url("../js/apexcharts.min.js")}}></script>
+   <script src={{url("../js/apexcharts.custom.js")}}></script>
+   <script src={{url('../js/jquery.mask.min.js')}}></script>
+   <script src={{url('../js/select2.min.js')}}></script>
+   <script src={{url('../js/jquery.steps.min.js')}}></script>
+   <script src={{url('../js/jquery.validate.min.js')}}></script>
+   <script src={{url('../js/jquery.timepicker.js')}}></script>
+   <script src={{url('../js/dropzone.min.js')}}></script>
+   <script src={{url('../js/uppy.min.js')}}></script>
+   <script src={{url('../js/quill.min.js')}}></script>
     
     <script>
       $('#dataTable-1').DataTable(
@@ -627,6 +629,43 @@
       gtag('js', new Date());
       gtag('config', 'UA-56159088-1');
     </script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script>
+      $( function() {
+        var dateFormat = "mm/dd/yy",
+          from = $( "#from" )
+            .datepicker({
+              dateFormat:'yy-mm-dd',
+              defaultDate: "+1w",
+              changeMonth: true,
+              numberOfMonths: 1
+            })
+            .on( "change", function() {
+              to.datepicker( "option", "minDate", getDate( this ) );
+            }),
+          to = $( "#to" ).datepicker({
+            dateFormat:'yy-mm-dd',
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 1
+          })
+          .on( "change", function() {
+            from.datepicker( "option", "maxDate", getDate( this ) );
+          });
+     
+        function getDate( element ) {
+          var date;
+          try {
+            date = $.datepicker.parseDate( dateFormat, element.value );
+          } catch( error ) {
+            date = null;
+          }
+     
+          return date;
+        }
+      } );
+      </script>
   </body>
 </html>
 

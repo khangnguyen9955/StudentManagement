@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Classroom;
 use App\Models\Lecturer;
 use App\Models\Major;
+use App\Models\Schedule;
 use App\Models\Student;
 use App\Models\Subject;
 use Illuminate\Http\Request;
@@ -30,7 +31,12 @@ class LecturerController extends Controller
 
     public function viewLecturerClass()
     {
-        return view('pages.Lecturer.list-lecturerclass');
+        $lecturer = Lecturer::find(1);
+        $allSchedules = Schedule::where('lecturer_id', '=', $lecturer->id)->get('classroom_id');
+        echo $allSchedules;
+        $classrooms = Classroom::find($allSchedules);
+        echo $classrooms;
+        return view('pages.Lecturer.list-classroom-lecturer', compact('allSchedules'));
     }
 
     public function viewLecturerProfile()
@@ -112,21 +118,19 @@ class LecturerController extends Controller
         Lecturer removed successfully ');
     }
 
+
+
+
+
+
     public function getScoreReport()
     {
         //get all classrooms of the lecturer id (logged in)
         // return classrooms to view, get the classcode, the subject's name
-        $classroom = Classroom::find(1);
         $lecturer = Lecturer::find(1);
-        $subject = Subject::find(1);
 
-        // echo $lecturer->subjects()->classrooms()->get();
-        echo "subject \n \r " . $subject->classrooms()->get();
-
-        echo "subject \n \r " . $lecturer->subjects()->get();
-        echo "subject \n \r " . $subject->lecturers()->get();
-        echo "subject \n \r " . $classroom->subjects()->get();
-        return view('cc');
+        $allSchedules = Schedule::where('lecturer_id', '=', $lecturer->id)->get();
+        return view('take-score', compact('getAll'));
     }
 
     public function takeScoreReport(Request $request)
