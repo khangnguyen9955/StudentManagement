@@ -3,6 +3,12 @@
 @section('content')
 
 <main role="main" class="main-content">
+  @if(Session::has('classroom_add_subject_finish'))
+  <div class="alert alert-success" role="alert">{{Session::get('classroom_add_subject_finish')}} </div>  @endif 
+@if(Session::has('classroom_list'))
+<div class="alert alert-success" role="alert">{{Session::get('classroom_list')}} </div>
+
+@endif
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">

@@ -164,7 +164,7 @@ class ClassroomController extends Controller
         for ($i = 0; $i < count($recurrencesArray); $i++) {  // this is used for check every day in recurrence
             //check whether there is any overlapped days with every request day
             $overlappedRecurrences = Schedule::whereJsonContains('recurrence', $recurrencesArray[$i])->get();
-            echo $overlappedRecurrences;
+
             // if there is any recurrences that are overlapped -> then check 
             if (count($overlappedRecurrences) > 0) {
                 for ($j = 0; $j < count($overlappedRecurrences); $j++) {
@@ -179,7 +179,7 @@ class ClassroomController extends Controller
 
                             //if slot is overlapped, check the date
                             if (($startDateRequest  >= $startDateSchedule  &&   $startDateRequest <= $endDateSchedule) || ($startDateRequest <= $startDateSchedule && $endDateRequest >= $startDateSchedule)) {
-                                echo "vo toi day la lum";
+
                                 return back()->with('classroom_add_subject_finish', 'This schedule will be overlapped with other schedules!');
                             }
                         }
@@ -195,8 +195,10 @@ class ClassroomController extends Controller
         $classroom->subjects()->syncWithoutDetaching($attachValues);
 
 
+
+
         $schedule->save();
-        return back()->with('classroom_add_subject_finish', 'Added the subject to this classroom successfully!');
+        return redirect('/list-classroom')->with('classroom_add_subject_finish', 'Added the subject to the classroom successfully!');
     }
 
 

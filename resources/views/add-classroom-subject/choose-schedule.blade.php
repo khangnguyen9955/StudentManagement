@@ -2,9 +2,7 @@
 
 @section('content')
 <main role="main" class="main-content">
-  @if(Session::has('classroom_add_subject_finish'))
-<span>{{Session::get('classroom_add_subject_finish')}}</span> 
-@endif
+
      <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12 col-lg-10">

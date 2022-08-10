@@ -1,5 +1,4 @@
-
-@extends('pages.Admin.admin-layout')
+@extends('pages.studentlayout')
 
 @section('content')
 
@@ -24,25 +23,24 @@
                   <table class="table datatables" id="dataTable-1">
                     <thead>
                       <tr>
-                   
-                        <th>Student Code</th>
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Major</th>
-
+                        <th>Class Code</th>
+                        <th>Subject Name</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($students as $student)
+                      @foreach ($classrooms as $classroom)
                       <tr>
-                       
-                        <td>{{$student->studentCode}}</td>
-                        <td>{{$student->fullName}}</td>
-                        <td>{{$student->email}}</td>
-                        <td>{{$student->phone}}</td>
-                        <td>{{$student->major->majorName}}</td>
-
+                        <td>{{$classroom->classCode}}</td>
+                        <td>{{$classroom->subjects()->majorName}}</td>
+                        <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="text-muted sr-only">Action</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                          <a class="dropdown-item" >Grade this class</a>
+                          <a class="dropdown-item">View students</a>
+                        </div>
+                      </td>
                       
                       </tr>
                       @endforeach

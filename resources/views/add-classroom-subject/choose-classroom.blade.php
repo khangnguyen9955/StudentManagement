@@ -25,10 +25,13 @@
                             </div>
                     </div>
                       <div class="card-footer text-right">
-                        <button type="submit" class="btn btn-primary">Next</button>
-                    </div>
+                          <button type="submit" class="btn btn-primary">Next</button>
+                        </div> 
+                     
+
                 </div>
             </form>
+          
             </div> <!-- .card-body -->
           </div> <!-- .card -->
         </div> <!-- .col-12 -->
