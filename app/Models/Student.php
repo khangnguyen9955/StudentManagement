@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\Student as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
 class Student extends Model
 {
     use HasFactory;
-    protected $fillable = ['fullName', 'password', 'email', 'phone', 'major_id', 'class_id'];
+    protected $fillable = ['fullName', 'password', 'email', 'role' ,'phone', 'major_id', 'class_id'];
     protected $table = "students";
 
 

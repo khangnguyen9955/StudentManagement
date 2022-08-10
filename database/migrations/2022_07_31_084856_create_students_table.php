@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('fullName');
             $table->string('password');
             $table->string('email');
+            $table->integer('role');
             $table->string('phone');
             $table->integer('major_id')->unsigned();
             $table->foreign('major_id')->references('id')->on('majors');
