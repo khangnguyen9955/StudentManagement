@@ -21,7 +21,7 @@ class AttendanceController extends Controller
         $classroom = Classroom::find($classroomId);
         $subject = Subject::find($subjectId);
         $students = Student::where('class_id', '=', $classroomId)->get();
-        return view('take-attendance', compact('classroom', 'students', 'subject', 'date'));
+        return view('pages.Lecturer.take-attendance', compact('classroom', 'students', 'subject', 'date'));
     }
 
 

@@ -1,4 +1,4 @@
-@extends('pages.adminlayout')
+@extends('pages.Lecturer.lecturer-layout')
 
 @section('content')
 <main role="main" class="main-content">
@@ -50,7 +50,7 @@
                   <td>{{$student->major->majorName}}</td>
                   <td>{{$student->classroom !== null ?  $student->classroom->classCode : "Not yet"}}</td>
                   <form action="{{route('saveAttendanceReport.post',['subject_id' => $subject->id,  'student_id'=>$student->id, 'date' => $date])}}" method="POST"> 
-                  @csrf
+                    @csrf
                   <td>
                     <span class="text-muted sr-only">Attendance status</span>
                      <button type="submit" name="attendance" class="btn btn-success" value="present" > Present</button>   

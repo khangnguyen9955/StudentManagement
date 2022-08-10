@@ -18,7 +18,7 @@ class ClassroomController extends Controller
     public function addClassroom()
     {
         $majors = Major::get();
-        return view('add-classroom', compact('majors'));
+        return view('pages.Admin.add-classroom', compact('majors'));
     }
 
 
@@ -34,14 +34,21 @@ class ClassroomController extends Controller
     public function classroomList()
     {
         $classrooms = Classroom::with('major')->get();
-        return view('list-classroom')->with('classrooms', $classrooms);
+        return view('pages.Admin.list-classroom')->with('classrooms', $classrooms);
     }
+
+    public function viewLecturerClassList()
+    {
+        $classrooms = Classroom::with('major')->get();
+        return view('pages.Lecturer.list-lecturerclass')->with('classrooms', $classrooms);
+    }
+
 
     public function addSubjectToClassroom()
     {
         $subjects = Subject::get();
         $classrooms = Classroom::get();
-        return view('add-subject-to-classroom', compact('subjects'), compact('classrooms'));
+        return view('pages.Admin.add-subject-to-classroom', compact('subjects'), compact('classrooms'));
     }
 
     public function saveClassroomSubject(Request $request)
@@ -63,13 +70,13 @@ class ClassroomController extends Controller
     {
         $classrooms = Classroom::get();
         $classroom_id = $request->session()->get('classroom_id');
-        return view('add-classroom-subject.choose-classroom', compact('classrooms', 'classroom_id'));
+        return view('pages.Admin.add-classroom-subject.choose-classroom', compact('classrooms', 'classroom_id'));
     }
 
     public function saveClassroomToAddSubject(Request $request)
     {
         $request->session()->put('classroom_id', $request->get('classroom_id'));
-        return redirect()->route('classroom.add.subject.choose.subject');
+        return redirect()->route('pages.Admin.classroom.add.subject.choose.subject');
     }
 
     public function chooseSubject(Request $request)
@@ -77,7 +84,7 @@ class ClassroomController extends Controller
         $classroom = Classroom::find($request->session()->get('classroom_id'));
         $subjects = Subject::where('major_id', '=', $classroom->major_id)->get();
         $subject_id = $request->session()->get('subject_id');
-        return view('add-classroom-subject.choose-subject', compact('subjects', 'subject_id'));
+        return view('pages.Admin.add-classroom-subject.choose-subject', compact('subjects', 'subject_id'));
     }
 
 
@@ -85,11 +92,11 @@ class ClassroomController extends Controller
     {
         $classroom = Classroom::find($request->session()->get('classroom_id'));
         if ($classroom->subjects->contains($request->get('subject_id'))) {
-            return back()->with('classroom.add.subject.choose.subject', 'This subject is already added to this classroom!');
+            return back()->with('pages.Admin.classroom.add.subject.choose.subject', 'This subject is already added to this classroom!');
         }
         $request->session()->put('subject_id', $request->get('subject_id'));
 
-        return redirect()->route('classroom.add.subject.choose.lecturer');
+        return redirect()->route('pages.Admin.classroom.add.subject.choose.lecturer');
     }
 
 
@@ -99,7 +106,7 @@ class ClassroomController extends Controller
         $lecturers = $subject->lecturers()->with('subjects')->get();
 
 
-        return view('add-classroom-subject.choose-lecturer', compact('lecturers'));
+        return view('pages.Admin.add-classroom-subject.choose-lecturer', compact('lecturers'));
     }
 
     public function saveLecturer(Request $request)
@@ -108,7 +115,7 @@ class ClassroomController extends Controller
 
         $request->session()->put('lecturer_id', $request->get('lecturer_id'));
 
-        return redirect()->route('classroom.add.subject.choose.schedule');
+        return redirect()->route('pages.Admin.classroom.add.subject.choose.schedule');
     }
 
 
@@ -117,7 +124,7 @@ class ClassroomController extends Controller
         $slots = Slot::get();
 
 
-        return view('add-classroom-subject.choose-schedule', compact('slots'));
+        return view('pages.Admin.add-classroom-subject.choose-schedule', compact('slots'));
     }
 
 

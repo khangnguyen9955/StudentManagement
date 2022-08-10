@@ -1,4 +1,4 @@
-@extends('pages.adminlayout')
+@extends('pages.Admin.admin-layout')
 
 @section('content')
 <main role="main" class="main-content">
@@ -27,7 +27,7 @@
                       </div>
                     </div> <!-- /.form-row -->
                     <div class="form-row">
-                      
+                  
                       <div class="col-md-8 mb-3">
                         <label for="exampleInputEmail2">Email address</label>
                         <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter your email">
@@ -41,9 +41,15 @@
                       <input type="text" id="address-wpalaceholder" class="form-control" placeholder="Enter your phone number">
                
                     </div>
+
+                    <a  class="btn btn-secondary" href="{{url('/list-student')}}">
+                      Back
+                    </a>
                     <button class="btn btn-primary" type="submit">Submit</button>
-                    <button onclick="window.location='{{ URL::route('lecturer.list'); }}'" class="btn btn-danger">Back</button>
+                  
                 
+                   
+                 
                
                 
                   </form>

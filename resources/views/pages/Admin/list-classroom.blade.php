@@ -1,4 +1,4 @@
-@extends('pages.adminlayout')
+@extends('pages.Admin.admin-layout')
 
 @section('content')
 
@@ -22,6 +22,8 @@
                   <table class="table datatables" id="dataTable-1">
                     <thead>
                       <tr>
+                     
+                        <th>#</th>
                         <th>Classroom Code</th>
                         <th>Major</th>
                         <th>Action</th>
@@ -30,8 +32,12 @@
                     <tbody>
                       @foreach ($classrooms as $classroom)
                       <tr >
+                        
+                        <td>{{$classroom->id}}</td>
                         <td>
+                          <a href="">
                           {{$classroom->classCode}}
+                          </a>
                         </td>
                         <td>{{$classroom->major->majorName}}</td>
                         <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,8 +45,8 @@
                           </button>
                           <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="#">Edit</a>
-                            <a class="dropdown-item" href="{{url('remove-classroom/'.$classroom->id)}}">Remove</a>
-                            <a class="dropdown-item" href="">Assign</a>
+                            <a class="dropdown-item" href="#">Remove</a>
+                            <a class="dropdown-item" href="#">Assign</a>
                           </div>
                         </td>
                       </tr>

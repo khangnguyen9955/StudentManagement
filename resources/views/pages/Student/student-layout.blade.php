@@ -47,8 +47,8 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="#">Profile</a>
-              <a class="dropdown-item" href="#">Settings</a>
-              <a class="dropdown-item" href="#">Activities</a>
+              <a class="dropdown-item" href="{{url('/login')}}">Logout</a>
+          
             </div>
           </li>
         </ul>
@@ -85,7 +85,7 @@
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="tables">
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="{{url('/smallTable')}}"><span class="ml-1 item-text">Student Grade</span></a>
+                  <a class="nav-link pl-3" href="{{url('/student-grade')}}"><span class="ml-1 item-text">Student Grade</span></a>
                 </li>
                 
                 <li class="nav-item">
@@ -100,9 +100,9 @@
           </p>
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-              <a class="nav-link" href="{{url('/calendar')}}">
+              <a class="nav-link" href="{{url('/student-calendar')}}">
                 <i class="fe fe-calendar fe-16"></i>
-                <span class="ml-3 item-text">Calendar</span>
+                <span class="ml-3 item-text">Student Calendar</span>
               </a>
             </li>
             
@@ -112,7 +112,7 @@
                 <span class="ml-3 item-text">Profile</span>
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="profile">
-                <a class="nav-link pl-3" href="{{url ('/profile')}}"><span class="ml-1">Overview</span></a>
+                <a class="nav-link pl-3" href="{{url ('/student-profile')}}"><span class="ml-1">Overview</span></a>
                 
               </ul>
             </li>
@@ -185,6 +185,7 @@
         ]
       });
     </script>
+    
       <script>
         /** full calendar */
         var calendarEl = document.getElementById('calendar');

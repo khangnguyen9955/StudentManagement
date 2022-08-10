@@ -14,10 +14,6 @@
     <!-- Icons CSS -->
     <link rel="stylesheet" href="{{url('css/fullcalendar.css')}}">
     <!-- Date Range Picker CSS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>  
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-  {{-- <link rel="stylesheet" href="/resources/demos/style.css"> --}}
     <link rel="stylesheet" href="{{url ('css/daterangepicker.css')}}">
     <link rel="stylesheet" href="{{url ('css/feather.css')}}">
     <link rel="stylesheet" href="{{url ('css/select2.css')}}">
@@ -29,8 +25,6 @@
     <link rel="stylesheet" href="{{url('css/jquery.timepicker.css')}}">
     <link rel="stylesheet" href="{{url('css/quill.snow.css')}}">
     <link rel="stylesheet" href="{{url('css/app-light.css')}}" id="lightTheme">
-
-    
 </head>
 <body class="vertical  light  ">
   <div class="wrapper">
@@ -50,13 +44,13 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="avatar avatar-sm mt-2">
-                <img src={{url("../assets/avatars/face-1.jpg")}} alt="..." class="avatar-img rounded-circle">
+                <img src="../assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="#">Profile</a>
-              <a class="dropdown-item" href="#">Settings</a>
-              <a class="dropdown-item" href="#">Activities</a>
+              <a class="dropdown-item" href="{{url('/login')}}">Logout</a>
+              <a class="dropdown-item" href="#"></a>
             </div>
           </li>
         </ul>
@@ -87,7 +81,7 @@
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="students">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/addstudentform')}}"><span class="ml-1 item-text">Add Student Form</span></a>
+                <a class="nav-link pl-3" href="{{url('/add-student-form')}}"><span class="ml-1 item-text">Add New Student</span></a>
               <li class="nav-item">
                 <a class="nav-link pl-3" href="{{url('/list-student')}}"><span class="ml-1 item-text">Student List</span></a>
             </ul>
@@ -100,7 +94,7 @@
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="lecturers">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/addlecturerform')}}"><span class="ml-1 item-text">Add new Lecturer</span></a>
+                <a class="nav-link pl-3" href="{{url('/add-lecturer-form')}}"><span class="ml-1 item-text">Add new Lecturer</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link pl-3" href="{{url('/list-lecturer')}}"><span class="ml-1 item-text">Lecturer List</span></a>
@@ -128,13 +122,26 @@
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="subjects">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/addlecturerform')}}"><span class="ml-1 item-text">Add New Subject</span></a>
+                <a class="nav-link pl-3" href="{{url('/add-subject')}}"><span class="ml-1 item-text">Add New Subject</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/list-lecturer')}}"><span class="ml-1 item-text">Subject List</span></a>
+                <a class="nav-link pl-3" href="{{url('/list-subject')}}"><span class="ml-1 item-text">Subject List</span></a>
               </li>
             </ul>
           </li>
+
+          <li class="nav-item dropdown">
+            <a href="#multiform" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+              <i class="fe fe-credit-card fe-16"></i>
+              <span class="ml-3 item-text">Multi Form</span>
+            </a>
+            <ul class="collapse list-unstyled pl-4 w-100" id="multiform">
+              <li class="nav-item">
+                <a class="nav-link pl-3" href="{{url('/multi-form')}}"><span class="ml-1 item-text">Multi-form</span></a>
+              </li>
+            </ul>
+          </li>
+
 
 
           
@@ -144,46 +151,63 @@
     
     @yield('content')
 
-    <script src={{url('js/jquery.min.js')}}></script>
-    <script src={{url('../js/popper.min.js')}}></script>
-    <script src={{url('../js/moment.min.js')}}></script>
-    <script src={{url("../js/bootstrap.min.js")}}></script>
-    <script src={{url("../js/simplebar.min.js")}}></script>
-    <script src={{url("../js/daterangepicker.js")}}></script>
-    <script src={{url('../js/jquery.stickOnScroll.js')}}></script>
-    <script src={{url("../js/tinycolor-min.js")}}></script>
-    <script src={{url("../js/config.js")}}></script>
-    <script src={{url('../js/jquery.mask.min.js')}}></script>
-    <script src={{url('../js/select2.min.js')}}></script>
-    <script src={{url('../js/jquery.steps.min.js')}}></script>
-    <script src={{url('../js/jquery.validate.min.js')}}></script>
-    <script src={{url('../js/jquery.timepicker.js')}}></script>
-    <script src={{url('../js/dropzone.min.js')}}></script>
-    <script src={{url('../js/uppy.min.js')}}></script>
-    <script src={{url('../js/quill.min.js')}}></script>
-    <script src={{url("../js/d3.min.js")}}></script>
-    <script src={{url("../js/topojson.min.js")}}></script>
-    <script src={{url("../js/datamaps.all.min.js")}}></script>
-    <script src={{url("../js/datamaps-zoomto.js")}}></script>
-    <script src={{url("../js/datamaps.custom.js")}}></script>
-    <script src={{url("../js/Chart.min.js")}}></script>
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/moment.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/simplebar.min.js"></script>
+    <script src='../js/daterangepicker.js'></script>
+    <script src='../js/jquery.stickOnScroll.js'></script>
+    <script src="../js/tinycolor-min.js"></script>
+    <script src="../js/config.js"></script>
+    <script src='../js/jquery.mask.min.js'></script>
+    <script src='../js/select2.min.js'></script>
+    <script src='../js/jquery.steps.min.js'></script>
+    <script src='../js/jquery.validate.min.js'></script>
+    <script src='../js/jquery.timepicker.js'></script>
+    <script src='../js/dropzone.min.js'></script>
+    <script src='../js/uppy.min.js'></script>
+    <script src='../js/quill.min.js'></script>
+    <script src="../js/d3.min.js"></script>
+    <script src="../js/topojson.min.js"></script>
+    <script src="../js/datamaps.all.min.js"></script>
+    <script src="../js/datamaps-zoomto.js"></script>
+    <script src="../js/datamaps.custom.js"></script>
+    <script src="../js/Chart.min.js"></script>
+    <script src='../js/jquery.dataTables.min.js'></script>
+    <script src='../js/dataTables.bootstrap4.min.js'></script>
+    <script src='../js/jquery.dataTables.min.js'></script>
+    <script src='../js/dataTables.bootstrap4.min.js'></script>
     <script>
       /* defind global options */
       Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
       Chart.defaults.global.defaultFontColor = colors.mutedColor;
     </script>
-    <script src={{url("../js/gauge.min.js")}}></script>
-    <script src={{url("../js/jquery.sparkline.min.js")}}></script>
-    <script src={{url("../js/apexcharts.min.js")}}></script>
-    <script src={{url("../js/apexcharts.custom.js")}}></script>
-    <script src={{url('../js/jquery.mask.min.js')}}></script>
-    <script src={{url('../js/select2.min.js')}}></script>
-    <script src={{url('../js/jquery.steps.min.js')}}></script>
-    <script src={{url('../js/jquery.validate.min.js')}}></script>
-    <script src={{url('../js/jquery.timepicker.js')}}></script>
-    <script src={{url('../js/dropzone.min.js')}}></script>
-    <script src={{url('../js/uppy.min.js')}}></script>
-    <script src={{url('../js/quill.min.js')}}></script>
+    <script src="../js/gauge.min.js"></script>
+    <script src="../js/jquery.sparkline.min.js"></script>
+    <script src="../js/apexcharts.min.js"></script>
+    <script src="../js/apexcharts.custom.js"></script>
+    <script src='../js/jquery.mask.min.js'></script>
+    <script src='../js/select2.min.js'></script>
+    <script src='../js/jquery.steps.min.js'></script>
+    <script src='../js/jquery.validate.min.js'></script>
+    <script src='../js/jquery.timepicker.js'></script>
+    <script src='../js/dropzone.min.js'></script>
+    <script src='../js/uppy.min.js'></script>
+    <script src='../js/quill.min.js'></script>
+    
+    <script>
+      $('#dataTable-1').DataTable(
+      {
+        autoWidth: true,
+        "lengthMenu": [
+          [16, 32, 64, -1],
+          [16, 32, 64, "All"]
+        ]
+      });
+    </script>
+
     <script>
       $('.select2').select2(
       {
@@ -590,7 +614,7 @@
         });
       }
     </script>
-    <script src={{url("../js/apps.js")}}></script>
+    <script src="../js/apps.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
     <script>
@@ -603,44 +627,6 @@
       gtag('js', new Date());
       gtag('config', 'UA-56159088-1');
     </script>
-      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-      <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-      <script>
-        $( function() {
-          var dateFormat = "mm/dd/yy",
-            from = $( "#from" )
-              .datepicker({
-                dateFormat:'yy-mm-dd',
-                defaultDate: "+1w",
-                changeMonth: true,
-                numberOfMonths: 1
-              })
-              .on( "change", function() {
-                to.datepicker( "option", "minDate", getDate( this ) );
-              }),
-            to = $( "#to" ).datepicker({
-              dateFormat:'yy-mm-dd',
-              defaultDate: "+1w",
-              changeMonth: true,
-              numberOfMonths: 1
-            })
-            .on( "change", function() {
-              from.datepicker( "option", "maxDate", getDate( this ) );
-            });
-       
-          function getDate( element ) {
-            var date;
-            try {
-              date = $.datepicker.parseDate( dateFormat, element.value );
-            } catch( error ) {
-              date = null;
-            }
-       
-            return date;
-          }
-        } );
-        </script>
-
   </body>
 </html>
 
