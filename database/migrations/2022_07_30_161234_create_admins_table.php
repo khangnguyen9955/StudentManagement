@@ -17,7 +17,6 @@ return new class extends Migration
            
         
             $table->string('email');
-           
             $table->integer('role');
             $table->string('password');
             $table->timestamps();
@@ -26,6 +25,7 @@ return new class extends Migration
         DB::table('admins')->insert(
             array(
                 'email' => 'admin@gmail.com',
+                'role'=>'1',
                 'password' => '12345678'
             ),
         );
