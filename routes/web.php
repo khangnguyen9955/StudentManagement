@@ -102,7 +102,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHis
 
 Route::group(['prefix'=>'student', 'middleware'=>['isStudent','auth','PreventBackHistory']], function()
 {
-    Route::get('/list-student1', [StudentController::class, 'studentList1'])->name('student.list');
+    Route::get('/list-student1', [StudentController::class, 'studentList1'])->name('student.list1');
     Route::get('/student-profile', [StudentController::class, 'viewStudentProfile'])->name('student.profile');
     Route::get('/student-calendar', [ScheduleController::class, 'viewStudentCalendar']);
 });
@@ -111,7 +111,7 @@ Route::group(['prefix'=>'lecturer', 'middleware'=>['isLecturer','auth','PreventB
 {
 
     Route::get('/lecturer-profile', [LecturerController::class, 'viewLecturerProfile'])->name('lecturer.profile');
-    Route::get('/list-student2', [StudentController::class, 'studentList2'])->name('student.list');
+    Route::get('/list-student2', [StudentController::class, 'studentList2'])->name('student.list2');
     Route::get('/lecturer-calendar', [ScheduleController::class, 'viewLecturerCalendar']);
 });
 

@@ -12,6 +12,7 @@
 @endif
 
   <form method="POST" action="{{route('save.student')}}">
+ 
     @csrf
      Full Name: <br><input type="text" name="fullName" value=""><br>
      Email <br><input type="text" name="email" value=""><br>
