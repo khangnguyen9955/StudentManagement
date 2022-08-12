@@ -92,8 +92,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventB
 
 
 
-    Route::get('/take-attendance/{subject_id}/{classroom_id}/{date}', [AttendanceController::class, 'getAttendanceReport'])->name('getAttendanceReport');
-    Route::post('/save-attendance/{subject_id}/{student_id}', [AttendanceController::class, 'saveAttendanceReport'])->name('saveAttendanceReport.post');
+    // Route::get('/take-attendance/{subject_id}/{classroom_id}/{date}', [AttendanceController::class, 'getAttendanceReport'])->name('getAttendanceReport');
+    // Route::post('/save-attendance/{subject_id}/{student_id}', [AttendanceController::class, 'saveAttendanceReport'])->name('saveAttendanceReport.post');
 
     Route::get('/admin-calendar', [ScheduleController::class, 'getSchedule'])->name('getSchedule');
 });
@@ -124,7 +124,7 @@ Route::group(['prefix' => 'student', 'middleware' => ['isStudent', 'auth', 'Prev
 Route::group(['prefix' => 'lecturer', 'middleware' => ['isLecturer', 'auth', 'PreventBackHistory']], function () {
 
     Route::get('/lecturer-profile', [LecturerController::class, 'viewLecturerProfile'])->name('lecturer.profile');
-    Route::get('/list-student2', [StudentController::class, 'studentList2'])->name('student.list');
+    // Route::get('/list-student2', [StudentController::class, 'studentList2'])->name('student.list');
     Route::get('/lecturer-calendar', [ScheduleController::class, 'viewLecturerCalendar']);
     Route::get('/list-classroom-lecturer', [LecturerController::class, 'viewLecturerClass'])->name('lecturer-classroom.list');
     Route::get('/take-attendance/{subject_id}/{classroom_id}/{date}', [AttendanceController::class, 'getAttendanceReport'])->name('getAttendanceReport');
