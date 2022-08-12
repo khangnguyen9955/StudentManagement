@@ -17,7 +17,7 @@
                     <div class="form-row">
                       <div class="col-md-6 mb-3">
                         <label for="validationCustom3">Full Name</label>
-                        <input type="text" class="form-control" id="validationCustom3" value="" placeholder="Enter your full name" required>
+                        <input type="text" class="form-control" id="validationCustom3" value="" placeholder="Enter your full name" required name="fullName">
                         <div class="valid-feedback"> Looks good! </div>
                       </div>
                      
@@ -30,7 +30,7 @@
                   
                       <div class="col-md-8 mb-3">
                         <label for="exampleInputEmail2">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter your email">
+                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter your email" name="email">
                         <div class="invalid-feedback"> Please use a valid email </div>
                         <small id="emailHelp1" class="form-text text-muted">We'll never share your email with anyone else.</small>
                       </div>
@@ -38,9 +38,16 @@
                     </div> <!-- /.form-row -->
                     <div class="form-group mb-3">
                       <label for="address-wpalaceholder">Phone Number</label>
-                      <input type="text" id="address-wpalaceholder" class="form-control" placeholder="Enter your phone number">
-               
+                      <input type="text" id="address-wpalaceholder" class="form-control" placeholder="Enter your phone number" name="phone">
                     </div>
+                    <label for="major">Choose a major:</label>
+                    <select name="major_id" id="majors">
+                        @foreach ($majors as $major)
+                          <option value="{{$major->id}}">{{$major->majorName}} </option>  
+                        @endforeach
+                </select>
+
+
 
                     <a  class="btn btn-secondary" href="{{url('/list-student')}}">
                       Back

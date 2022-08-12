@@ -68,36 +68,36 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'role' =>2,
+            'role' => 1,
             'password' => Hash::make($data['password']),
         ]);
     }
 
-    function register(Request $request){
+    //     function register(Request $request){
 
-        $request->validate([
-           'name' => ['required', 'string', 'max:255'],
-           'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-           'favoriteColor'=>'required',
-           'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+    //         $request->validate([
+    //            'name' => ['required', 'string', 'max:255'],
+    //            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+    //            'favoriteColor'=>'required',
+    //            'password' => ['required', 'string', 'min:8', 'confirmed'],
+    //         ]);
 
-        /** Make avata */
+    //         /** Make avata */
 
 
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->role = 2;
-        $user->favoriteColor = $request->favoriteColor;
-        $user->password = \Hash::make($request->password);
+    //         $user = new User();
+    //         $user->name = $request->name;
+    //         $user->email = $request->email;
+    //         $user->role = 2;
+    //         $user->favoriteColor = $request->favoriteColor;
+    //         $user->password = \Hash::make($request->password);
 
-        if( $user->save() ){
+    //         if( $user->save() ){
 
-           return redirect()->back()->with('success','You are now successfully registerd');
-        }else{
-            return redirect()->back()->with('error','Failed to register');
-        }
+    //            return redirect()->back()->with('success','You are now successfully registerd');
+    //         }else{
+    //             return redirect()->back()->with('error','Failed to register');
+    //         }
 
-   } 
+    //    } 
 }

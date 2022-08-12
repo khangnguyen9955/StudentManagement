@@ -9,6 +9,7 @@ use App\Models\Schedule;
 use App\Models\ScoreReport;
 use App\Models\Student;
 use App\Models\Subject;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LecturerController extends Controller
@@ -53,6 +54,13 @@ class LecturerController extends Controller
         $lecturer->email = $request->email;
         $lecturer->phone = $request->phone;
         $lecturer->major_id = $request->major_id;
+
+        $user = new User();
+        $user->name = $request->fullName;
+        $user->password = $request->password;
+        $user->email = $request->email;
+        $user->role = 3;
+        $user->save();
         $lecturer->save();
         return back()->with('lecturer_add', 'Lecturer added successfully!');
     }

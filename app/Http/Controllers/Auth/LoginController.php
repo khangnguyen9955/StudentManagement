@@ -28,6 +28,21 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+    protected function redirectTo()
+    {
+        if (Auth()->user()->role == 1) {
+            return route('student.list');
+        }
+        if (Auth()->user()->role == 2) {
+            return route('student.profile');
+        }
+        if (Auth()->user()->role == 3) {
+            return route('lecturer.profile');
+        }
+    }
+
+
+
     /**
      * Create a new controller instance.
      *
@@ -37,4 +52,28 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+
+    public function login(Request $request)
+    {
+        $input = $request->all();
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
+
+            if (auth()->user()->role == 1) {
+                return redirect()->route('student.list');
+            } else if (auth()->user()->role == 2) {
+                return redirect()->route('student.profile');
+            } else if (auth()->user()->role == 3) {
+                return redirect()->route('lecturer.profile');
+            }
+        } else {
+            return redirect()->route('login')->with('login_error', 'Email and password are wrong');
+        }
+    }
+
 }

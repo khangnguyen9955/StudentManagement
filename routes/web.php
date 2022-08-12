@@ -89,6 +89,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventB
 
     Route::get('add-classroom-subject/choose-schedule',  [ClassroomController::class, 'chooseScheduleStep'])->name('classroom.add.subject.choose-schedule');
     Route::post('add-classroom-subject/choose-schedule', [ClassroomController::class, 'saveSchedule'])->name('classroom.add.subject.choose.schedule.save');
+
+
+
+    Route::get('/take-attendance/{subject_id}/{classroom_id}/{date}', [AttendanceController::class, 'getAttendanceReport'])->name('getAttendanceReport');
+    Route::post('/save-attendance/{subject_id}/{student_id}', [AttendanceController::class, 'saveAttendanceReport'])->name('saveAttendanceReport.post');
+
+    Route::get('/admin-calendar', [ScheduleController::class, 'getSchedule'])->name('getSchedule');
 });
 
 Route::group(['prefix' => 'student', 'middleware' => ['isStudent', 'auth', 'PreventBackHistory']], function () {
@@ -113,6 +120,7 @@ Route::group(['prefix' => 'student', 'middleware' => ['isStudent', 'auth', 'Prev
 // Route::get('/student-calendar', [ScheduleController::class, 'viewStudentCalendar']);
 // });
 
+
 Route::group(['prefix' => 'lecturer', 'middleware' => ['isLecturer', 'auth', 'PreventBackHistory']], function () {
 
     Route::get('/lecturer-profile', [LecturerController::class, 'viewLecturerProfile'])->name('lecturer.profile');
@@ -129,10 +137,6 @@ Route::group(['prefix' => 'lecturer', 'middleware' => ['isLecturer', 'auth', 'Pr
 
 
 
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
