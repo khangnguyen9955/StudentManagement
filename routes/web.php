@@ -133,7 +133,3 @@ Route::group(['prefix' => 'lecturer', 'middleware' => ['isLecturer', 'auth', 'Pr
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
