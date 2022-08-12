@@ -6,6 +6,7 @@ use App\Models\Classroom;
 use App\Models\Lecturer;
 use App\Models\Major;
 use App\Models\Schedule;
+use App\Models\ScoreReport;
 use App\Models\Student;
 use App\Models\Subject;
 use Illuminate\Http\Request;
@@ -31,12 +32,11 @@ class LecturerController extends Controller
 
     public function viewLecturerClass()
     {
+
         $lecturer = Lecturer::find(1);
         $allSchedules = Schedule::where('lecturer_id', '=', $lecturer->id)->get('classroom_id');
-        echo $allSchedules;
-        $classrooms = Classroom::find($allSchedules);
-        echo $classrooms;
-        return view('pages.Lecturer.list-classroom-lecturer', compact('allSchedules'));
+        $allClassrooms = Classroom::find($allSchedules);
+        return view('pages.Lecturer.list-classroom-lecturer', compact('allClassrooms'));
     }
 
     public function viewLecturerProfile()
@@ -48,7 +48,8 @@ class LecturerController extends Controller
     {
         $lecturer = new Lecturer();
         $lecturer->fullName = $request->fullName;
-        $lecturer->password = $request->password;
+        $lecturer->password = "12345678";
+        $lecturer->role = 3;
         $lecturer->email = $request->email;
         $lecturer->phone = $request->phone;
         $lecturer->major_id = $request->major_id;
@@ -123,17 +124,34 @@ class LecturerController extends Controller
 
 
 
-    public function getScoreReport()
+    public function getScoreReport(Request $request)
     {
         //get all classrooms of the lecturer id (logged in)
         // return classrooms to view, get the classcode, the subject's name
-        $lecturer = Lecturer::find(1);
-
-        $allSchedules = Schedule::where('lecturer_id', '=', $lecturer->id)->get();
-        return view('take-score', compact('getAll'));
+        $students = Student::where('class_id', '=', $request->classroom_id)->get();
+        $classroom = Classroom::find($request->classroom_id);
+        $subject = Subject::find($request->subject_id);
+        return view('pages.Lecturer.take-score', compact('students', 'subject', 'classroom'));
     }
 
     public function takeScoreReport(Request $request)
     {
+        $findStudent = ScoreReport::where('student_id', '=', $request->student_id)->get();
+        echo $findStudent;
+        return view('cc');
+        $score = new ScoreReport();
+        $score->subject_id = $request->subject_id;
+        $score->student_id = $request->student_id;
+        $score->score = $request->status;
+        $score->save();
+        return back()->with('take_score', 'This student has been graded!');
+    }
+
+    public function viewStudentClassroom(Request $request)
+    {
+        $students = Student::where('class_id', '=', $request->classroom_id)->get();
+        $classroom = Classroom::find($request->classroom_id);
+        $subject = Subject::find($request->subject_id);
+        return view('pages.Lecturer.view-student-classroom', compact('students', 'classroom', 'subject'));
     }
 }

@@ -1,18 +1,16 @@
-@extends('pages.studentlayout')
+@extends('pages.Lecturer.lecturer-layout')
 
 @section('content')
 
 <main role="main" class="main-content">
-  @if(Session::has('student_list'))
-
-
-<div class="alert alert-success" role="alert">{{Session::get('student_list')}} </div>
+  @if(Session::has('take_score'))
+<div class="alert alert-success" role="alert">{{Session::get('take_score')}} </div>
 @endif
 
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">
-          <h2 class="mb-2 page-title">Student List</h2>
+          <h2 class="mb-2 page-title">Student List - {{$classroom->classCode}} - {{$subject->subjectName}}</h2>
           
           <div class="row my-4">
             <!-- Small table -->
@@ -28,7 +26,6 @@
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Major</th>
-                        <th>Grading</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -39,16 +36,7 @@
                         <td>{{$student->email}}</td>
                         <td>{{$student->phone}}</td>
                         <td>{{$student->major->majorName}}</td>
-                        <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <span class="text-muted sr-only">Grading</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                          <a class="dropdown-item" >Fail</a>
-                          <a class="dropdown-item" >Pass</a>
-                          <a class="dropdown-item" >Merit</a>
-                          <a class="dropdown-item">Distinc</a>
-                        </div>
-                      </td>
+                      
                       
                       </tr>
                       @endforeach

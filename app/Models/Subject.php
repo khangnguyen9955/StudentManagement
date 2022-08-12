@@ -11,6 +11,10 @@ class Subject extends Model
     protected $fillable = ['subjectName', 'major_id'];
     protected $table = "subjects";
 
+    public function score_reports()
+    {
+        return $this->hasMany(ScoreReport::class);
+    }
     public function major()
     {
         return $this->belongsTo(Major::class);

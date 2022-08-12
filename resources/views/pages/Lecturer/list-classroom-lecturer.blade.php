@@ -1,4 +1,4 @@
-@extends('pages.studentlayout')
+@extends('pages.Lecturer.lecturer-layout')
 
 @section('content')
 
@@ -12,7 +12,8 @@
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">
-          <h2 class="mb-2 page-title">Student List</h2>
+          <h2 class="mb-2 page-title">Classroom List</h2>
+          
           
           <div class="row my-4">
             <!-- Small table -->
@@ -29,20 +30,25 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($allSchedules as $schedule)
+                      @foreach ($allClassrooms as $classroom)
+                      @php
+                      $subjects = $classroom->subjects()->get();
+                      @endphp
+                      @for($i = 0; $i<count($subjects); $i++ )
                       <tr>
-                        <td>{{$schedule->classroom->classCode}}</td>
-                        <td>{{$schedule->subject->subjectName}}</td>
+                        <td>{{$classroom->classCode}}</td>
+                        <td>{{$subjects[$i]->subjectName}}</td>
                         <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <span class="text-muted sr-only">Action</span>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
-                          <a class="dropdown-item" >Grade this class</a>
-                          <a class="dropdown-item">View students</a>
+                          <a class="dropdown-item" href="{{route('getScoreReport',['classroom_id' => $classroom->id, 'subject_id'=>$subjects[$i]->id])}}" >Grade this class</a>
+                          <a class="dropdown-item" href="{{route('viewStudentClassroom',['classroom_id'=> $classroom->id,'subject_id'=>$subjects[$i]->id])}}">View students</a>
                         </div>
                       </td>
-                      
                       </tr>
+                      @endfor
+
                       @endforeach
                     </tbody>
                   </table>
