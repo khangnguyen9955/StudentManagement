@@ -12,7 +12,7 @@
 
 @endif
 
-  <form method="POST" action="{{url('update-student')}}">
+  <form method="POST" action="{{route('update.student')}}">
     @csrf
     <input type="hidden" name="id" value="{{$students->id}}">
      Full Name: <br><input type="text" name="fullName" value="{{$students->fullName}}"><br>

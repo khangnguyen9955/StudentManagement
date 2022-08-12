@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\FullCalendarController;
@@ -40,6 +41,7 @@ Route::get('/login', [AuthenticationController::class, 'Login']);
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventBackHistory']], function () {
+    Route::get('/admin-profile', [AdminController::class, 'viewProfile'])->name('admin.profile');
     Route::get('/add-student-form', [StudentController::class, 'viewAddStudentForm']);
     Route::get('/add-student', [StudentController::class, 'addStudent'])->name('student.add');
     Route::post('/add-student', [StudentController::class, 'saveStudent'])->name('save.student');

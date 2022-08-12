@@ -51,8 +51,8 @@
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Profile</a>
-              <a class="dropdown-item" href="{{url('/login')}}">Logout</a>
+              <a class="dropdown-item" href="{{route('admin.profile')}}">Profile</a>
+              <a class="dropdown-item" href="{{route('login')}}">Logout</a>
               <a class="dropdown-item" href="#"></a>
             </div>
           </li>
@@ -97,10 +97,10 @@
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="lecturers">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/add-lecturer-form')}}"><span class="ml-1 item-text">Add new Lecturer</span></a>
+                <a class="nav-link pl-3" href="{{route('lecturer.add')}}"><span class="ml-1 item-text">Add new Lecturer</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/list-lecturer')}}"><span class="ml-1 item-text">Lecturer List</span></a>
+                <a class="nav-link pl-3" href="{{route('lecturer.list')}}"><span class="ml-1 item-text">Lecturer List</span></a>
               </li>
             </ul>
           </li>
@@ -112,9 +112,14 @@
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="classes">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/add-classroom')}}"><span class="ml-1 item-text">Add New Class</span></a>
+                <a class="nav-link pl-3" href="{{route('classroom.add')}}"><span class="ml-1 item-text">Add New Class</span></a>
+              </li>
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/list-classroom')}}"><span class="ml-1 item-text">Class List</span></a>
+                <a class="nav-link pl-3" href="{{route('classroom.list')}}"><span class="ml-1 item-text">Class List</span></a>
+              </li>
+                <li class="nav-item">
+                  <a class="nav-link pl-3" href="{{route('classroom.add.subject.choose-classroom')}}"><span class="ml-1 item-text">Add Subject To Classroom</span></a>
+                </li>
             </ul>
           </li>
 
@@ -125,25 +130,15 @@
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="subjects">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/add-subject')}}"><span class="ml-1 item-text">Add New Subject</span></a>
+                <a class="nav-link pl-3" href="{{route('subject.add')}}"><span class="ml-1 item-text">Add New Subject</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/list-subject')}}"><span class="ml-1 item-text">Subject List</span></a>
+                <a class="nav-link pl-3" href="{{route('subject.list')}}"><span class="ml-1 item-text">Subject List</span></a>
               </li>
             </ul>
           </li>
 
-          <li class="nav-item dropdown">
-            <a href="#multiform" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-              <i class="fe fe-credit-card fe-16"></i>
-              <span class="ml-3 item-text">Multi Form</span>
-            </a>
-            <ul class="collapse list-unstyled pl-4 w-100" id="multiform">
-              <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/multi-form')}}"><span class="ml-1 item-text">Multi-form</span></a>
-              </li>
-            </ul>
-          </li>
+     
 
 
 

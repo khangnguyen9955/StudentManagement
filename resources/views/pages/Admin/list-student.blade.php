@@ -48,8 +48,8 @@
                             <span class="text-muted sr-only">Action</span>
                           </button>
                           <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="{{url('edit-student/'.$student->id)}}">Edit</a>
-                            <a class="dropdown-item" href="{{url('remove-student/'.$student->id)}}">Remove</a>
+                            <a class="dropdown-item" href="{{route('student.edit',['id'=>$student->id])}}">Edit</a>
+                            <a class="dropdown-item" href="{{route('student.remove',['id'=>$student->id])}}">Remove</a>
                             <a class="dropdown-item" href="#">Assign</a>
                           </div>
                         </td>
