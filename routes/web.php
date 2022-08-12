@@ -41,8 +41,9 @@ Route::get('/login', [AuthenticationController::class, 'Login']);
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventBackHistory']], function () {
-    Route::get('/admin-profile', [AdminController::class, 'viewProfile'])->name('admin.profile');
-    Route::get('/add-student-form', [StudentController::class, 'viewAddStudentForm']);
+    Route::get('/admin-profile', [AdminController::class, 'viewProfile'])->name('profile.admin');
+
+
     Route::get('/add-student', [StudentController::class, 'addStudent'])->name('student.add');
     Route::post('/add-student', [StudentController::class, 'saveStudent'])->name('save.student');
     Route::get('/list-student', [StudentController::class, 'studentList'])->name('student.list');
@@ -51,18 +52,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventB
     Route::get('/remove-student/{id}', [StudentController::class, 'removeStudent'])->name('student.remove');
 
 
-    Route::get('/multi-form', [ClassroomController::class, 'showMultiForm']);
     Route::get('/add-classroom', [ClassroomController::class, 'addClassroom'])->name('classroom.add');
     Route::post('/add-classroom', [ClassroomController::class, 'saveClassroom'])->name('save.classroom');
     Route::get('/list-classroom', [ClassroomController::class, 'classroomList'])->name('classroom.list');
     Route::get('/remove-classroom/{id}', [ClassroomController::class, 'removeClassroom'])->name('classroom.remove');
-
+    Route::get('/edit-classroom/{id}', [ClassroomController::class, 'editClassroom'])->name('classroom.edit');
+    Route::post('/update-classroom', [ClassroomController::class, 'updateClassroom'])->name('update.classroom');
 
     Route::get('/add-subject', [SubjectController::class, 'addSubject'])->name('subject.add');
     Route::post('/add-subject', [SubjectController::class, 'saveSubject'])->name('save.subject');
     Route::get('/list-subject', [SubjectController::class, 'subjectList'])->name('subject.list');
 
-    Route::get('/add-lecturer-form', [LecturerController::class, 'viewAddLecturerForm']);
     Route::get('/add-lecturer', [LecturerController::class, 'addLecturer'])->name('lecturer.add');
     Route::post('/add-lecturer', [LecturerController::class, 'saveLecturer'])->name('save.lecturer');
     Route::get('/list-lecturer', [LecturerController::class, 'lecturerList'])->name('lecturer.list');

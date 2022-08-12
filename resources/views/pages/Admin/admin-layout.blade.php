@@ -51,9 +51,8 @@
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="{{route('admin.profile')}}">Profile</a>
+              <a class="dropdown-item" href="{{route('profile.admin')}}">Profile</a>
               <a class="dropdown-item" href="{{route('login')}}">Logout</a>
-              <a class="dropdown-item" href="#"></a>
             </div>
           </li>
         </ul>
@@ -100,6 +99,9 @@
                 <a class="nav-link pl-3" href="{{route('lecturer.add')}}"><span class="ml-1 item-text">Add new Lecturer</span></a>
               </li>
               <li class="nav-item">
+                <a class="nav-link pl-3" href="{{route('lecturerSubject.add')}}"><span class="ml-1 item-text">Add Lecturer Subject</span></a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link pl-3" href="{{route('lecturer.list')}}"><span class="ml-1 item-text">Lecturer List</span></a>
               </li>
             </ul>
@@ -108,14 +110,14 @@
           <li class="nav-item dropdown">
             <a href="#classes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
               <i class="fe fe-credit-card fe-16"></i>
-              <span class="ml-3 item-text">Class</span>
+              <span class="ml-3 item-text">Classroom</span>
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="classes">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{route('classroom.add')}}"><span class="ml-1 item-text">Add New Class</span></a>
+                <a class="nav-link pl-3" href="{{route('classroom.add')}}"><span class="ml-1 item-text">Add New Classroom</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{route('classroom.list')}}"><span class="ml-1 item-text">Class List</span></a>
+                <a class="nav-link pl-3" href="{{route('classroom.list')}}"><span class="ml-1 item-text">Classroom List</span></a>
               </li>
                 <li class="nav-item">
                   <a class="nav-link pl-3" href="{{route('classroom.add.subject.choose-classroom')}}"><span class="ml-1 item-text">Add Subject To Classroom</span></a>

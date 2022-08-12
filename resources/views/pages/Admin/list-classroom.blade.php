@@ -4,11 +4,16 @@
 
 <main role="main" class="main-content">
   @if(Session::has('classroom_add_subject_finish'))
-  <div class="alert alert-success" role="alert">{{Session::get('classroom_add_subject_finish')}} </div>  @endif 
+  <div class="alert alert-success" role="alert">{{Session::get('classroom_add_subject_finish')}} </div>  
+  @endif 
 @if(Session::has('classroom_list'))
 <div class="alert alert-success" role="alert">{{Session::get('classroom_list')}} </div>
-
 @endif
+ @if(Session::has('classroom_delete'))
+<div class="alert alert-success" role="alert">{{Session::get('classroom_delete')}} </div>
+ @elseif(Session::has('classroom_delete_fail'))
+<div class="alert alert-danger" role="alert">{{Session::get('classroom_delete_fail')}} </div>
+ @endif
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">
@@ -23,7 +28,6 @@
                     <thead>
                       <tr>
                      
-                        <th>#</th>
                         <th>Classroom Code</th>
                         <th>Major</th>
                         <th>Action</th>
@@ -33,7 +37,6 @@
                       @foreach ($classrooms as $classroom)
                       <tr >
                         
-                        <td>{{$classroom->id}}</td>
                         <td>
                            {{$classroom->classCode}}
                         </td>
@@ -42,9 +45,8 @@
                             <span class="text-muted sr-only">Action</span>
                           </button>
                           <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Edit</a>
-                            <a class="dropdown-item" href="#">Remove</a>
-                            <a class="dropdown-item" href="#">Assign</a>
+                            <a class="dropdown-item" href="{{route('classroom.edit',['id'=>$classroom->id])}}">Edit</a>                         
+                             <a class="dropdown-item" href="{{route('classroom.remove',['id'=>$classroom->id])}}">Remove</a>
                           </div>
                         </td>
                       </tr>

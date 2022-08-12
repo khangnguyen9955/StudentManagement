@@ -5,11 +5,13 @@
 
 <main role="main" class="main-content">
   @if(Session::has('student_list'))
-
-
 <div class="alert alert-success" role="alert">{{Session::get('student_list')}} </div>
 @endif
-
+@if(Session::has('delete_student_success'))
+<div class="alert alert-success" role="alert">{{Session::get('delete_student_success')}} </div>
+@elseif(Session::has('delete_student_failure'))
+<div class="alert alert-danger" role="alert">{{Session::get('delete_student_failure')}} </div>
+@endif
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">
