@@ -27,7 +27,6 @@
                         <th>Subject Code</th> 
                         <th>Subject Name</th>
                         <th>Major</th>
-                        <th>Action</th>
                        </tr>  
                       </thead>
                       <tbody>
@@ -39,15 +38,7 @@
                           <td>{{$subject->subjectName}}</td>
                           <td>{{$subject->major->majorName}}</td>
                          
-                          <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <span class="text-muted sr-only">Action</span>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a class="dropdown-item" href="{{url('edit-subject/')}}">Edit</a>
-                              <a class="dropdown-item" href="{{url('remove-lecturer/')}}">Remove</a>
-                             
-                            </div>
-                          </td>
+                         
                         </tr>
                         @endforeach
                       </tbody>

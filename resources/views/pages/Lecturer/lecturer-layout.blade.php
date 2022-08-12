@@ -43,8 +43,8 @@
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="{{url('/lecturer-profile')}}">Profile</a>
-              <a class="dropdown-item" href="{{url('/login')}}">Logout</a>
+              <a class="dropdown-item" href="{{route('/lecturer.profile')}}">Profile</a>
+              <a class="dropdown-item" href="{{route('/login')}}">Logout</a>
               
             </div>
           </li>
@@ -78,15 +78,18 @@
             <li class="nav-item dropdown">
               <a href="#tables" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-grid fe-16"></i>
-                <span class="ml-3 item-text">Tables</span>
+                <span class="ml-3 item-text">Features</span>
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="tables">
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="{{url('/lecturer-grade')}}"><span class="ml-1 item-text">Student Grade</span></a>
+                  <a class="nav-link pl-3" href="{{route('lecturer-classroom.list')}}"><span class="ml-1 item-text">Grade student</span></a>
                 </li>
                 
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="{{url('/list-lecturerclass')}}"><span class="ml-1 item-text">Class List</span></a>
+                  <a class="nav-link pl-3" href="{{route('lecturer-classroom.list')}}"><span class="ml-1 item-text">Classroom List</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link pl-3" href="{{route('lecturer-classroom.list')}}"><span class="ml-1 item-text">Take Attendance</span></a>
                 </li>
               </ul>
             </li>
@@ -97,7 +100,7 @@
           </p>
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-              <a class="nav-link" href="{{url('/lecturer-calendar')}}">
+              <a class="nav-link" href="{{route('lecturer-calendar')}}">
                 <i class="fe fe-calendar fe-16"></i>
                 <span class="ml-3 item-text">Lecturer Calendar</span>
               </a>
@@ -109,7 +112,7 @@
                 <span class="ml-3 item-text">Profile</span>
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="profile">
-                <a class="nav-link pl-3" href="{{url ('/lecturer-profile')}}"><span class="ml-1">Overview</span></a>
+                <a class="nav-link pl-3" href="{{route('lecturer.profile')}}"><span class="ml-1">Overview</span></a>
                 
               </ul>
             </li>

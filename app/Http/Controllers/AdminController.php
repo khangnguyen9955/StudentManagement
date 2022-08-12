@@ -10,8 +10,8 @@ class AdminController extends Controller
     {
         return view('pages.Admin.list-student');
     }
-    function addStudent()
+    public function viewProfile()
     {
-        return view('pages.Admin.add-student');
+        return view('pages.Admin.admin-profile');
     }
 }
