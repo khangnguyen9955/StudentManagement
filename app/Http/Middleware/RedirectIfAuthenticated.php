@@ -2,9 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 use Closure;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated
@@ -22,17 +22,14 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
-            if( Auth::guard($guard)->check() && Auth::user()->role == 1){
+            if (Auth::guard($guard)->check() && Auth::user()->role == 1) {
                 return redirect()->route('student.list');
-            }
-            if( Auth::guard($guard)->check() && Auth::user()->role == 2){
+            } else if (Auth::guard($guard)->check() && Auth::user()->role == 2) {
                 return redirect()->route('student.profile');
-            }
-            if( Auth::guard($guard)->check() && Auth::user()->role == 3){
+            } else if (Auth::guard($guard)->check() && Auth::user()->role == 3) {
                 return redirect()->route('lecturer.profile');
             }
         }
-
         return $next($request);
     }
 }

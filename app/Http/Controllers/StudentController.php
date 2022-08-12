@@ -8,7 +8,7 @@ use App\Models\Major;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -46,14 +46,14 @@ class StudentController extends Controller
     {
         $student = new Student();
         $student->fullName = $request->fullName;
-        $student->password = "12345678"; // password default will be 12345678
+        $student->password = Hash::make("12345678"); // password default will be 12345678
         $student->role = 2;
         $student->email = $request->email;
         $student->phone = $request->phone;
         $student->major_id = $request->major_id;
         $user = new User();
         $user->name = $request->fullName;
-        $user->password = $request->password;
+        $user->password = Hash::make("12345678");
         $user->email = $request->email;
         $user->role = 2;
         $user->save();
