@@ -35,9 +35,7 @@
                         
                         <td>{{$classroom->id}}</td>
                         <td>
-                          <a href="">
-                          {{$classroom->classCode}}
-                          </a>
+                           {{$classroom->classCode}}
                         </td>
                         <td>{{$classroom->major->majorName}}</td>
                         <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('admins', function (Blueprint $table) {
-           
-        
+
+
             $table->string('email');
-           
+
             $table->integer('role');
             $table->string('password');
             $table->timestamps();
@@ -26,6 +26,7 @@ return new class extends Migration
         DB::table('admins')->insert(
             array(
                 'email' => 'admin@gmail.com',
+                'role' => '1',
                 'password' => '12345678'
             ),
         );
