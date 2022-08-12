@@ -164,6 +164,8 @@
     <script src={{url("../js/tinycolor-min.js")}}></script>
     <script src={{url("../js/config.js")}}></script>
     <script src={{url('../js/jquery.mask.min.js')}}></script>
+    <script src={{url('../js/fullcalendar.js')}}></script>
+    <script src={{url('../js/fullcalendar.custom.js')}}></script>
     <script src={{url('../js/select2.min.js')}}></script>
     <script src={{url('../js/jquery.steps.min.js')}}></script>
     <script src={{url('../js/jquery.validate.min.js')}}></script>
@@ -177,10 +179,10 @@
     <script src={{url("../js/datamaps-zoomto.js")}}></script>
     <script src={{url("../js/datamaps.custom.js")}}></script>
     <script src={{url("../js/Chart.min.js")}}></script>
-    <script src='../js/jquery.dataTables.min.js'></script>
-    <script src='../js/dataTables.bootstrap4.min.js'></script>
-    <script src='../js/jquery.dataTables.min.js'></script>
-    <script src='../js/dataTables.bootstrap4.min.js'></script>
+    <script src={{url('../js/jquery.dataTables.min.js')}}></script>
+    <script src={{url('../js/dataTables.bootstrap4.min.js')}}></script>
+    <script src={{url('../js/jquery.dataTables.min.js')}}></script>
+    <script src={{url('../js/dataTables.bootstrap4.min.js')}}></script>
     <script>
       /* defind global options */
       Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;

@@ -46,7 +46,8 @@ class StudentController extends Controller
     {
         $student = new Student();
         $student->fullName = $request->fullName;
-        $student->password = "123456"; // password default will be 123456
+        $student->password = "12345678"; // password default will be 12345678
+        $student->role = 2;
         $student->email = $request->email;
         $student->phone = $request->phone;
         $student->major_id = $request->major_id;

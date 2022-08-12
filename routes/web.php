@@ -8,7 +8,7 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\AuthenticationController;
-
+use App\Models\Lecturer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -64,7 +64,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventB
     Route::get('/add-lecturer', [LecturerController::class, 'addLecturer'])->name('lecturer.add');
     Route::post('/add-lecturer', [LecturerController::class, 'saveLecturer'])->name('save.lecturer');
     Route::get('/list-lecturer', [LecturerController::class, 'lecturerList'])->name('lecturer.list');
-    Route::get('/list-classroom-lecturer', [LecturerController::class, 'viewLecturerClass'])->name('lectuer-classroom.list');
 
     Route::get('/edit-lecturer/{id}', [LecturerController::class, 'editLecturer'])->name('lecturer.edit');
     Route::post('/update-lecturer', [LecturerController::class, 'updateLecturer'])->name('update.lecturer');
@@ -92,6 +91,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventB
     Route::post('add-classroom-subject/choose-schedule', [ClassroomController::class, 'saveSchedule'])->name('classroom.add.subject.choose.schedule.save');
 
 
+
     Route::get('/take-attendance/{subject_id}/{classroom_id}/{date}', [AttendanceController::class, 'getAttendanceReport'])->name('getAttendanceReport');
     Route::post('/save-attendance/{subject_id}/{student_id}', [AttendanceController::class, 'saveAttendanceReport'])->name('saveAttendanceReport.post');
 
@@ -104,11 +104,34 @@ Route::group(['prefix' => 'student', 'middleware' => ['isStudent', 'auth', 'Prev
     Route::get('/student-calendar', [ScheduleController::class, 'viewStudentCalendar']);
 });
 
+// Route::group(['prefix'=>'lecturer', 'middleware'=>['isLecturer','auth','PreventBackHistory']], function()
+// {
+
+//     Route::get('/lecturer-profile', [LecturerController::class, 'viewLecturerProfile'])->name('lecturer.profile');
+//     Route::get('/list-student2', [StudentController::class, 'studentList2'])->name('student.list2');
+//     Route::get('/lecturer-calendar', [ScheduleController::class, 'viewLecturerCalendar']);
+//     Route::get('/admin-calendar', [ScheduleController::class, 'getSchedule'])->name('getSchedule');
+
+// });
+
+// Route::group(['prefix' => 'student', 'middleware' => ['isStudent', 'auth', 'PreventBackHistory']], function () {
+// Route::get('/list-student1', [StudentController::class, 'studentList1'])->name('student.list');
+// Route::get('/student-profile', [StudentController::class, 'viewStudentProfile'])->name('student.profile');
+// Route::get('/student-calendar', [ScheduleController::class, 'viewStudentCalendar']);
+// });
+
+
 Route::group(['prefix' => 'lecturer', 'middleware' => ['isLecturer', 'auth', 'PreventBackHistory']], function () {
 
     Route::get('/lecturer-profile', [LecturerController::class, 'viewLecturerProfile'])->name('lecturer.profile');
-    Route::get('/list-student2', [StudentController::class, 'studentList2'])->name('student.list2');
+    Route::get('/list-student2', [StudentController::class, 'studentList2'])->name('student.list');
     Route::get('/lecturer-calendar', [ScheduleController::class, 'viewLecturerCalendar']);
+    Route::get('/list-classroom-lecturer', [LecturerController::class, 'viewLecturerClass'])->name('lecturer-classroom.list');
+    Route::get('/take-attendance/{subject_id}/{classroom_id}/{date}', [AttendanceController::class, 'getAttendanceReport'])->name('getAttendanceReport');
+    Route::post('/save-attendance/{subject_id}/{student_id}', [AttendanceController::class, 'saveAttendanceReport'])->name('saveAttendanceReport.post');
+    Route::get('/take-score/{classroom_id}/{subject_id}', [LecturerController::class, 'getScoreReport'])->name('getScoreReport');
+    Route::post('/save-score/{subject_id}/{student_id}', [LecturerController::class, 'takeScoreReport'])->name('takeScoreReport.post');
+    Route::get('view-student-classroom/{classroom_id}/{subject_id}', [LecturerController::class, 'viewStudentClassroom'])->name('viewStudentClassroom');
 });
 
 
