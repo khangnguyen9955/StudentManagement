@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -28,9 +30,14 @@ return new class extends Migration
 
                 'role' => '1',
 
-                'password' => '12345678'
+                'password' => Hash::make('12345678')
             ),
         );
+        $user = new User();
+        $user->email = 'admin@gmail.com';
+        $user->role = 1;
+        $user->password = Hash::make('12345678');
+        $user->save();
     }
 
     /**

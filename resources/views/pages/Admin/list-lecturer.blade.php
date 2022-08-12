@@ -4,8 +4,6 @@
 
 <main role="main" class="main-content">
   @if(Session::has('lecturer_list'))
-
-
 <div class="alert alert-success" role="alert">{{Session::get('lecturer_list')}} </div>
 @endif
 
@@ -23,8 +21,8 @@
                   <table class="table datatables" id="dataTable-1">
                     <thead>
                       <tr>
+                        <th>Lecturer Code</th>
                         <th>Full Name</th>
-                        <th>Password</th>
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Major</th>

@@ -7,6 +7,7 @@ use App\Models\Lecturer;
 use App\Models\Major;
 use App\Models\Schedule;
 use App\Models\Slot;
+use App\Models\Student;
 use App\Models\Subject;
 use DateTime;
 use Illuminate\Http\Request;
@@ -37,11 +38,31 @@ class ClassroomController extends Controller
         return view('pages.Admin.list-classroom')->with('classrooms', $classrooms);
     }
 
-    public function viewLecturerClassList()
+
+    public function editClassroom($id)
     {
-        $classrooms = Classroom::with('major')->get();
-        return view('pages.Lecturer.list-lecturerclass')->with('classrooms', $classrooms);
+
+        $classroom = Classroom::where('id', '=', $id)->first();
+        $majors = Major::get();
+
+        return view('pages.Admin.edit-classroom')->with(compact('majors', 'classroom'));
     }
+
+    public function updateClassroom(Request $request)
+    {
+        $id = $request->id;
+        $majorID = $request->major_id;
+        $findUsed = Student::where('class_id', '=', $id)->get();
+        if (count($findUsed) > 0) {
+            return back()->with('classroom_edit_fail', "This classroom is being used for students, cannot change it information!");
+        }
+        Classroom::where('id', '=', $id)->update([
+            'major_id' => $majorID,
+        ]);
+        return back()->with('classroom_edit', 'Classroom has been updated successfully!');
+    }
+
+
 
 
     public function addSubjectToClassroom()
@@ -204,9 +225,12 @@ class ClassroomController extends Controller
 
     public function removeClassroom($id)
     {
-        // Classroom::where('id', '=', $id)->delete();
+        $findUsed = Student::where('class_id', '=', $id)->get();
+        if (count($findUsed) > 0) {
+            return back()->with('classroom_delete_fail', "This classroom is being used for students, cannot delete it!");
+        }
         Classroom::destroy($id);
-        return redirect()->back()->with('classroom_list', '
+        return redirect()->back()->with('classroom_delete', '
         Classroom removed successfully ');
     }
 }

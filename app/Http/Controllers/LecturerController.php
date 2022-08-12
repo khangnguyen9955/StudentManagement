@@ -11,6 +11,7 @@ use App\Models\Student;
 use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class LecturerController extends Controller
 {
@@ -49,15 +50,18 @@ class LecturerController extends Controller
     {
         $lecturer = new Lecturer();
         $lecturer->fullName = $request->fullName;
-        $lecturer->password = "12345678";
+        $lecturer->password = Hash::make("12345678"); // password default will be 12345678
         $lecturer->role = 3;
         $lecturer->email = $request->email;
         $lecturer->phone = $request->phone;
         $lecturer->major_id = $request->major_id;
-
+        $findEmail = User::where('email', '=', $request->email)->get();
+        if (count($findEmail) > 0) {
+            return back()->with('lecturer_add_fail', 'This email has been used, try another email!');
+        }
         $user = new User();
         $user->name = $request->fullName;
-        $user->password = $request->password;
+        $user->password = Hash::make("12345678");
         $user->email = $request->email;
         $user->role = 3;
         $user->save();
@@ -104,18 +108,12 @@ class LecturerController extends Controller
     {
         $id = $request->id;
         $fullName = $request->fullName;
-        $email = $request->email;
         $phone = $request->phone;
         $majorID = $request->major_id;
-        $classID = $request->classroom_id;
-
-
         Lecturer::where('id', '=', $id)->update([
             'fullName' => $fullName,
-            'email' => $email,
             'phone' => $phone,
             'major_id' => $majorID,
-            'class_id' => $classID
         ]);
         return back()->with('lecturer_edit', 'Lecturer updated successfully!');
     }

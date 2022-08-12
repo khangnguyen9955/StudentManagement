@@ -26,17 +26,6 @@ class StudentController extends Controller
         return view('pages.Student.student-grade');
     }
 
-
-    public function viewAddStudentForm()
-    {
-        return view('pages.Admin.add-student-form');
-    }
-
-
-
-
-
-
     public function addStudent()
     {
         $majors = Major::get();
@@ -51,6 +40,10 @@ class StudentController extends Controller
         $student->email = $request->email;
         $student->phone = $request->phone;
         $student->major_id = $request->major_id;
+        $findEmail = User::where('email', '=', $request->email)->get();
+        if (count($findEmail) > 0) {
+            return back()->with('student_add_fail', 'This email has been used, try another email!');
+        }
         $user = new User();
         $user->name = $request->fullName;
         $user->password = Hash::make("12345678");
@@ -67,19 +60,6 @@ class StudentController extends Controller
         return view('pages.Admin.list-student')->with('students', $students);
     }
 
-    public function studentList1()
-    {
-
-        $students = Student::with('major', 'classroom')->get();
-        return view('pages.Student.list-student1')->with('students', $students);
-    }
-
-    public function studentList2()
-    {
-
-        $students = Student::with('major', 'classroom')->get();
-        return view('pages.Lecturer.list-student2')->with('students', $students);
-    }
 
     public function addStudentToClassroom()
     {
@@ -115,26 +95,27 @@ class StudentController extends Controller
     {
         $id = $request->id;
         $fullName = $request->fullName;
-        $email = $request->email;
         $phone = $request->phone;
         $majorID = $request->major_id;
         $classID = $request->classroom_id;
-
+        $findClassroom = Classroom::find($request->classroom_id)->get();
+        if ($request->major_id != $findClassroom[0]->major_id) {
+            return back()->with('student_edit_fail', "Student's majority must be the same with the classroom's majority!");
+        }
 
         Student::where('id', '=', $id)->update([
             'fullName' => $fullName,
-            'email' => $email,
             'phone' => $phone,
             'major_id' => $majorID,
             'class_id' => $classID
         ]);
-        return back()->with('student_edit', 'Student updated successfully!');
+        return back()->with('student_edit', 'Student has been updated successfully!');
     }
     public function removeStudent($id)
     {
         // Student::where('id', '=', $id)->delete();
-        $checkStudent = Attendance::where('student_id', '=', $id);
-        if ($checkStudent !== null) {
+        $checkStudent = Attendance::where('student_id', '=', $id)->get();
+        if (count($checkStudent) > 0) {
             return redirect()->back()->with('delete_student_failure', 'This student has been added to a classroom, you cannot delete it from the system!');
         } else {
             Student::destroy($id);
