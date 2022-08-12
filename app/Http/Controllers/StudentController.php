@@ -6,6 +6,7 @@ use App\Models\Attendance;
 use App\Models\Classroom;
 use App\Models\Major;
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 
@@ -49,6 +50,12 @@ class StudentController extends Controller
         $student->email = $request->email;
         $student->phone = $request->phone;
         $student->major_id = $request->major_id;
+        $user = new User();
+        $user->name = $request->fullName;
+        $user->password = $request->password;
+        $user->email = $request->email;
+        $user->role = 2;
+        $user->save();
         $student->save();
         return back()->with('student_add', 'Student added successfully!');
     }

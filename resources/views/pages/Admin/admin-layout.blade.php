@@ -47,7 +47,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="avatar avatar-sm mt-2">
-                <img src="../assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
+                <img src="{{url('../assets/avatars/face-1.jpg')}}" alt="..." class="avatar-img rounded-circle">
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -84,9 +84,9 @@
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="students">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/add-student-form')}}"><span class="ml-1 item-text">Add New Student</span></a>
+                <a class="nav-link pl-3" href="{{route('student.add')}}"><span class="ml-1 item-text">Add New Student</span></a>
               <li class="nav-item">
-                <a class="nav-link pl-3" href="{{url('/list-student')}}"><span class="ml-1 item-text">Student List</span></a>
+                <a class="nav-link pl-3" href="{{route('student.list')}}"><span class="ml-1 item-text">Student List</span></a>
             </ul>
           </li>
           

@@ -42,7 +42,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="avatar avatar-sm mt-2">
-                <img src="assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
+                <img src="{{url('assets/avatars/face-1.jpg')}}" alt="..." class="avatar-img rounded-circle">
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -219,14 +219,19 @@
           });
         }
       </script>
-      <script src='../js/jquery.mask.min.js'></script>
-      <script src='../js/select2.min.js'></script>
-      <script src='../js/jquery.steps.min.js'></script>
-      <script src='../js/jquery.validate.min.js'></script>
-      <script src='../js/jquery.timepicker.js'></script>
-      <script src='../js/dropzone.min.js'></script>
-      <script src='../js/uppy.min.js'></script>
-      <script src='../js/quill.min.js'></script>
+
+      <script src={{url("../js/gauge.min.js")}}></script>
+      <script src={{url("../js/jquery.sparkline.min.js")}}></script>
+      <script src={{url("../js/apexcharts.min.js")}}></script>
+      <script src={{url("../js/apexcharts.custom.js")}}></script>
+      <script src={{url('../js/jquery.mask.min.js')}}></script>
+      <script src={{url('../js/select2.min.js')}}></script>
+      <script src={{url('../js/jquery.steps.min.js')}}></script>
+      <script src={{url('../js/jquery.validate.min.js')}}></script>
+      <script src={{url('../js/jquery.timepicker.js')}}></script>
+      <script src={{url('../js/dropzone.min.js')}}></script>
+      <script src={{url('../js/uppy.min.js')}}></script>
+      <script src={{url('../js/quill.min.js')}}></script>
       <script>
         $('.select2').select2(
         {

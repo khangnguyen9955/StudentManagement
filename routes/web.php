@@ -28,7 +28,7 @@ Route::get('/', function () {
 });
 
 
-Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
+Route::middleware(['middleware' => 'PreventBackHistory'])->group(function () {
     Auth::routes();
 });
 
@@ -39,8 +39,7 @@ Route::get('/login', [AuthenticationController::class, 'Login']);
 
 
 
-Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHistory']], function()
-{
+Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventBackHistory']], function () {
     Route::get('/add-student-form', [StudentController::class, 'viewAddStudentForm']);
     Route::get('/add-student', [StudentController::class, 'addStudent'])->name('student.add');
     Route::post('/add-student', [StudentController::class, 'saveStudent'])->name('save.student');
@@ -97,18 +96,15 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHis
     Route::post('/save-attendance/{subject_id}/{student_id}', [AttendanceController::class, 'saveAttendanceReport'])->name('saveAttendanceReport.post');
 
     Route::get('/admin-calendar', [ScheduleController::class, 'getSchedule'])->name('getSchedule');
-
 });
 
-Route::group(['prefix'=>'student', 'middleware'=>['isStudent','auth','PreventBackHistory']], function()
-{
+Route::group(['prefix' => 'student', 'middleware' => ['isStudent', 'auth', 'PreventBackHistory']], function () {
     Route::get('/list-student1', [StudentController::class, 'studentList1'])->name('student.list1');
     Route::get('/student-profile', [StudentController::class, 'viewStudentProfile'])->name('student.profile');
     Route::get('/student-calendar', [ScheduleController::class, 'viewStudentCalendar']);
 });
 
-Route::group(['prefix'=>'lecturer', 'middleware'=>['isLecturer','auth','PreventBackHistory']], function()
-{
+Route::group(['prefix' => 'lecturer', 'middleware' => ['isLecturer', 'auth', 'PreventBackHistory']], function () {
 
     Route::get('/lecturer-profile', [LecturerController::class, 'viewLecturerProfile'])->name('lecturer.profile');
     Route::get('/list-student2', [StudentController::class, 'studentList2'])->name('student.list2');

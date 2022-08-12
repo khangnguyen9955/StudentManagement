@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+@if (Route::has('login_erorr'))
+<span class="invalid-feedback" role="alert">
+ <div> {{Session::get('login_error')}};</div>
+</span>
+@endif
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
