@@ -8,7 +8,7 @@
           <h2 class="h3 mb-4 page-title">Admin Profile</h2>
           <div class="row mt-5 align-items-center">
             <div class="col-md-3 text-center mb-5">
-              <h4>*Full Name</h4>
+              <h4></h4>
             </div>
         
           </div>
@@ -26,7 +26,7 @@
                       <a href="#">
                         <h3 class="h5 mt-4 mb-1">Email</h3>
                       </a>
-                      <p class="text-muted">*email here</p>
+                      <p class="text-muted">{{$admin->email}}</p>
                     </div> <!-- .col -->
                   </div> <!-- .row -->
                 </div> <!-- .card-body -->
@@ -46,7 +46,7 @@
                       <a href="#">
                         <h3 class="h5 mt-4 mb-1">Phone Number</h3>
                       </a>
-                      <p class="text-muted">*phone number here</p>
+                      <p class="text-muted">XXXXXXXXXXXX</p>
                     </div> <!-- .col -->
                   </div> <!-- .row -->
                 </div> <!-- .card-body -->
@@ -54,26 +54,7 @@
               </div> <!-- .card -->
             </div> <!-- .col-md-->
 
-            <div class="col-md-4">
-              <div class="card mb-4 shadow">
-                <div class="card-body my-n3">
-                  <div class="row align-items-center">
-                    <div class="col-3 text-center">
-                      <span class="circle circle-lg bg-light">
-                        <i class="fe fe-shield fe-24 text-primary"></i>
-                      </span>
-                    </div> <!-- .col -->
-                    <div class="col">
-                      <a href="#">
-                        <h3 class="h5 mt-4 mb-1">Major</h3>
-                      </a>
-                      <p class="text-muted">* Major name here</p>
-                    </div> <!-- .col -->
-                  </div> <!-- .row -->
-                </div> <!-- .card-body -->
-                
-              </div> <!-- .card -->
-            </div> <!-- .col-md-->
+            
            
           </div> <!-- .row-->
          

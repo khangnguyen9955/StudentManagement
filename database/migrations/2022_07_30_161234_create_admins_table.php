@@ -34,6 +34,7 @@ return new class extends Migration
             ),
         );
         $user = new User();
+        $user->name = 'Admin';
         $user->email = 'admin@gmail.com';
         $user->role = 1;
         $user->password = Hash::make('12345678');

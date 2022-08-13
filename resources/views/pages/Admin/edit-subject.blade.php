@@ -3,14 +3,17 @@
 @section('content')
 
 <main role="main" class="main-content">
-@if(Session::has('subject_add'))
+@if(Session::has('subject_edit'))
 <div class="alert alert-success" role="alert">
-  {{Session::get('subject_add')}}</div> 
+  {{Session::get('subject_edit')}}</div> 
+@elseif(Session::has('subject_edit_fail'))
+<div class="alert alert-danger" role="alert">
+  {{Session::get('subject_edit_fail')}}</div> 
 @endif
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">
-          <h2 class="page-title" style=" text-align: center; ">Add New Subject</h2>
+          <h2 class="page-title" style=" text-align: center; ">Edit Subject</h2>
           <div class="row" style="justify-content: center; ">          
             <div class="col-md-6">
               <div class="card shadow mb-4">
@@ -18,12 +21,14 @@
                   <strong class="card-title">Subject information</strong>
                 </div>
                 <div class="card-body">
-  <form method="POST" action="{{route('save.subject')}}">
+  <form method="POST" action="{{route('update.subject')}}">
     @csrf
+    <input type="hidden" name="id" value="{{$subject->id}}">
+
     <div class="form-group mb-3">
-      <label for="address-wpalaceholder">Subject Name</label>
-      <input type="text" id="address-wpalaceholder" class="form-control" placeholder="Enter your subject name" required name="subjectName">
-      <div class="invalid-feedback"> Please enter your subject name</div>
+      <label for="validationCustom3">Subject Name</label>
+      <input type="text" class="form-control" id="validationCustom3" placeholder="Enter lecturer's full name" required  name="subjectName" value="{{$subject->subjectName}}">
+      <div class="valid-feedback"> Looks good! </div>    
     </div>
                     <div class="form-group mb-3">
                       <label for="major">Choose a major:</label>

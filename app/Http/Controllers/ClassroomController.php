@@ -85,6 +85,12 @@ class ClassroomController extends Controller
         return back()->with('classroom_subject_add', 'This subject is added to this classroom successfully!');
     }
 
+    public function viewStudentClassroom($id)
+    {
+        $students = Student::where('class_id', '=', $id)->get();
+        $classroom = Classroom::find($id);
+        return view('pages.Admin.view-student-in-classroom', compact('students', 'classroom'));
+    }
 
 
     public function chooseClassroomToAddSubject(Request $request)
@@ -231,6 +237,6 @@ class ClassroomController extends Controller
         }
         Classroom::destroy($id);
         return redirect()->back()->with('classroom_delete', '
-        Classroom removed successfully ');
+        Classroom has been removed successfully ');
     }
 }

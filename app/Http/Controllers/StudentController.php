@@ -78,7 +78,7 @@ class StudentController extends Controller
             Student::where('id', $request->student_id)->update(array('class_id' => $request->classroom_id));
             return back()->with('student_classroom_add', 'Student ' . $student[0]->studentCode . ' has been added to ' . $classroom[0]->classCode . ' successfully!');
         } else {
-            return back()->with('student_classroom_add', 'Student must been added to the class which has the same majority with them!');
+            return back()->with('student_classroom_add_fail', 'Student must been added to the class which has the same majority with them!');
         }
     }
 

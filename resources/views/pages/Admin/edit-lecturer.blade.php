@@ -19,25 +19,10 @@
                   <form method="POST" action="{{route('update.lecturer')}}">
                     @csrf
                     <input type="hidden" name="id" value="{{$lecturers->id}}">
-                    <div class="form-row">
-                      <div class="col-md-6 mb-3">
-                        <label for="validationCustom3">Full Name</label>
-                        <input type="text" class="form-control" id="validationCustom3" placeholder="Enter lecturer's full name" required  name="fullName" value="{{$lecturers->fullName}}">
-                        <div class="valid-feedback"> Looks good! </div>
-                      </div>
-                     
-                      <div class="col-md-6 mb-3">
-                        
-                        <div class="valid-feedback"> Looks good! </div>
-                      </div>
-                    </div> <!-- /.form-row -->
-                    <div class="form-row">
-                      
-                
-                    </div> <!-- /.form-row -->
-
-           
-                    
+                              <div class="form-group mb-3">
+                      <label for="validationCustom3">Full Name</label>
+                      <input type="text" class="form-control" id="validationCustom3" placeholder="Enter lecturer's full name" required  name="fullName" value="{{$lecturers->fullName}}">
+                      <div class="valid-feedback"> Looks good! </div>                    </div>
                     <div class="form-group mb-3">
                       <label for="address-wpalaceholder">Phone Number</label>
                       <input type="text" id="address-wpalaceholder"  value="{{$lecturers->phone}}" class="form-control" placeholder="Enter your phone number" required name="phone">
