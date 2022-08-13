@@ -32,7 +32,7 @@ Route::middleware(['middleware' => 'PreventBackHistory'])->group(function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/login', [AuthenticationController::class, 'Login']);
+Route::get('/login', [AuthenticationController::class, 'Login'])->name('login');
 
 
 
