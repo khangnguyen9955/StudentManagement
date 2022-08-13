@@ -84,8 +84,13 @@
             <ul class="collapse list-unstyled pl-4 w-100" id="students">
               <li class="nav-item">
                 <a class="nav-link pl-3" href="{{route('student.add')}}"><span class="ml-1 item-text">Add New Student</span></a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link pl-3" href="{{route('student.list')}}"><span class="ml-1 item-text">Student List</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link pl-3" href="{{route('studentClassroom.add')}}"><span class="ml-1 item-text">Add Student To Classroom</span></a>
+              </li>
             </ul>
           </li>
           

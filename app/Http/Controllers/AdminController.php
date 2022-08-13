@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -12,6 +14,9 @@ class AdminController extends Controller
     }
     public function viewProfile()
     {
-        return view('pages.Admin.admin-profile');
+        $email =  Auth::guard('')->user()->email;
+        $getAdmin = Admin::where('email', '=', $email)->get();
+        $admin = $getAdmin[0];
+        return view('pages.Admin.admin-profile', compact('admin'));
     }
 }

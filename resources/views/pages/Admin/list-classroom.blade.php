@@ -47,6 +47,7 @@
                           <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="{{route('classroom.edit',['id'=>$classroom->id])}}">Edit</a>                         
                              <a class="dropdown-item" href="{{route('classroom.remove',['id'=>$classroom->id])}}">Remove</a>
+                             <a class="dropdown-item" href="{{route('viewStudentInClassroom',['id'=> $classroom->id])}}">View students</a>
                           </div>
                         </td>
                       </tr>

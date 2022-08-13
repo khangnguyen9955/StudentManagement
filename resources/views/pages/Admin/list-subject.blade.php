@@ -5,10 +5,13 @@
 
 <main role="main" class="main-content">
   @if(Session::has('subject_list'))
-
-
 <div class="alert alert-success" role="alert">{{Session::get('subject_list')}} </div>
 @endif
+@if(Session::has('subject_delete'))
+<div class="alert alert-success" role="alert">{{Session::get('subject_delete')}} </div>
+ @elseif(Session::has('subject_delete_fail'))
+<div class="alert alert-danger" role="alert">{{Session::get('subject_delete_fail')}} </div>
+ @endif
 
     <div class="container-fluid">
       <div class="row justify-content-center">
@@ -27,6 +30,7 @@
                         <th>Subject Code</th> 
                         <th>Subject Name</th>
                         <th>Major</th>
+                        <th>Action</th>
                        </tr>  
                       </thead>
                       <tbody>
@@ -37,7 +41,14 @@
                           </td>
                           <td>{{$subject->subjectName}}</td>
                           <td>{{$subject->major->majorName}}</td>
-                         
+                          <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="text-muted sr-only">Action</span>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="{{route('subject.edit',['id'=>$subject->id])}}">Edit</a>                         
+                             <a class="dropdown-item" href="{{route('subject.remove',['id'=>$subject->id])}}">Remove</a>
+                          </div>
+                        </td>
                          
                         </tr>
                         @endforeach

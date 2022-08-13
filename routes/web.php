@@ -24,19 +24,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 Route::middleware(['middleware' => 'PreventBackHistory'])->group(function () {
     Auth::routes();
 });
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::get('/login', [AuthenticationController::class, 'Login']);
-
 
 
 
@@ -58,46 +54,40 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventB
     Route::get('/remove-classroom/{id}', [ClassroomController::class, 'removeClassroom'])->name('classroom.remove');
     Route::get('/edit-classroom/{id}', [ClassroomController::class, 'editClassroom'])->name('classroom.edit');
     Route::post('/update-classroom', [ClassroomController::class, 'updateClassroom'])->name('update.classroom');
+    Route::get('/view-student-in-classroom/{id}', [ClassroomController::class, 'viewStudentClassroom'])->name('viewStudentInClassroom');
 
     Route::get('/add-subject', [SubjectController::class, 'addSubject'])->name('subject.add');
     Route::post('/add-subject', [SubjectController::class, 'saveSubject'])->name('save.subject');
     Route::get('/list-subject', [SubjectController::class, 'subjectList'])->name('subject.list');
+    Route::get('/remove-subject/{id}', [SubjectController::class, 'removeSubject'])->name('subject.remove');
+    Route::get('/edit-subject/{id}', [SubjectController::class, 'editSubject'])->name('subject.edit');
+    Route::post('/update-subject', [SubjectController::class, 'updateSubject'])->name('update.subject');
 
     Route::get('/add-lecturer', [LecturerController::class, 'addLecturer'])->name('lecturer.add');
     Route::post('/add-lecturer', [LecturerController::class, 'saveLecturer'])->name('save.lecturer');
     Route::get('/list-lecturer', [LecturerController::class, 'lecturerList'])->name('lecturer.list');
-
     Route::get('/edit-lecturer/{id}', [LecturerController::class, 'editLecturer'])->name('lecturer.edit');
     Route::post('/update-lecturer', [LecturerController::class, 'updateLecturer'])->name('update.lecturer');
     Route::get('/remove-lecturer/{id}', [LecturerController::class, 'removeLecturer'])->name('lecturer.remove');
 
+
     Route::get('/add-student-classroom', [StudentController::class, 'addStudentToClassroom'])->name('studentClassroom.add');
     Route::post('/add-student-classroom', [StudentController::class, 'saveStudentToClassroom'])->name('save.studentClassroom');
+
     Route::get('/list-student-classroom', [StudentController::class, 'studentClassroomList'])->name('studentClassroom.list');
 
     Route::get('/add-lecturer-subject', [LecturerController::class, 'addLecturerSubject'])->name('lecturerSubject.add');
     Route::post('/add-lecturer-subject', [LecturerController::class, 'saveLecturerSubject'])->name('save.lecturerSubject');
 
-
     Route::get('add-classroom-subject/choose-classroom', [ClassroomController::class, 'chooseClassroomToAddSubject'])->name('classroom.add.subject.choose-classroom');
     Route::post('add-classroom-subject/choose-classroom', [ClassroomController::class, 'saveClassroomToAddSubject'])->name('classroom.add.subject.choose.classroom.save');
-
-
     Route::get('add-classroom-subject/choose-subject', [ClassroomController::class, 'chooseSubject'])->name('classroom.add.subject.choose-subject');
     Route::post('add-classroom-subject/choose-subject', [ClassroomController::class, 'saveSubject'])->name('classroom.add.subject.choose.subject.save');
-
     Route::get('add-classroom-subject/choose-lecturer', [ClassroomController::class, 'chooseLecturerStep'])->name('classroom.add.subject.choose-lecturer');
     Route::post('add-classroom-subject/choose-lecturer', [ClassroomController::class, 'saveLecturer'])->name('classroom.add.subject.choose.lecturer.save');
-
     Route::get('add-classroom-subject/choose-schedule',  [ClassroomController::class, 'chooseScheduleStep'])->name('classroom.add.subject.choose-schedule');
     Route::post('add-classroom-subject/choose-schedule', [ClassroomController::class, 'saveSchedule'])->name('classroom.add.subject.choose.schedule.save');
-
-
-
-    // Route::get('/take-attendance/{subject_id}/{classroom_id}/{date}', [AttendanceController::class, 'getAttendanceReport'])->name('getAttendanceReport');
-    // Route::post('/save-attendance/{subject_id}/{student_id}', [AttendanceController::class, 'saveAttendanceReport'])->name('saveAttendanceReport.post');
-
-    Route::get('/admin-calendar', [ScheduleController::class, 'getSchedule'])->name('getSchedule');
+    // Route::get('/admin-calendar', [ScheduleController::class, 'getSchedule'])->name('getSchedule');
 });
 
 Route::group(['prefix' => 'student', 'middleware' => ['isStudent', 'auth', 'PreventBackHistory']], function () {
@@ -105,28 +95,8 @@ Route::group(['prefix' => 'student', 'middleware' => ['isStudent', 'auth', 'Prev
     Route::get('/student-profile', [StudentController::class, 'viewStudentProfile'])->name('student.profile');
     Route::get('/student-calendar', [ScheduleController::class, 'viewStudentCalendar']);
 });
-
-// Route::group(['prefix'=>'lecturer', 'middleware'=>['isLecturer','auth','PreventBackHistory']], function()
-// {
-
-//     Route::get('/lecturer-profile', [LecturerController::class, 'viewLecturerProfile'])->name('lecturer.profile');
-//     Route::get('/list-student2', [StudentController::class, 'studentList2'])->name('student.list2');
-//     Route::get('/lecturer-calendar', [ScheduleController::class, 'viewLecturerCalendar']);
-//     Route::get('/admin-calendar', [ScheduleController::class, 'getSchedule'])->name('getSchedule');
-
-// });
-
-// Route::group(['prefix' => 'student', 'middleware' => ['isStudent', 'auth', 'PreventBackHistory']], function () {
-// Route::get('/list-student1', [StudentController::class, 'studentList1'])->name('student.list');
-// Route::get('/student-profile', [StudentController::class, 'viewStudentProfile'])->name('student.profile');
-// Route::get('/student-calendar', [ScheduleController::class, 'viewStudentCalendar']);
-// });
-
-
 Route::group(['prefix' => 'lecturer', 'middleware' => ['isLecturer', 'auth', 'PreventBackHistory']], function () {
-
     Route::get('/lecturer-profile', [LecturerController::class, 'viewLecturerProfile'])->name('lecturer.profile');
-    // Route::get('/list-student2', [StudentController::class, 'studentList2'])->name('student.list');
     Route::get('/lecturer-calendar', [ScheduleController::class, 'viewLecturerCalendar']);
     Route::get('/list-classroom-lecturer', [LecturerController::class, 'viewLecturerClass'])->name('lecturer-classroom.list');
     Route::get('/take-attendance/{subject_id}/{classroom_id}/{date}', [AttendanceController::class, 'getAttendanceReport'])->name('getAttendanceReport');
@@ -135,9 +105,6 @@ Route::group(['prefix' => 'lecturer', 'middleware' => ['isLecturer', 'auth', 'Pr
     Route::post('/save-score/{subject_id}/{student_id}', [LecturerController::class, 'takeScoreReport'])->name('takeScoreReport.post');
     Route::get('view-student-classroom/{classroom_id}/{subject_id}', [LecturerController::class, 'viewStudentClassroom'])->name('viewStudentClassroom');
 });
-
-
-
 
 
 Auth::routes();
