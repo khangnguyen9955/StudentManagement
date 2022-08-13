@@ -35,10 +35,10 @@ class LoginController extends Controller
             return route('student.list');
         }
         if (Auth()->user()->role == 2) {
-            return route('student.profile');
+            return route('profile.student');
         }
         if (Auth()->user()->role == 3) {
-            return route('lecturer.profile');
+            return route('profile.student');
         }
     }
 
@@ -68,9 +68,9 @@ class LoginController extends Controller
             if (auth()->user()->role == 1) {
                 return redirect()->route('student.list');
             } else if (auth()->user()->role == 2) {
-                return redirect()->route('student.profile');
+                return redirect()->route('profile.student');
             } else if (auth()->user()->role == 3) {
-                return redirect()->route('lecturer.profile');
+                return redirect()->route('profile.lecturer');
             }
         } else {
             return redirect()->route('login')->with('error', 'Email and password are wrong');

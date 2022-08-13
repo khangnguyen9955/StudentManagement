@@ -46,8 +46,8 @@
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Profile</a>
-              <a class="dropdown-item" href="{{url('/login')}}">Logout</a>
+              <a class="dropdown-item" href="{{route('profile.student')}}">Profile</a>
+              <a class="dropdown-item" href="{{route('login')}}">Logout</a>
           
             </div>
           </li>
@@ -71,53 +71,47 @@
             </a>
           </div>
           
-          <p class="text-muted nav-heading mt-4 mb-1">
-            <span>Components</span>
-          </p>
+
+         
           <ul class="navbar-nav flex-fill w-100 mb-2">
-            
-            
-           
-            <li class="nav-item dropdown">
-              <a href="#tables" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-grid fe-16"></i>
-                <span class="ml-3 item-text">Tables</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="tables">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="{{url('/student-grade')}}"><span class="ml-1 item-text">Student Grade</span></a>
-                </li>
-                
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="{{url('/list-student1')}}"><span class="ml-1 item-text">Class list</span></a>
-                </li>
-              </ul>
-            </li>
-           
-          </ul>
-          <p class="text-muted nav-heading mt-4 mb-1">
-            <span>Apps</span>
-          </p>
-          <ul class="navbar-nav flex-fill w-100 mb-2">
+          
             <li class="nav-item w-100">
-              <a class="nav-link" href="{{url('/student-calendar')}}">
+              <a class="nav-link" href="{{route('studentCalendar')}}">
                 <i class="fe fe-calendar fe-16"></i>
                 <span class="ml-3 item-text">Student Calendar</span>
               </a>
             </li>
-            
-            <li class="nav-item dropdown">
-              <a href="#profile" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+
+            <li class="nav-item w-100">
+              <a class="nav-link" href="{{route('studentSubjects')}}">
+        
+                <i class="fe fe-calendar fe-16"></i>
+              <span class="ml-3 item-text"> View all Subjects</span>
+              </a>
+            </li>
+            <li class="nav-item w-100">
+              <a class="nav-link" href="{{route('studentScore')}}">
+                <i class="fe fe-calendar fe-16"></i>
+                <span class="ml-3 item-text">View Score Reports</span></a>
+            </li>
+            <li class="nav-item w-100">
+              <a class="nav-link" href="{{route('studentSubjects')}}">
+                <i class="fe fe-calendar fe-16"></i>
+                <span class="ml-3 item-text">View Attendance Reports</span></a>
+            </li>
+
+            <li class="nav-item w-100">
+              <a class="nav-link" href="{{route('studentInClassroom')}}">
+                <i class="fe fe-calendar fe-16"></i>
+                <span class="ml-3 item-text">View students in classroom</span></a>
+            </li>
+            <li class="nav-item w-100">
+              <a href="{{route('profile.student')}}" class="nav-link ">
                 <i class="fe fe-user fe-16"></i>
                 <span class="ml-3 item-text">Profile</span>
               </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="profile">
-                <a class="nav-link pl-3" href="{{url ('/student-profile')}}"><span class="ml-1">Overview</span></a>
-                
-              </ul>
-            </li>
-          
-            
+             
+            </li> 
           </ul>
          
          
@@ -185,40 +179,7 @@
         ]
       });
     </script>
-    
-      <script>
-        /** full calendar */
-        var calendarEl = document.getElementById('calendar');
-        if (calendarEl)
-        {
-          document.addEventListener('DOMContentLoaded', function()
-          {
-            var calendar = new FullCalendar.Calendar(calendarEl,
-            {
-              plugins: ['dayGrid', 'timeGrid', 'list', 'bootstrap'],
-              timeZone: 'UTC',
-              themeSystem: 'bootstrap',
-              header:
-              {
-                left: 'today, prev, next',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-              },
-              buttonIcons:
-              {
-                prev: 'fe-arrow-left',
-                next: 'fe-arrow-right',
-                prevYear: 'left-double-arrow',
-                nextYear: 'right-double-arrow'
-              },
-              weekNumbers: true,
-              eventLimit: true, // allow "more" link when too many events
-              events: 'https://fullcalendar.io/demo-events.json'
-            });
-            calendar.render();
-          });
-        }
-      </script>
+
 
       <script src={{url("../js/gauge.min.js")}}></script>
       <script src={{url("../js/jquery.sparkline.min.js")}}></script>

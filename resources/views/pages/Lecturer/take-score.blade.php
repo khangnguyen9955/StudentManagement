@@ -5,8 +5,9 @@
 <main role="main" class="main-content">
   @if(Session::has('take_score'))
 <div class="alert alert-success" role="alert">{{Session::get('take_score')}} </div>
+@elseif(Session::has('take_score_failed'))
+<div class="alert alert-danger" role="alert">{{Session::get('take_score_failed')}} </div>
 @endif
-
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">

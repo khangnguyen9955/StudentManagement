@@ -119,7 +119,7 @@ class ClassroomController extends Controller
     {
         $classroom = Classroom::find($request->session()->get('classroom_id'));
         if ($classroom->subjects->contains($request->get('subject_id'))) {
-            return back()->with('pages.Admin.add-classroom-subject.choose-subject', 'This subject is already added to this classroom!');
+            return back()->with('classroom.add.subject.choose.subject', 'This subject is already added to this classroom!');
         }
         $request->session()->put('subject_id', $request->get('subject_id'));
 

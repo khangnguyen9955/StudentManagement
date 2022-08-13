@@ -91,13 +91,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventB
 });
 
 Route::group(['prefix' => 'student', 'middleware' => ['isStudent', 'auth', 'PreventBackHistory']], function () {
-    Route::get('/list-student1', [StudentController::class, 'studentList1'])->name('student.list1');
-    Route::get('/student-profile', [StudentController::class, 'viewStudentProfile'])->name('student.profile');
-    Route::get('/student-calendar', [ScheduleController::class, 'viewStudentCalendar']);
+    Route::get('/student-profile', [StudentController::class, 'viewStudentProfile'])->name('profile.student');
+    Route::get('/list-student-in-classroom', [StudentController::class, 'studentInClassroom'])->name('studentInClassroom');
+    Route::get('/student-subjects', [StudentController::class, 'studentSubjects'])->name('studentSubjects');
+    Route::get('/student-score', [StudentController::class, 'studentScore'])->name('studentScore');
+    Route::get('/student-attendance/{subject_id}', [StudentController::class, 'studentAttendance'])->name('studentAttendance');
+    Route::get('/student-calendar', [ScheduleController::class, 'getStudentSchedule'])->name('studentCalendar');
 });
 Route::group(['prefix' => 'lecturer', 'middleware' => ['isLecturer', 'auth', 'PreventBackHistory']], function () {
-    Route::get('/lecturer-profile', [LecturerController::class, 'viewLecturerProfile'])->name('lecturer.profile');
-    Route::get('/lecturer-calendar', [ScheduleController::class, 'viewLecturerCalendar']);
+    Route::get('/lecturer-profile', [LecturerController::class, 'viewLecturerProfile'])->name('profile.lecturer');
+    Route::get('/lecturer-calendar', [ScheduleController::class, 'getLecturerSchedule'])->name('lecturerCalendar');
+    Route::get('/list-subjects-lecturer', [LecturerController::class, 'lecturerSubjects'])->name('lecturer-subjects.list');
     Route::get('/list-classroom-lecturer', [LecturerController::class, 'viewLecturerClass'])->name('lecturer-classroom.list');
     Route::get('/take-attendance/{subject_id}/{classroom_id}/{date}', [AttendanceController::class, 'getAttendanceReport'])->name('getAttendanceReport');
     Route::post('/save-attendance/{subject_id}/{student_id}', [AttendanceController::class, 'saveAttendanceReport'])->name('saveAttendanceReport.post');

@@ -31,12 +31,13 @@ class AttendanceController extends Controller
         $currentDate = date('Y-m-d');
         $checkAttend = Attendance::where('subject_id', '=', $request->subject_id)->get();
         $flagCanMark = true;
+        if ($request->date != $currentDate) {
+            $flagCanMark = false;
+            return back()->with('attendance.failure', 'This attendance need to be made on the correct date!');
+        }
         foreach ($checkAttend as $attend) {
             if ($attend->student_id == $request->student_id) {
-                if ($request->date != $currentDate) {
-                    $flagCanMark = false;
-                    return back()->with('attendance.failure', 'This attendance need to be made on the correct date!');
-                } else if (date('Y-m-d', strtotime($attend->created_at)) == $request->date) {
+                if (date('Y-m-d', strtotime($attend->created_at)) == $request->date) {
                     $flagCanMark = false;
                     return back()->with('attendance.failure', 'This attendance is already marked!');
                 }

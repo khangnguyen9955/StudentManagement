@@ -5,16 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Attendance;
 use App\Models\Classroom;
 use App\Models\Major;
+use App\Models\ScoreReport;
 use App\Models\Student;
+use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
     public function viewStudentProfile()
     {
-        return view('pages.Student.student-profile');
+        $email = Auth::guard('')->user()->email;
+        $getStudent = Student::where('email', '=', $email)->get();
+        $student = $getStudent[0];
+        return view('pages.Student.student-profile', compact('student'));
     }
     public function viewStudentCalendar()
     {
@@ -122,5 +128,46 @@ class StudentController extends Controller
             return redirect()->back()->with('delete_student_success', '
         Student removed successfully ');
         }
+    }
+
+
+    public function studentInClassroom()
+    {
+        $email =  Auth::guard('')->user()->email;
+        $getStudent = Student::where('email', '=', $email)->get();
+        $student = $getStudent[0];
+        $classroom = Classroom::find($student->class_id);
+        $students = Student::where('class_id', '=', $student->class_id)->get();
+        return view('pages.Student.list-student-in-classroom', compact('students', 'classroom'));
+    }
+    public function studentSubjects()
+    {
+        $email =  Auth::guard('')->user()->email;
+        $getStudent = Student::where('email', '=', $email)->get();
+        $student = $getStudent[0];
+        $classroom = Classroom::find($student->class_id);
+        $subjects = $classroom->subjects;
+        return view('pages.Student.student-subjects', compact('subjects', 'classroom'));
+    }
+
+    public function studentAttendance($id)
+    {
+        $email =  Auth::guard('')->user()->email;
+        $getStudent = Student::where('email', '=', $email)->get();
+        $student = $getStudent[0];
+        $subject = Subject::find($id);
+        $attendances = Attendance::where('student_id', '=', $student->id)->where('subject_id', '=', $id)->get();
+
+        return view('pages.Student.student-attendance', compact('attendances', 'subject', 'student'));
+    }
+
+    public function studentScore()
+    {
+        $email =  Auth::guard('')->user()->email;
+        $getStudent = Student::where('email', '=', $email)->get();
+        $student = $getStudent[0];
+        $classroom = Classroom::find($student->class_id);
+        $scores = ScoreReport::where('student_id', '=', $student->id)->get();
+        return view('pages.Student.student-score', compact('scores', 'classroom'));
     }
 }

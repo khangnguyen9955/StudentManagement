@@ -3,7 +3,8 @@
 @section('content')
 <main role="main" class="main-content">
   @if(Session::has('classroom.add.subject.choose.subject'))
-  <span>{{Session::get('classroom.add.subject.choose.subject')}}</span> 
+  <div class="alert alert-danger" role="alert">
+  {{Session::get('classroom.add.subject.choose.subject')}}</div> 
   @endif
     <div class="container-fluid">
       <div class="row justify-content-center">

@@ -11,25 +11,17 @@ use App\Models\Student;
 use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class LecturerController extends Controller
 {
-    public function viewAddLecturerForm()
-    {
-        return view('pages.Admin.add-lecturer-form');
-    }
 
     public function addLecturer()
     {
         $majors = Major::get();
 
         return view('pages.Admin.add-lecturer', compact('majors'));
-    }
-
-    public function viewLecturerGrade()
-    {
-        return view('pages.Lecturer.lecturer-grade');
     }
 
     public function viewLecturerClass()
@@ -41,9 +33,21 @@ class LecturerController extends Controller
         return view('pages.Lecturer.list-classroom-lecturer', compact('allClassrooms'));
     }
 
+    public function lecturerSubjects()
+    {
+        $email = Auth::guard('')->user()->email;
+        $getLecturer = Lecturer::where('email', '=', $email)->get();
+        $subjects = $getLecturer[0]->subjects()->get();
+
+        return view('pages.Lecturer.list-subjects-lecturer', compact('subjects'));
+    }
+
     public function viewLecturerProfile()
     {
-        return view('pages.Lecturer.lecturer-profile');
+        $email = Auth::guard('')->user()->email;
+        $getLecturer = Lecturer::where('email', '=', $email)->get();
+        $lecturer = $getLecturer[0];
+        return view('pages.Lecturer.lecturer-profile', compact('lecturer'));
     }
 
     public function saveLecturer(Request $request)
@@ -85,12 +89,10 @@ class LecturerController extends Controller
     {
         $lecturer = Lecturer::find($request->lecturer_id);
         $subject = Subject::find($request->subject_id);
-        $classroom = Classroom::find(1);
-
         if ($lecturer->subjects->contains($request->subject_id)) {
-            return back()->with('lecturer_subject_add', 'This subject is already added to lecturer!');
+            return back()->with('lecturer_subject_add_fail', 'This subject is already added to lecturer!');
         } else if ($lecturer->major_id !== $subject->major_id) {
-            return back()->with('lecturer_subject_add', 'This subject must be the same majority with the lecturer!');
+            return back()->with('lecturer_subject_add_fail', 'This subject must be the same majority with the lecturer!');
         }
         $lecturer->subjects()->syncWithoutDetaching([$request->subject_id]);
         return back()->with('lecturer_subject_add', 'Added subject to lecturer successfully!');
@@ -142,9 +144,10 @@ class LecturerController extends Controller
 
     public function takeScoreReport(Request $request)
     {
-        $findStudent = ScoreReport::where('student_id', '=', $request->student_id)->get();
-        echo $findStudent;
-        return view('cc');
+        $findStudent = ScoreReport::where('student_id', '=', $request->student_id)->where('subject_id', '=', $request->subject_id)->get();
+        if (count($findStudent) > 0) {
+            return back()->with('take_score_failed', 'This student is already graded');
+        }
         $score = new ScoreReport();
         $score->subject_id = $request->subject_id;
         $score->student_id = $request->student_id;

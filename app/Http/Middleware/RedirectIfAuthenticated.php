@@ -25,9 +25,9 @@ class RedirectIfAuthenticated
             if (Auth::guard($guard)->check() && Auth::user()->role == 1) {
                 return redirect()->route('student.list');
             } else if (Auth::guard($guard)->check() && Auth::user()->role == 2) {
-                return redirect()->route('student.profile');
+                return redirect()->route('profile.student');
             } else if (Auth::guard($guard)->check() && Auth::user()->role == 3) {
-                return redirect()->route('lecturer.profile');
+                return redirect()->route('profile.lecturer');
             }
         }
         return $next($request);

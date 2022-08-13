@@ -12,7 +12,8 @@
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">
-          <h2 class="mb-2 page-title">Student List</h2>
+          <h2 class="mb-2 page-title">Subject of Lecturer</h2>
+          
           
           <div class="row my-4">
             <!-- Small table -->
@@ -23,25 +24,16 @@
                   <table class="table datatables" id="dataTable-1">
                     <thead>
                       <tr>
-                        <th>Student Code</th>
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Major</th>
-
+                        <th>Subject Code</th>
+                        <th>Subject Name</th>
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($students as $student)
-                      <tr>
-                        <td>{{$student->studentCode}}</td>
-                        <td>{{$student->fullName}}</td>
-                        <td>{{$student->email}}</td>
-                        <td>{{$student->phone}}</td>
-                        <td>{{$student->major->majorName}}</td>
-                        
-                      
-                      </tr>
+                      @foreach ($subjects as $subject)
+                     <tr>
+                        <td>{{$subject->subjectCode}}</td>
+                        <td>{{$subject->subjectName}}</td>
+                          </tr>
                       @endforeach
                     </tbody>
                   </table>
