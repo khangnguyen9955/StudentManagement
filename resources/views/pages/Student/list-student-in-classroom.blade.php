@@ -1,19 +1,14 @@
+
 @extends('pages.Student.student-layout')
 
 @section('content')
 
 <main role="main" class="main-content">
-  @if(Session::has('student_list'))
-
-
-<div class="alert alert-success" role="alert">{{Session::get('student_list')}} </div>
-@endif
 
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">
-          <h2 class="mb-2 page-title">Student List</h2>
-          
+          <h2 class="mb-2 page-title">Student List - {{$classroom->classCode}}</h2>
           <div class="row my-4">
             <!-- Small table -->
             <div class="col-md-12">
@@ -23,12 +18,13 @@
                   <table class="table datatables" id="dataTable-1">
                     <thead>
                       <tr>
+                   
                         <th>Student Code</th>
                         <th>Full Name</th>
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Major</th>
-
+                        <th>Class Code</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -39,8 +35,7 @@
                         <td>{{$student->email}}</td>
                         <td>{{$student->phone}}</td>
                         <td>{{$student->major->majorName}}</td>
-
-                      
+                        <td>{{$classroom->classCode}}</td>
                       </tr>
                       @endforeach
                     </tbody>

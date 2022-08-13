@@ -6,7 +6,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-    <title>Tiny Dashboard - A Bootstrap Dashboard Template</title>
+    <title>School Management System</title>
+    
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="{{url ('css/simplebar.css')}}">
     <!-- Fonts CSS -->
@@ -30,7 +31,9 @@
   <body class="vertical  light  ">
     <div class="wrapper">
       <nav class="topnav navbar navbar-light">
-       
+        <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
+          <i class="fe fe-menu navbar-toggler-icon"></i>
+        </button> 
         <form class="form-inline mr-auto searchform text-muted">
           <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Type something..." aria-label="Search">
         </form>
@@ -39,13 +42,13 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="avatar avatar-sm mt-2">
-                <img src={{url("assets/avatars/face-1.jpg")}} alt="..." class="avatar-img rounded-circle">
+                <img src="{{url('assets/avatars/face-1.jpg')}}" alt="..." class="avatar-img rounded-circle">
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="{{route('/lecturer.profile')}}">Profile</a>
-              <a class="dropdown-item" href="{{route('/login')}}">Logout</a>
-              
+              <a class="dropdown-item" href="{{route('profile.lecturer')}}">Profile</a>
+              <a class="dropdown-item" href="{{route('login')}}">Logout</a>
+          
             </div>
           </li>
         </ul>
@@ -68,56 +71,54 @@
             </a>
           </div>
           
-          <p class="text-muted nav-heading mt-4 mb-1">
-            <span>Components</span>
-          </p>
+
+         
           <ul class="navbar-nav flex-fill w-100 mb-2">
-            
-            
-           
-            <li class="nav-item dropdown">
-              <a href="#tables" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-grid fe-16"></i>
-                <span class="ml-3 item-text">Features</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="tables">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="{{route('lecturer-classroom.list')}}"><span class="ml-1 item-text">Grade student</span></a>
-                </li>
-                
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="{{route('lecturer-classroom.list')}}"><span class="ml-1 item-text">Classroom List</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="{{route('lecturer-classroom.list')}}"><span class="ml-1 item-text">Take Attendance</span></a>
-                </li>
-              </ul>
-            </li>
-           
-          </ul>
-          <p class="text-muted nav-heading mt-4 mb-1">
-            <span>Apps</span>
-          </p>
-          <ul class="navbar-nav flex-fill w-100 mb-2">
+          
             <li class="nav-item w-100">
-              <a class="nav-link" href="{{route('lecturer-calendar')}}">
+              <a class="nav-link" href="{{route('lecturerCalendar')}}">
                 <i class="fe fe-calendar fe-16"></i>
                 <span class="ml-3 item-text">Lecturer Calendar</span>
               </a>
             </li>
-            
-            <li class="nav-item dropdown">
-              <a href="#profile" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+
+            <li class="nav-item w-100">
+              <a class="nav-link" href="{{route('lecturer-classroom.list')}}">
+        
+                <i class="fe fe-calendar fe-16"></i>
+              <span class="ml-3 item-text"> View all classrooms</span>
+              </a>
+            </li>
+            <li class="nav-item w-100">
+              <a class="nav-link" href="{{route('lecturer-subjects.list')}}">
+        
+                <i class="fe fe-calendar fe-16"></i>
+              <span class="ml-3 item-text"> View all subjects</span>
+              </a>
+            </li>
+            <li class="nav-item w-100">
+              <a class="nav-link" href="{{route('lecturer-classroom.list')}}">
+                <i class="fe fe-calendar fe-16"></i>
+                <span class="ml-3 item-text">Make Score Reports</span></a>
+            </li>
+            <li class="nav-item w-100">
+              <a class="nav-link" href="{{route('lecturerCalendar')}}">
+                <i class="fe fe-calendar fe-16"></i>
+                <span class="ml-3 item-text">Make Attendance Reports</span></a>
+            </li>
+
+            <li class="nav-item w-100">
+              <a class="nav-link" href="{{route('lecturer-classroom.list')}}">
+                <i class="fe fe-calendar fe-16"></i>
+                <span class="ml-3 item-text">View students in classroom</span></a>
+            </li>
+            <li class="nav-item w-100">
+              <a href="{{route('profile.lecturer')}}" class="nav-link ">
                 <i class="fe fe-user fe-16"></i>
                 <span class="ml-3 item-text">Profile</span>
               </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="profile">
-                <a class="nav-link pl-3" href="{{route('lecturer.profile')}}"><span class="ml-1">Overview</span></a>
-                
-              </ul>
-            </li>
-          
-            
+             
+            </li> 
           </ul>
          
          
@@ -129,7 +130,6 @@
       </aside>
       @yield('content')
       
-
       <script src={{url('js/jquery.min.js')}}></script>
       <script src={{url('../js/popper.min.js')}}></script>
       <script src={{url('../js/moment.min.js')}}></script>
@@ -139,31 +139,43 @@
       <script src={{url('../js/jquery.stickOnScroll.js')}}></script>
       <script src={{url("../js/tinycolor-min.js")}}></script>
       <script src={{url("../js/config.js")}}></script>
-      <script src={{url('../js/jquery.mask.min.js')}}></script>
       <script src={{url('../js/fullcalendar.js')}}></script>
       <script src={{url('../js/fullcalendar.custom.js')}}></script>
-      <script src={{url('../js/select2.min.js')}}></script>
-      <script src={{url('../js/jquery.steps.min.js')}}></script>
-      <script src={{url('../js/jquery.validate.min.js')}}></script>
-      <script src={{url('../js/jquery.timepicker.js')}}></script>
-      <script src={{url('../js/dropzone.min.js')}}></script>
-      <script src={{url('../js/uppy.min.js')}}></script>
-      <script src={{url('../js/quill.min.js')}}></script>
-      <script src={{url("../js/d3.min.js")}}></script>
-      <script src={{url("../js/topojson.min.js")}}></script>
-      <script src={{url("../js/datamaps.all.min.js")}}></script>
-      <script src={{url("../js/datamaps-zoomto.js")}}></script>
-      <script src={{url("../js/datamaps.custom.js")}}></script>
-      <script src={{url("../js/Chart.min.js")}}></script>
       <script src={{url('../js/jquery.dataTables.min.js')}}></script>
       <script src={{url('../js/dataTables.bootstrap4.min.js')}}></script>
       <script src={{url('../js/jquery.dataTables.min.js')}}></script>
       <script src={{url('../js/dataTables.bootstrap4.min.js')}}></script>
-      <script>
-        /* defind global options */
-        Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
-        Chart.defaults.global.defaultFontColor = colors.mutedColor;
-      </script>
+      <script src={{url('../js/jquery.mask.min.js')}}></script>
+    <script src={{url('../js/select2.min.js')}}></script>
+    <script src={{url('../js/jquery.steps.min.js')}}></script>
+    <script src={{url('../js/jquery.validate.min.js')}}></script>
+    <script src={{url('../js/jquery.timepicker.js')}}></script>
+    <script src={{url('../js/dropzone.min.js')}}></script>
+    <script src={{url('../js/uppy.min.js')}}></script>
+    <script src={{url('../js/quill.min.js')}}></script>
+    <script src={{url("../js/d3.min.js")}}></script>
+    <script src={{url("../js/topojson.min.js")}}></script>
+    <script src={{url("../js/datamaps.all.min.js")}}></script>
+    <script src={{url("../js/datamaps-zoomto.js")}}></script>
+    <script src={{url("../js/datamaps.custom.js")}}></script>
+    <script src={{url("../js/Chart.min.js")}}></script> 
+    <script>
+      /* defind global options */
+      Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
+      Chart.defaults.global.defaultFontColor = colors.mutedColor;
+    </script>
+    <script src={{url("../js/gauge.min.js")}}></script>
+    <script src={{url("../js/jquery.sparkline.min.js")}}></script>
+    <script src={{url("../js/apexcharts.min.js")}}></script>
+    <script src={{url("../js/apexcharts.custom.js")}}></script>
+    <script src={{url('../js/jquery.mask.min.js')}}></script>
+    <script src={{url('../js/select2.min.js')}}></script>
+    <script src={{url('../js/jquery.steps.min.js')}}></script>
+    <script src={{url('../js/jquery.validate.min.js')}}></script>
+    <script src={{url('../js/jquery.timepicker.js')}}></script>
+    <script src={{url('../js/dropzone.min.js')}}></script>
+    <script src={{url('../js/uppy.min.js')}}></script>
+    <script src={{url('../js/quill.min.js')}}></script>
       <script>
       $('#dataTable-1').DataTable(
       {
@@ -174,52 +186,20 @@
         ]
       });
     </script>
-      <script>
-        /** full calendar */
-        var calendarEl = document.getElementById('calendar');
-        if (calendarEl)
-        {
-          document.addEventListener('DOMContentLoaded', function()
-          {
-            var calendar = new FullCalendar.Calendar(calendarEl,
-            {
-              plugins: ['dayGrid', 'timeGrid', 'list', 'bootstrap'],
-              timeZone: 'UTC',
-              themeSystem: 'bootstrap',
-              header:
-              {
-                left: 'today, prev, next',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-              },
-              buttonIcons:
-              {
-                prev: 'fe-arrow-left',
-                next: 'fe-arrow-right',
-                prevYear: 'left-double-arrow',
-                nextYear: 'right-double-arrow'
-              },
-              weekNumbers: true,
-              eventLimit: true, // allow "more" link when too many events
-              events: 'https://fullcalendar.io/demo-events.json'
-            });
-            calendar.render();
-          });
-        }
-      </script>
-   <script src={{url("../js/gauge.min.js")}}></script>
-   <script src={{url("../js/jquery.sparkline.min.js")}}></script>
-   <script src={{url("../js/apexcharts.min.js")}}></script>
-   <script src={{url("../js/apexcharts.custom.js")}}></script>
-   <script src={{url('../js/jquery.mask.min.js')}}></script>
-   <script src={{url('../js/select2.min.js')}}></script>
-   <script src={{url('../js/jquery.steps.min.js')}}></script>
-   <script src={{url('../js/jquery.validate.min.js')}}></script>
-   <script src={{url('../js/jquery.timepicker.js')}}></script>
-   <script src={{url('../js/dropzone.min.js')}}></script>
-   <script src={{url('../js/uppy.min.js')}}></script>
-   <script src={{url('../js/quill.min.js')}}></script>
-    
+
+
+      <script src={{url("../js/gauge.min.js")}}></script>
+      <script src={{url("../js/jquery.sparkline.min.js")}}></script>
+      <script src={{url("../js/apexcharts.min.js")}}></script>
+      <script src={{url("../js/apexcharts.custom.js")}}></script>
+      <script src={{url('../js/jquery.mask.min.js')}}></script>
+      <script src={{url('../js/select2.min.js')}}></script>
+      <script src={{url('../js/jquery.steps.min.js')}}></script>
+      <script src={{url('../js/jquery.validate.min.js')}}></script>
+      <script src={{url('../js/jquery.timepicker.js')}}></script>
+      <script src={{url('../js/dropzone.min.js')}}></script>
+      <script src={{url('../js/uppy.min.js')}}></script>
+      <script src={{url('../js/quill.min.js')}}></script>
       <script>
         $('.select2').select2(
         {
@@ -423,7 +403,7 @@
           });
         }
       </script>
-      <script src={{url("../js/apps.js")}}></script>
+      <script src="../js/apps.js"></script>
       <!-- Global site tag (gtag.js) - Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
       <script>

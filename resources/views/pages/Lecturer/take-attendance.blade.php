@@ -53,8 +53,8 @@
                     @csrf
                   <td>
                     <span class="text-muted sr-only">Attendance status</span>
-                     <button type="submit" name="attendance" class="btn btn-success" value="present" > Present</button>   
-                     <button type="submit" name="attendance" class="btn btn-danger" value="absent">Absent</button>
+                     <button type="submit" name="attendance" class="btn btn-success" value="Present" > Present</button>   
+                     <button type="submit" name="attendance" class="btn btn-danger" value="Absent">Absent</button>
                   </td>
                 </form> 
 
@@ -62,8 +62,8 @@
                 @endforeach
               </tbody>
             </table>
-           <button style="float:right; margin-right:20px;" class="btn btn-primary" onclick="window.location='{{ URL::route('getSchedule') }}'">Finish</button>
-           <button style ="float:right; margin-right:10px" onclick="window.location='{{ URL::route('getSchedule') }}'" class="btn btn-warning">Back</button>
+           <button style="float:right; margin-right:20px;" class="btn btn-primary" onclick="window.location='{{ URL::route('lecturerCalendar') }}'">Finish</button>
+           <button style ="float:right; margin-right:10px" onclick="window.location='{{ URL::route('lecturerCalendar') }}'" class="btn btn-warning">Back</button>
           </div>
         </div>
       </div> <!-- simple table -->

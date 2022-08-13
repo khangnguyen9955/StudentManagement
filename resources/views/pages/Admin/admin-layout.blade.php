@@ -145,7 +145,13 @@
             </ul>
           </li>
 
-     
+          <li class="nav-item w-100">
+            <a href="{{route('profile.admin')}}" class="nav-link ">
+              <i class="fe fe-user fe-16"></i>
+              <span class="ml-3 item-text">Profile</span>
+            </a>
+           
+          </li>  
 
 
 
