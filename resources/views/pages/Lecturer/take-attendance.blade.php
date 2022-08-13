@@ -1,4 +1,4 @@
-@extends('pages.adminlayout')
+@extends('pages.Lecturer.lecturer-layout')
 
 @section('content')
 <main role="main" class="main-content">
@@ -18,7 +18,7 @@
 
 <div class="row justify-content-center">
   <div class="col-12">
-    <h2 class="mb-2 page-title">Classroom: {{$classroom->classCode}} - {{$subject->subjectCode}}</h2>
+    <h2 class="mb-2 page-title">Classroom: {{$classroom->classCode}} - {{$subject->subjectCode}} - {{$date}}</h2>
     
     <div class="row my-4">
       
@@ -49,8 +49,8 @@
                   <td>{{$student->phone}}</td>
                   <td>{{$student->major->majorName}}</td>
                   <td>{{$student->classroom !== null ?  $student->classroom->classCode : "Not yet"}}</td>
-                  <form action="{{route('saveAttendanceReport.post',['subject_id' => $subject->id,  'student_id'=>$student->id])}}" method="POST"> 
-@csrf
+                  <form action="{{route('saveAttendanceReport.post',['subject_id' => $subject->id,  'student_id'=>$student->id, 'date' => $date])}}" method="POST"> 
+                    @csrf
                   <td>
                     <span class="text-muted sr-only">Attendance status</span>
                      <button type="submit" name="attendance" class="btn btn-success" value="present" > Present</button>   
