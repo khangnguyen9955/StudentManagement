@@ -2,6 +2,10 @@
 
 @section('content')
 <main role="main" class="main-content">
+  @if(Session::has('fail'))
+  <div class="alert alert-danger" role="alert">
+    {{Session::get('fail')}}</div> 
+  @endif
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-12">

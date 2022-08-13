@@ -138,6 +138,10 @@ class StudentController extends Controller
         $student = $getStudent[0];
         $classroom = Classroom::find($student->class_id);
         $students = Student::where('class_id', '=', $student->class_id)->get();
+        if ($classroom == null){
+            return redirect()->route('studentCalendar')->with('fail', 'This student has not been added to any classroom!');
+        }
+
         return view('pages.Student.list-student-in-classroom', compact('students', 'classroom'));
     }
     public function studentSubjects()
@@ -146,6 +150,11 @@ class StudentController extends Controller
         $getStudent = Student::where('email', '=', $email)->get();
         $student = $getStudent[0];
         $classroom = Classroom::find($student->class_id);
+
+        if ($classroom == null){
+            return redirect()->route('studentCalendar')->with('fail', 'This student has not been added to any classroom!');
+        }
+
         $subjects = $classroom->subjects;
         return view('pages.Student.student-subjects', compact('subjects', 'classroom'));
     }

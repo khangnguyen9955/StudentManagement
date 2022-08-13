@@ -47,8 +47,14 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="{{route('profile.student')}}">Profile</a>
-              <a class="dropdown-item" href="{{route('login')}}">Logout</a>
-          
+              <a class="dropdown-item" href="{{route('logout')}}"  onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
+               {{ __('Logout') }}</a>
+
+               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+            
             </div>
           </li>
         </ul>
@@ -60,7 +66,7 @@
         <nav class="vertnav navbar navbar-light">
           <!-- nav bar -->
           <div class="w-100 mb-4 d-flex">
-            <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="index.html">
+            <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="{{route('studentCalendar')}}">
               <svg version="1.1" id="logo" class="navbar-brand-img brand-sm" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve">
                 <g>
                   <polygon class="st0" points="78,105 15,105 24,87 87,87 	" />
