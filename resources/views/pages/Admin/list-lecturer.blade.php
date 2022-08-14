@@ -6,6 +6,9 @@
   @if(Session::has('lecturer_list'))
 <div class="alert alert-success" role="alert">{{Session::get('lecturer_list')}} </div>
 @endif
+@if(Session::has('delete_lecturer_failure'))
+<div class="alert alert-danger" role="alert">{{Session::get('delete_lecturer_failure')}} </div>
+@endif
 
     <div class="container-fluid">
       <div class="row justify-content-center">

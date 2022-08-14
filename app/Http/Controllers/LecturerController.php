@@ -127,7 +127,7 @@ class LecturerController extends Controller
     public function removeLecturer($id)
     {
         // Lecturer::where('id', '=', $id)->delete();
-        $checkLecturer = Attendance::where('lecturer_id', '=', $id)->get();
+        $checkLecturer = Schedule::where('lecturer_id', '=', $id)->get();
         if (count($checkLecturer) > 0) {
             return redirect()->back()->with('delete_lecturer_failure', 'This lecturer has been added to a classroom, you cannot delete it from the system!');
         }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Attendance;
 use App\Models\Classroom;
 use App\Models\Major;
+use App\Models\Schedule;
 use App\Models\ScoreReport;
 use App\Models\Student;
 use App\Models\Subject;
@@ -120,7 +121,9 @@ class StudentController extends Controller
     public function removeStudent($id)
     {
         // Student::where('id', '=', $id)->delete();
-        $checkStudent = Attendance::where('student_id', '=', $id)->get();
+        $student = Student::find($id);
+        $studentClassroom = $student->class_id;
+        $checkStudent = Schedule::where('classroom_id', '=', $studentClassroom)->get();
         if (count($checkStudent) > 0) {
             return redirect()->back()->with('delete_student_failure', 'This student has been added to a classroom, you cannot delete it from the system!');
         } else {
