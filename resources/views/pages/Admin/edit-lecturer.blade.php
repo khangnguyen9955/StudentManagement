@@ -4,6 +4,8 @@
 <main role="main" class="main-content">
   @if(Session::has('lecturer_edit'))
 <div class="alert alert-success" role="alert">{{Session::get('lecturer_edit')}} </div>
+@elseif(Session::has('lecturer_edit_fail'))
+<div class="alert alert-danger" role="alert">{{Session::get('lecturer_edit_fail')}} </div>
 @endif
     <div class="container-fluid">
       <div class="row justify-content-center">
