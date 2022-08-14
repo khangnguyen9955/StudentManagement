@@ -64,27 +64,6 @@ class ClassroomController extends Controller
 
 
 
-
-    public function addSubjectToClassroom()
-    {
-        $subjects = Subject::get();
-        $classrooms = Classroom::get();
-        return view('pages.Admin.add-subject-to-classroom', compact('subjects'), compact('classrooms'));
-    }
-
-    public function saveClassroomSubject(Request $request)
-    {
-        $classroom = Classroom::find($request->classroom_id);
-        $subject = Subject::find($request->subject_id);
-        if ($classroom->subjects()->contains($request->subject_id)) {
-            return back()->with('classroom_subject_add', 'This subject is already added to this classroom!');
-        } else if ($classroom->major_id !== $subject->major_id) {
-            return back()->with('classroom_subject_add', 'This subject must be the same majority with this classroom!');
-        }
-        $classroom->subjects()->syncWithoutDetaching([$request->subject_id]);
-        return back()->with('classroom_subject_add', 'This subject is added to this classroom successfully!');
-    }
-
     public function viewStudentClassroom($id)
     {
         $students = Student::where('class_id', '=', $id)->get();
