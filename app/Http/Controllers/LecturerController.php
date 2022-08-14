@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendance;
 use App\Models\Classroom;
 use App\Models\Lecturer;
 use App\Models\Major;
@@ -26,8 +27,9 @@ class LecturerController extends Controller
 
     public function viewLecturerClass()
     {
-
-        $lecturer = Lecturer::find(1);
+        $email = Auth::guard('')->user()->email;
+        $getLecturer = Lecturer::where('email', '=', $email)->get();
+        $lecturer = $getLecturer[0];
         $allSchedules = Schedule::where('lecturer_id', '=', $lecturer->id)->get('classroom_id');
         $allClassrooms = Classroom::find($allSchedules);
         return view('pages.Lecturer.list-classroom-lecturer', compact('allClassrooms'));
@@ -102,9 +104,8 @@ class LecturerController extends Controller
     {
         $lecturers = Lecturer::where('id', '=', $id)->first();
         $majors = Major::get();
-        $classrooms = Classroom::get();
 
-        return view('pages.Admin.edit-lecturer')->with(compact('lecturers', 'majors', 'classrooms'));
+        return view('pages.Admin.edit-lecturer')->with(compact('lecturers', 'majors'));
     }
     public function updateLecturer(Request $request)
     {
@@ -112,6 +113,10 @@ class LecturerController extends Controller
         $fullName = $request->fullName;
         $phone = $request->phone;
         $majorID = $request->major_id;
+        $lecturer = Lecturer::find($id);
+        if (count($lecturer->subjects) > 0 && $lecturer->major_id != $majorID) {
+            return back()->with('lecturer_edit_fail', "This lecturer is assigned to teach some subjects we cannot change lecturer's information!");
+        }
         Lecturer::where('id', '=', $id)->update([
             'fullName' => $fullName,
             'phone' => $phone,
@@ -122,6 +127,10 @@ class LecturerController extends Controller
     public function removeLecturer($id)
     {
         // Lecturer::where('id', '=', $id)->delete();
+        $checkLecturer = Attendance::where('lecturer_id', '=', $id)->get();
+        if (count($checkLecturer) > 0) {
+            return redirect()->back()->with('delete_lecturer_failure', 'This lecturer has been added to a classroom, you cannot delete it from the system!');
+        }
         Lecturer::destroy($id);
         return redirect()->back()->with('lecturer_list', '
         Lecturer removed successfully ');

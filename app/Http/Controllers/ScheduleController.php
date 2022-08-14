@@ -14,15 +14,6 @@ use Illuminate\Support\Facades\Auth;
 class ScheduleController extends Controller
 {
 
-    public function viewLecturerCalendar()
-    {
-        return view('pages.Lecturer.lecturer-calendar');
-    }
-
-    public function viewStudentCalendar()
-    {
-        return view('pages.Student.student-calendar');
-    }
 
     public function getSchedule()
     {

@@ -138,7 +138,7 @@ class StudentController extends Controller
         $student = $getStudent[0];
         $classroom = Classroom::find($student->class_id);
         $students = Student::where('class_id', '=', $student->class_id)->get();
-        if ($classroom == null){
+        if ($classroom == null) {
             return redirect()->route('studentCalendar')->with('fail', 'This student has not been added to any classroom!');
         }
 
@@ -151,7 +151,7 @@ class StudentController extends Controller
         $student = $getStudent[0];
         $classroom = Classroom::find($student->class_id);
 
-        if ($classroom == null){
+        if ($classroom == null) {
             return redirect()->route('studentCalendar')->with('fail', 'This student has not been added to any classroom!');
         }
 
