@@ -38,15 +38,12 @@ Route::get('/login', [AuthenticationController::class, 'Login'])->name('login');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventBackHistory']], function () {
     Route::get('/admin-profile', [AdminController::class, 'viewProfile'])->name('profile.admin');
-
-
     Route::get('/add-student', [StudentController::class, 'addStudent'])->name('student.add');
     Route::post('/add-student', [StudentController::class, 'saveStudent'])->name('save.student');
     Route::get('/list-student', [StudentController::class, 'studentList'])->name('student.list');
     Route::get('/edit-student/{id}', [StudentController::class, 'editStudent'])->name('student.edit');
     Route::post('/update-student', [StudentController::class, 'updateStudent'])->name('update.student');
     Route::get('/remove-student/{id}', [StudentController::class, 'removeStudent'])->name('student.remove');
-
 
     Route::get('/add-classroom', [ClassroomController::class, 'addClassroom'])->name('classroom.add');
     Route::post('/add-classroom', [ClassroomController::class, 'saveClassroom'])->name('save.classroom');
