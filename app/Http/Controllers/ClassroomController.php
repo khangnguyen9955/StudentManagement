@@ -136,22 +136,14 @@ class ClassroomController extends Controller
 
     public function saveSchedule(Request $request)
     {
-
-
         $recurrences = $request->input('recurrence');
         $request->session()->put('slot_id', $request->get('slot_id'));
         $request->session()->put('start_date', $request->get('start_date'));
         $request->session()->put('end_date', $request->get('end_date'));
         $request->session()->put('recurrences', $recurrences);
-
         $classroom = Classroom::find($request->session()->get('classroom_id'));
         $lecturer = Lecturer::find($request->session()->get('lecturer_id'));
         $subject = Subject::find($request->session()->get('subject_id'));
-
-
-
-
-        // add new record to schedule
         $schedule = new Schedule();
         $schedule->classroom_id = $request->session()->get('classroom_id');
         $schedule->lecturer_id = $request->session()->get('lecturer_id');
@@ -166,7 +158,6 @@ class ClassroomController extends Controller
             }
         }
         $schedule->recurrence = $recurrencesArray;
-
         for ($i = 0; $i < count($recurrencesArray); $i++) {  // this is used for check every day in recurrence
             //check whether there is any overlapped days with every request day
             $overlappedRecurrences = Schedule::whereJsonContains('recurrence', $recurrencesArray[$i])->get();
