@@ -20,6 +20,10 @@ class SubjectController extends Controller
 
     public function saveSubject(Request $request)
     {
+        $request->validate([
+            'subjectName' =>'required|unique:subjects'
+        ]);
+
         $subject = new Subject();
         $subject->subjectName = $request->subjectName;
         $subject->major_id = $request->major_id;
@@ -47,9 +51,7 @@ class SubjectController extends Controller
         $subjectName = $request->subjectName;
         $majorID = $request->major_id;
         $findUsed = Schedule::where('classroom_id', '=', $id)->get();
-        if (count($findUsed) > 0) {
-            return back()->with('subject_edit_fail', "This subject is being used for students, cannot change it information!");
-        }
+      
         Subject::where('id', '=', $id)->update([
             'subjectName' => $subjectName,
             'major_id' => $majorID,

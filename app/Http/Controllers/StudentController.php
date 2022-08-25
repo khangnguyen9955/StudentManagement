@@ -39,6 +39,12 @@ class StudentController extends Controller
     }
     public function saveStudent(Request $request)
     {
+        $request->validate([
+            'fullName' =>'required',
+            'email' => 'required|unique:students',
+            'phone' => 'required|integer'
+        ]);
+
         $student = new Student();
         $student->fullName = $request->fullName;
         $student->password = Hash::make("12345678"); // password default will be 12345678
@@ -46,10 +52,9 @@ class StudentController extends Controller
         $student->email = $request->email;
         $student->phone = $request->phone;
         $student->major_id = $request->major_id;
-        $findEmail = User::where('email', '=', $request->email)->get();
-        if (count($findEmail) > 0) {
-            return back()->with('student_add_fail', 'This email has been used, try another email!');
-        }
+        
+        
+       
         $user = new User();
         $user->name = $request->fullName;
         $user->password = Hash::make("12345678");

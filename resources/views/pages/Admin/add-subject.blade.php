@@ -23,6 +23,9 @@
     <div class="form-group mb-3">
       <label for="address-wpalaceholder">Subject Name</label>
       <input type="text" id="address-wpalaceholder" class="form-control" placeholder="Enter your subject name" required name="subjectName">
+      <div class="alert-danger">
+        {{$errors->first('subjectName')}}
+      </div>
       <div class="invalid-feedback"> Please enter your subject name</div>
     </div>
                     <div class="form-group mb-3">

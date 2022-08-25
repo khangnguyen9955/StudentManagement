@@ -5,9 +5,7 @@
   @if(Session::has('lecturer_add'))
   <div class="alert alert-success" role="alert">
   {{Session::get('lecturer_add')}}</div> 
-  @elseif(Session::has('lecturer_add_fail'))
-  <div class="alert alert-danger" role="alert">
-  {{Session::get('lecturer_add_fail')}}</div> 
+  
   @endif
     <div class="container-fluid">
       <div class="row justify-content-center">
@@ -26,6 +24,9 @@
                       <div class="col-md-6 mb-3">
                         <label for="validationCustom3">Full Name</label>
                         <input type="text" class="form-control" id="validationCustom3" value="" placeholder="Enter lecturer's full name" required name="fullName">
+                        <div class="alert-danger">
+                          {{$errors->first('fullName')}}
+                        </div>
                         <div class="valid-feedback"> Looks good! </div>
                       </div>
                      
@@ -39,6 +40,9 @@
                       <div class="col-md-8 mb-3">
                         <label for="exampleInputEmail2">Email address</label>
                         <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter your email" required name="email">
+                        <div class="alert-danger">
+                          {{$errors->first('email')}}
+                        </div>
                         <div class="invalid-feedback"> Please use a valid email </div>
                         <small id="emailHelp1" class="form-text text-muted">We'll never share your email with anyone else.</small>
                       </div>
@@ -49,7 +53,10 @@
                     
                     <div class="form-group mb-3">
                       <label for="address-wpalaceholder">Phone Number</label>
-                      <input type="text" id="address-wpalaceholder" class="form-control" placeholder="Enter your phone number" required name="phone">
+                      <input type="text" id="address-wpalaceholder" class="form-control" placeholder="+84     Enter your phone number" required name="phone">
+                      <div class="alert-danger">
+                        {{$errors->first('phone')}}
+                      </div>
                       <div class="invalid-feedback"> Please enter your phone number</div>
                     </div>
                     <div class="form-group mb-3">
