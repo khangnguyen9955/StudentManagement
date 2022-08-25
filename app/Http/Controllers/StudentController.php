@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Attendance;
 use App\Models\Classroom;
 use App\Models\Major;
-use App\Models\Schedule;
 use App\Models\ScoreReport;
 use App\Models\Student;
 use App\Models\Subject;
@@ -40,6 +39,12 @@ class StudentController extends Controller
     }
     public function saveStudent(Request $request)
     {
+        $request->validate([
+            'fullName' =>'required',
+            'email' => 'required|unique:students',
+            'phone' => 'required|integer'
+        ]);
+
         $student = new Student();
         $student->fullName = $request->fullName;
         $student->password = Hash::make("12345678"); // password default will be 12345678
@@ -47,10 +52,9 @@ class StudentController extends Controller
         $student->email = $request->email;
         $student->phone = $request->phone;
         $student->major_id = $request->major_id;
-        $findEmail = User::where('email', '=', $request->email)->get();
-        if (count($findEmail) > 0) {
-            return back()->with('student_add_fail', 'This email has been used, try another email!');
-        }
+        
+        
+       
         $user = new User();
         $user->name = $request->fullName;
         $user->password = Hash::make("12345678");
@@ -121,9 +125,7 @@ class StudentController extends Controller
     public function removeStudent($id)
     {
         // Student::where('id', '=', $id)->delete();
-        $student = Student::find($id);
-        $studentClassroom = $student->class_id;
-        $checkStudent = Schedule::where('classroom_id', '=', $studentClassroom)->get();
+        $checkStudent = Attendance::where('student_id', '=', $id)->get();
         if (count($checkStudent) > 0) {
             return redirect()->back()->with('delete_student_failure', 'This student has been added to a classroom, you cannot delete it from the system!');
         } else {
@@ -141,7 +143,7 @@ class StudentController extends Controller
         $student = $getStudent[0];
         $classroom = Classroom::find($student->class_id);
         $students = Student::where('class_id', '=', $student->class_id)->get();
-        if ($classroom == null) {
+        if ($classroom == null){
             return redirect()->route('studentCalendar')->with('fail', 'This student has not been added to any classroom!');
         }
 
@@ -154,7 +156,7 @@ class StudentController extends Controller
         $student = $getStudent[0];
         $classroom = Classroom::find($student->class_id);
 
-        if ($classroom == null) {
+        if ($classroom == null){
             return redirect()->route('studentCalendar')->with('fail', 'This student has not been added to any classroom!');
         }
 

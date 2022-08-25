@@ -54,6 +54,12 @@ class LecturerController extends Controller
 
     public function saveLecturer(Request $request)
     {
+        $request->validate([
+            'fullName' =>'required',
+            'email' => 'required|unique:students',
+            'phone' => 'required|integer'
+        ]);
+        
         $lecturer = new Lecturer();
         $lecturer->fullName = $request->fullName;
         $lecturer->password = Hash::make("12345678"); // password default will be 12345678
@@ -62,9 +68,7 @@ class LecturerController extends Controller
         $lecturer->phone = $request->phone;
         $lecturer->major_id = $request->major_id;
         $findEmail = User::where('email', '=', $request->email)->get();
-        if (count($findEmail) > 0) {
-            return back()->with('lecturer_add_fail', 'This email has been used, try another email!');
-        }
+       
         $user = new User();
         $user->name = $request->fullName;
         $user->password = Hash::make("12345678");
